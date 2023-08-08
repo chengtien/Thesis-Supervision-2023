@@ -1,0 +1,4 @@
+file.path(rprojroot::find_rstudio_root_file(), "path of file relative to root")
+file.path(rprojroot::find_rstudio_root_file(), "data/data.csv")  
+remotes::install_github("tpemartin/research")
+research::create_structure()
