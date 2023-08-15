@@ -111,108 +111,17 @@ list(
     .tb[,-c(4,6)] |> round(4)
   },
   #4. 熱門菜單消費成本計算----
-  popularItems %t=% {
-    folder_path <- "local-data/menuJson_2023-08-06/"
-    file_list <- list.files(folder_path, full.names = TRUE)
-    popularItems <- list()
-    for (file_path in file_list) {
-      file_content <- xfun::read_utf8(file_path)
-      tryCatch({
-        parsed_json <- jsonlite::fromJSON(file_content)
-        if (!is.null(parsed_json)) {
-          popular_items_fromJSON <- foodDelivery::get_popular_items_from_menuJson(parsed_json)
-          popularItems <- append(popularItems, list(popular_items_fromJSON))
-        }
-      }, error = function(e) {
-        cat("Error while processing file", file_path, ":", conditionMessage(e), "\n")
-      })
-    }
-    file_names <- list.files(folder_path, full.names = FALSE)
-    file_names |>
-      basename() |>
-      stringr::str_remove_all(
-        "foodpandaMenu_|.json"
-      ) -> allShopCodes
-    popularItems<-setNames(popularItems[1:56532],allShopCodes[1:56532])
-  },
+  popularItems %t=% {readRDS("data/popularItems.Rds")},
   ##4.1 menu cost wax  data  ----
   ### before----
-  menu_cost_wax_before %t=% {
-    menu_cost_wax_before <- vector("numeric", length=length(menu_wax[["before"]])) |>
-      setNames(names(menu_wax$before))
-
-    for (i in seq_along(menu_wax[["before"]])) {
-      menu_cost_i <-
-        tryCatch(
-          {
-            popularItems_i = popularItems[[names(menu_wax$before[i])]]
-            compute_menu_cost(menu_wax$before[i], popularItems_i)
-          },
-          error= function(e){
-            NA
-          }
-        )
-      menu_cost_wax_before[[i]] <- menu_cost_i
-    }
-  },
+  menu_cost_wax_before %t=% compute_all_menuCosts(menu_wax$before, popularItems),
   ### after----
-  menu_cost_wax_after %t=% {
-    menu_cost_wax_after <- vector("numeric", length=length(menu_wax[["after"]])) |>
-      setNames(names(menu_wax$after))
-
-    for (i in seq_along(menu_wax[["after"]])) {
-      menu_cost_i <-
-        tryCatch(
-          {
-            popularItems_i = popularItems[[names(menu_wax$after[i])]]
-            compute_menu_cost(menu_wax$after[i], popularItems_i)
-          },
-          error= function(e){
-            NA
-          }
-        )
-      menu_cost_wax_after[[i]] <- menu_cost_i
-    }
-  },
+  menu_cost_wax_after %t=% compute_all_menuCosts(menu_wax$after, popularItems),
   ##4.1 menu cost wane  data  ----
   ### before----
-  menu_cost_wane_before %t=% {
-    menu_cost_wane_before <- vector("numeric", length=length(menu_wane[["before"]])) |>
-      setNames(names(menu_wane$before))
-
-    for (i in seq_along(menu_wane[["before"]])) {
-      menu_cost_i <-
-        tryCatch(
-          {
-            popularItems_i = popularItems[[names(menu_wane$before[i])]]
-            compute_menu_cost(menu_wane$before[i], popularItems_i)
-          },
-          error= function(e){
-            NA
-          }
-        )
-      menu_cost_wane_before[[i]] <- menu_cost_i
-    }
-  },
+  menu_cost_wane_before %t=% compute_all_menuCosts(menu_wane$before, popularItems),
   ### after----
-  menu_cost_wane_after %t=% {
-    menu_cost_wane_after <- vector("numeric", length=length(menu_wane[["after"]])) |>
-      setNames(names(menu_wane$after))
-
-    for (i in seq_along(menu_wane[["after"]])) {
-      menu_cost_i <-
-        tryCatch(
-          {
-            popularItems_i = popularItems[[names(menu_wane$after[i])]]
-            compute_menu_cost(menu_wane$after[i], popularItems_i)
-          },
-          error= function(e){
-            NA
-          }
-        )
-      menu_cost_wane_after[[i]] <- menu_cost_i
-    }
-  }
+  menu_cost_wane_after %t=% compute_all_menuCosts(menu_wane$after, popularItems)
 )
 
 

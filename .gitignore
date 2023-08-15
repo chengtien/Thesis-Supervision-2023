@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+targets/_targets/
+targets/local-data/
+.DS_Store
