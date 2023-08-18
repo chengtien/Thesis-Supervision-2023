@@ -111,7 +111,10 @@ list(
     .tb[,-c(4,6)] |> round(4)
   },
   #4. 熱門菜單消費成本計算----
-  popularItems %t=% {readRDS("data/popularItems.Rds")},
+  tar_target(
+    popularItemsFile, "data/popularItems.Rds", format="file"
+  ),
+  popularItems %t=% {readRDS(popularItemsFile)},
   ##4.1 menu cost wax  data  ----
   ### before----
   menu_cost_wax_before %t=% compute_all_menuCosts(menu_wax$before, popularItems),

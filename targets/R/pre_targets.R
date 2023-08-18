@@ -15,7 +15,7 @@ feature_change$wax$data$after <- fp$retrieve_data("2023-04-27")
 feature_change$wane$data$before <- feature_change$wax$data$after
 feature_change$wane$data$after <- fp$retrieve_data("2023-07-26")
 
-saveRDS(popularItems, file="data/popularItems.Rds")
+
 saveRDS(feature_change, file = "local-data/feature_change.Rds")
 
 # popularItems <- {
@@ -37,7 +37,7 @@ saveRDS(feature_change, file = "local-data/feature_change.Rds")
 #       parsed_json <- jsonlite::fromJSON(file_content)
 #       foodDelivery::get_popular_items_from_menuJson(parsed_json)
 #     }, error = function(e) {
-#       c()
+#       character(0)
 #     })
 #     popularItems[[.x]] <-popular_items_fromJSON
 #   }

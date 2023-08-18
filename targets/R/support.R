@@ -359,3 +359,16 @@ compute_all_menuCosts <- function(menu_wane_before, popularItems) {
   }
   menu_cost_wane_before
 }
+get_popularItems_from_filepath <- function(filepath) {
+  tryCatch(
+    {
+      filepath |>
+        xfun::read_utf8() |>
+        jsonlite::fromJSON() |>
+        foodDelivery::get_popular_items_from_menuJson()
+    },
+    error=function(e){
+      return(character(0))
+    }
+  )
+}
