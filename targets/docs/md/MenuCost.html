@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="menu-cost">Menu Cost</h1>
+<p>Cheng,Tien 2023-08-22</p>
+<h4 id="計算平均物價有上漲的店家佔總店家比例">計算平均物價有上漲的店家佔總店家比例</h4>
+<ul>
+<li>蛋荒較嚴重時，有較高比例的店家物價是上漲的</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>AverageInflationRatePercentage</span></code></pre></div>
+<pre><code>##   period percentage
+## 1    wax  0.3938977
+## 2   wane  0.3545240</code></pre>
+<h4 id="蛋荒較嚴重時期">蛋荒較嚴重時期</h4>
+<h5 id="一先觀察物價上漲率大於1的店家總共有68間">一、先觀察物價上漲率大於1的店家，總共有68間</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>filtered_average_inflation_rate_wax<span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(inflation_rate<span class="sc">&gt;</span><span class="dv">1</span>)<span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(inflation_rate))</span></code></pre></div>
+<pre><code>##      shopCode inflation_rate
+## lh86     lh86       1.666936
+## e1iw     e1iw       1.544980
+## m8pq     m8pq       1.513661
+## q8sf     q8sf       1.470082
+## seuv     seuv       1.463255
+## d1ls     d1ls       1.392725
+## a1ef     a1ef       1.377926
+## b2np     b2np       1.377926
+## d4hj     d4hj       1.377926
+## i3cc     i3cc       1.377926
+## s5te     s5te       1.377926
+## y0yj     y0yj       1.377926
+## ynqu     ynqu       1.377926
+## z4nx     z4nx       1.377926
+## z5va     z5va       1.377926
+## pr81     pr81       1.368276
+## b8db     b8db       1.356694
+## e3jc     e3jc       1.356694
+## e7bo     e7bo       1.356694
+## jedi     jedi       1.356694
+## q6yu     q6yu       1.356694
+## lsd5     lsd5       1.346513
+## z7ko     z7ko       1.318491
+## z3bf     z3bf       1.301379
+## y2de     y2de       1.297883
+## y9tu     y9tu       1.297883
+## z4wd     z4wd       1.297883
+## a0ba     a0ba       1.297767
+## y7lb     y7lb       1.272566
+## y1ys     y1ys       1.270592
+## y9yy     y9yy       1.270592
+## a5ji     a5ji       1.251946
+## z0zd     z0zd       1.237684
+## cysg     cysg       1.234744
+## b9xu     b9xu       1.217724
+## awvt     awvt       1.178655
+## o2kj     o2kj       1.163151
+## vl3z     vl3z       1.152680
+## pefn     pefn       1.150135
+## s6bd     s6bd       1.144223
+## z2km     z2km       1.144223
+## lz5w     lz5w       1.140634
+## y7ht     y7ht       1.139434
+## p5au     p5au       1.137979
+## artg     artg       1.124208
+## t4bt     t4bt       1.124208
+## z9uh     z9uh       1.124208
+## t2jb     t2jb       1.092371
+## zmrx     zmrx       1.091177
+## n4xa     n4xa       1.086190
+## mi87     mi87       1.078410
+## y4id     y4id       1.060872
+## bj3q     bj3q       1.058538
+## tceg     tceg       1.041160
+## d3sc     d3sc       1.039642
+## l0q6     l0q6       1.039642
+## xdj5     xdj5       1.036009
+## c2dr     c2dr       1.019872
+## r2is     r2is       1.014143
+## u9kk     u9kk       1.005522
+## t7wo     t7wo       1.001929
+## d0gl     d0gl       1.000428
+## d1sd     d1sd       1.000428
+## e7yc     e7yc       1.000428
+## e9ke     e9ke       1.000428
+## l6pf     l6pf       1.000428
+## z0rb     z0rb       1.000428
+## z7je     z7je       1.000428</code></pre>
+<h5 id="再取出物價上漲率最高的三間做觀察"><em>再取出物價上漲率最高的三間做觀察</em></h5>
+<h5 id="shopcode為lh86店家"><strong>shopcode為lh86店家</strong></h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;lh86&quot;</span>],</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;lh86&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before      39.690
+## 2  after     210.195</code></pre>
+<h5 id="lh86店家的熱門品項">lh86店家的熱門品項</h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>popularItems[<span class="st">&quot;lh86&quot;</span>]</span></code></pre></div>
+<pre><code>## $lh86
+## [1] &quot;聖選之最舒肥牛板腱餐盒&quot; &quot;御膳牛五花餐盒&quot;         &quot;滿肉饗宴牛五花燒肉丼&quot;  
+## [4] &quot;客選雙拼牛五花燒肉丼&quot;   &quot;御上蒲燒鰻魚餐盒&quot;       &quot;胡麻豆腐&quot;</code></pre>
+<h5 id="lh86店家在wane_before的菜單">lh86店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;lh86&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>lh86_wax_before</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>lh86_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;特選嫩煎豚里肌餐盒&quot; &quot;極緻蒲燒鯛魚餐盒&quot;   &quot;韓式辣炒豬肉餐盒&quot;   &quot;藜麥飯&quot;            
+##  [5] &quot;泡菜&quot;               &quot;韓式豆芽菜&quot;         &quot;韓式洋蔥絲&quot;         &quot;韓式涼拌毛豆仁&quot;    
+##  [9] &quot;韓式高麗菜&quot;         &quot;韓式青花菜&quot;         &quot;胡麻洋蔥絲&quot;         &quot;胡麻豆腐&quot;          
+## [13] &quot;胡麻青花菜&quot;         &quot;海帶芽湯&quot;           &quot;海帶芽豆腐湯&quot;       &quot;澄淨碧綠高山青&quot;    
+## [17] &quot;鴻運當頭紅玉茶&quot;     &quot;上班搭地鐵觀音&quot;     &quot;清雅芬芳東方美人 &quot;  &quot;皇家錫蘭奶茶&quot;      
+## [21] &quot;齒留茉香奶茶&quot;       &quot;炭燒鐵觀音奶茶&quot;     &quot;皇家錫蘭珍珠奶茶&quot;   &quot;齒留茉香珍珠奶茶&quot;  
+## [25] &quot;炭燒鐵觀音珍珠奶茶&quot; &quot;零卡&quot;               &quot;雪碧&quot;               &quot;樹頂蘋果汁&quot;        
+## [29] &quot;沁涼椰子水&quot;</code></pre>
+<h5 id="lh86店家在wane_after的菜單">lh86店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;lh86&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>lh86_wax_after</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>lh86_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;粉紅生乳捲&quot;         &quot;極緻蒲燒鯛魚餐盒&quot;   &quot;御上蒲燒鰻魚餐盒&quot;   &quot;白飯&quot;              
+##  [5] &quot;泡菜&quot;               &quot;韓式豆芽菜&quot;         &quot;韓式洋蔥絲&quot;         &quot;韓式涼拌毛豆仁&quot;    
+##  [9] &quot;韓式高麗菜&quot;         &quot;韓式青花菜&quot;         &quot;胡麻洋蔥絲&quot;         &quot;胡麻豆腐&quot;          
+## [13] &quot;胡麻青花菜&quot;         &quot;海帶芽湯&quot;           &quot;海帶芽豆腐湯&quot;       &quot;澄淨碧綠高山青&quot;    
+## [17] &quot;鴻運當頭紅玉茶&quot;     &quot;上班搭地鐵觀音&quot;     &quot;清雅芬芳東方美人 &quot;  &quot;皇家錫蘭奶茶&quot;      
+## [21] &quot;齒留茉香奶茶&quot;       &quot;爐火純青奶茶&quot;       &quot;炭燒鐵觀音奶茶&quot;     &quot;皇家錫蘭珍珠奶茶&quot;  
+## [25] &quot;齒留茉香珍珠奶茶&quot;   &quot;爐火純青珍珠奶茶&quot;   &quot;炭燒鐵觀音珍珠奶茶&quot; &quot;可口可樂&quot;          
+## [29] &quot;零卡&quot;               &quot;雪碧&quot;</code></pre>
+<ul>
+<li>可以發現在before時只有計算到[胡麻豆腐]的價格</li>
+<li>after則是抓取[御上蒲燒鰻魚餐盒、胡麻豆腐]的價格</li>
+<li>但熱門品項[聖選之最舒肥牛板腱餐盒、御膳牛五花餐盒、滿肉饗宴牛五花燒肉丼、客選雙拼牛五花燒肉丼]並未出現在wane時期的菜單裡，我猜測這幾個品項是蛋荒較趨緩時才推出的商品</li>
+</ul>
+<h5 id="shopcode為e1iw店家"><strong>shopcode為e1iw店家</strong></h5>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;e1iw&quot;</span>],</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;e1iw&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before     55.0000
+## 2  after    257.8333</code></pre>
+<h5 id="e1iw店家的熱門品項">e1iw店家的熱門品項</h5>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>popularItems[<span class="st">&quot;e1iw&quot;</span>]</span></code></pre></div>
+<pre><code>## $e1iw
+## [1] &quot;【2號餐】&quot;      &quot;【3號餐】&quot;      &quot;【4號餐】&quot;      &quot;【5號全家餐】&quot;  &quot;【腿塊混搭餐】&quot;
+## [6] &quot;波霸脆薯條(小)&quot;</code></pre>
+<h5 id="e1iw店家在wane_before的菜單">e1iw店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;e1iw&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>e1iw_wax_before</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>e1iw_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;胖老爹於門市販售之點心「花雕雞香腸」及「花枝丸」皆含豬肉及豬油製品，豬肉原產地皆為台灣，請消費者安心使用。&quot;
+##  [2] &quot;本店每筆訂單酌收餐點包裝費1元&quot;                                                                             
+##  [3] &quot;運彩足好運全家桶餐(不含飲料)&quot;                                                                              
+##  [4] &quot;運彩足好運全家桶餐(含飲料)&quot;                                                                                
+##  [5] &quot;「可口可樂」歡聚享樂套餐A&quot;                                                                                 
+##  [6] &quot;1號餐&quot;                                                                                                     
+##  [7] &quot;2號餐&quot;                                                                                                     
+##  [8] &quot;3號餐&quot;                                                                                                     
+##  [9] &quot;4號餐&quot;                                                                                                     
+## [10] &quot;5號全家餐&quot;                                                                                                 
+## [11] &quot;5號全家餐+飲料&quot;                                                                                            
+## [12] &quot;6號全家特餐&quot;                                                                                               
+## [13] &quot;全腿餐&quot;                                                                                                    
+## [14] &quot;全塊餐&quot;                                                                                                    
+## [15] &quot;混搭餐&quot;                                                                                                    
+## [16] &quot;全翅餐&quot;                                                                                                    
+## [17] &quot;全腿餐+飲料&quot;                                                                                               
+## [18] &quot;全塊餐+飲料&quot;                                                                                               
+## [19] &quot;全翅餐+飲料&quot;                                                                                               
+## [20] &quot;混搭餐+飲料&quot;                                                                                               
+## [21] &quot;紐奧良雞排餐+飲料&quot;                                                                                         
+## [22] &quot;無骨雞腿排餐+飲料&quot;                                                                                         
+## [23] &quot;雞腿&quot;                                                                                                      
+## [24] &quot;雞塊&quot;                                                                                                      
+## [25] &quot;雞翅&quot;                                                                                                      
+## [26] &quot;胖雞丁(大)&quot;                                                                                                
+## [27] &quot;紐奧良雞排&quot;                                                                                                
+## [28] &quot;無骨雞腿排&quot;                                                                                                
+## [29] &quot;花雕雞香腸&quot;                                                                                                
+## [30] &quot;波霸脆薯條(小)&quot;                                                                                            
+## [31] &quot;黃金地瓜條(大)&quot;                                                                                            
+## [32] &quot;甜不辣&quot;                                                                                                    
+## [33] &quot;薯餅&quot;                                                                                                      
+## [34] &quot;洋蔥圈&quot;                                                                                                    
+## [35] &quot;花枝丸&quot;                                                                                                    
+## [36] &quot;山藥捲&quot;                                                                                                    
+## [37] &quot;芝麻芋泥球&quot;                                                                                                
+## [38] &quot;小芋泥球&quot;                                                                                                  
+## [39] &quot;黃金魷米花&quot;                                                                                                
+## [40] &quot;小雞塊&quot;                                                                                                    
+## [41] &quot;披薩球&quot;                                                                                                    
+## [42] &quot;煉乳醬包&quot;                                                                                                  
+## [43] &quot;泰式雞排&quot;                                                                                                  
+## [44] &quot;泰式雞翅&quot;                                                                                                  
+## [45] &quot;泰式胖雞丁&quot;                                                                                                
+## [46] &quot;泰式無骨雞腿排&quot;                                                                                            
+## [47] &quot;泰式醬包&quot;                                                                                                  
+## [48] &quot;可樂小寶特瓶350ML&quot;                                                                                         
+## [49] &quot;雪碧小寶特瓶350ML&quot;                                                                                         
+## [50] &quot;可樂大寶特瓶1.25公升&quot;                                                                                      
+## [51] &quot;雪碧大寶特瓶1.25公升&quot;                                                                                      
+## [52] &quot;蘋果蘇打大寶特瓶1.25公升&quot;</code></pre>
+<h5 id="e1iw店家在wane_after的菜單">e1iw店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;e1iw&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>e1iw_wax_after</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>e1iw_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;【1號餐】&quot;                     &quot;【2號餐】&quot;                    
+##  [3] &quot;【3號餐】&quot;                     &quot;【4號餐】&quot;                    
+##  [5] &quot;【5號全家餐】&quot;                 &quot;【5號全家餐(含飲料)】&quot;        
+##  [7] &quot;【6號全家特餐】&quot;               &quot;【全腿餐】&quot;                   
+##  [9] &quot;【全塊餐】&quot;                    &quot;【腿塊混搭餐】&quot;               
+## [11] &quot;【全腿餐(含飲料)】&quot;            &quot;【全塊餐(含飲料)】&quot;           
+## [13] &quot;【腿塊混搭餐(含飲料)】&quot;        &quot;【全翅餐】&quot;                   
+## [15] &quot;【全翅餐(含飲料)】&quot;            &quot;【紐奧良雞排餐】&quot;             
+## [17] &quot;【無骨雞腿排餐】&quot;              &quot;【One4如意分享餐】&quot;           
+## [19] &quot;【雞翅分享餐】&quot;                &quot;【雙排點心餐】&quot;               
+## [21] &quot;【雙人分享A餐】&quot;               &quot;【雙人分享B餐】&quot;              
+## [23] &quot;【好四成雙餐】&quot;                &quot;【雙雙對對萬年富貴餐】&quot;       
+## [25] &quot;【墜入愛河分享餐】&quot;            &quot;【腿翅分享A餐】&quot;              
+## [27] &quot;【腿翅分享B餐】&quot;               &quot;【小三元套餐】&quot;               
+## [29] &quot;【大三元套餐】&quot;                &quot;【小四喜套餐】&quot;               
+## [31] &quot;【大四喜套餐】&quot;                &quot;【五福臨門餐】&quot;               
+## [33] &quot;【六六大順餐】&quot;                &quot;【點心拼盤A餐】&quot;              
+## [35] &quot;【點心拼盤B餐】&quot;               &quot;【小雞塊分享餐】&quot;             
+## [37] &quot;【小雞Fun肆餐】&quot;               &quot;雞腿&quot;                         
+## [39] &quot;雞塊&quot;                          &quot;雞翅&quot;                         
+## [41] &quot;胖雞丁(大)&quot;                    &quot;紐奧良雞排&quot;                   
+## [43] &quot;無骨雞腿排&quot;                    &quot;泰式胖雞丁&quot;                   
+## [45] &quot;泰式雞排&quot;                      &quot;泰式無骨雞腿排&quot;               
+## [47] &quot;泰式雞翅(4支)&quot;                 &quot;花雕雞香腸(1條)&quot;              
+## [49] &quot;甜不辣(1份)&quot;                   &quot;花枝丸(4個)&quot;                  
+## [51] &quot;山藥捲(4條)&quot;                   &quot;小芋泥球(6顆)&quot;                
+## [53] &quot;黃金魷米花(1份)&quot;               &quot;波霸脆薯條(小)&quot;               
+## [55] &quot;薯餅(3片)&quot;                     &quot;芝麻球(4顆)&quot;                  
+## [57] &quot;小雞塊(5個)&quot;                   &quot;披薩球(4顆)&quot;                  
+## [59] &quot;黃金地瓜條(大)&quot;                &quot;原味銀絲捲&quot;                   
+## [61] &quot;煉乳銀絲捲&quot;                    &quot;杏鮑菇&quot;                       
+## [63] &quot;辣椒粉(3小包)&quot;                 &quot;胡椒粉(3小包)&quot;                
+## [65] &quot;泰式醬(1包)&quot;                   &quot;煉乳醬(1包)&quot;                  
+## [67] &quot;可樂小寶特瓶350ml&quot;             &quot;雪碧小寶特瓶350ml&quot;            
+## [69] &quot;  可樂大寶特瓶1250ml&quot;          &quot;蘋果蘇打大寶特瓶1250ml&quot;       
+## [71] &quot;本店每筆訂單酌收餐點包裝費1元&quot;</code></pre>
+<ul>
+<li>可以發現到造成價格的差異來自於品項名稱定義的不同，before的套餐皆無用【】符號。</li>
+<li>假設before和after的套餐內容並無實際差別，且在before的”混搭餐”跟after的”腿塊混搭餐”是同樣商品，則抓出價格比較</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">product=</span><span class="fu">c</span>(<span class="st">&quot;2號餐&quot;</span>,<span class="st">&quot;3號餐&quot;</span>,<span class="st">&quot;4號餐&quot;</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>                     <span class="st">&quot;5號全家餐&quot;</span>,<span class="st">&quot;腿塊混搭餐&quot;</span>, <span class="st">&quot;波霸脆薯條(小)&quot;</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>           <span class="at">before=</span><span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">175</span>,<span class="dv">185</span>,<span class="dv">399</span>,<span class="dv">479</span>,<span class="dv">55</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>           <span class="at">after=</span><span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">189</span>,<span class="dv">195</span>,<span class="dv">439</span>,<span class="dv">509</span>,<span class="dv">65</span>))</span></code></pre></div>
+<pre><code>##          product before after
+## 1          2號餐    140   150
+## 2          3號餐    175   189
+## 3          4號餐    185   195
+## 4      5號全家餐    399   439
+## 5     腿塊混搭餐    479   509
+## 6 波霸脆薯條(小)     55    65</code></pre>
+<ul>
+<li>可以發現到熱門品項的價格皆有上漲的趨勢，上漲的幅度大概在10元至40元不等</li>
+</ul>
+<h5 id="shopcode為m8pq店家"><strong>shopcode為m8pq店家</strong></h5>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;m8pq&quot;</span>],</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;m8pq&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before        60.0
+## 2  after       272.6</code></pre>
+<h5 id="m8pq店家的熱門品項">m8pq店家的熱門品項</h5>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>popularItems[<span class="st">&quot;m8pq&quot;</span>]</span></code></pre></div>
+<pre><code>## $m8pq
+## [1] &quot;【2號餐】&quot;      &quot;【4號餐】&quot;      &quot;【5號全家餐】&quot;  &quot;【腿塊混搭餐】&quot; &quot;雞腿&quot;          
+## [6] &quot;波霸脆薯條(小)&quot;</code></pre>
+<h5 id="m8pq店家在wane_before的菜單">m8pq店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;m8pq&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>m8pq_wax_before</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>m8pq_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;胖老爹於門市販售之點心「花雕雞香腸」及「花枝丸」皆含豬肉及豬油製品，豬肉原產地皆為台灣，請消費者安心使用。&quot;
+##  [2] &quot;本店每筆訂單酌收餐點包裝費1元&quot;                                                                             
+##  [3] &quot;1號餐&quot;                                                                                                     
+##  [4] &quot;2號餐&quot;                                                                                                     
+##  [5] &quot;3號餐&quot;                                                                                                     
+##  [6] &quot;4號餐&quot;                                                                                                     
+##  [7] &quot;5號全家餐&quot;                                                                                                 
+##  [8] &quot;混搭餐&quot;                                                                                                    
+##  [9] &quot;雞腿&quot;                                                                                                      
+## [10] &quot;雞塊&quot;                                                                                                      
+## [11] &quot;雞翅&quot;                                                                                                      
+## [12] &quot;胖雞丁(大)&quot;                                                                                                
+## [13] &quot;紐奧良雞排&quot;                                                                                                
+## [14] &quot;無骨雞腿排&quot;                                                                                                
+## [15] &quot;花雕雞香腸&quot;                                                                                                
+## [16] &quot;波霸脆薯條(小)&quot;                                                                                            
+## [17] &quot;波霸脆薯條(大)&quot;                                                                                            
+## [18] &quot;黃金地瓜條(小)&quot;                                                                                            
+## [19] &quot;薯餅&quot;                                                                                                      
+## [20] &quot;洋蔥圈&quot;                                                                                                    
+## [21] &quot;花枝丸&quot;                                                                                                    
+## [22] &quot;山藥捲&quot;                                                                                                    
+## [23] &quot;芝麻芋泥球&quot;                                                                                                
+## [24] &quot;地瓜球&quot;                                                                                                    
+## [25] &quot;蔥仔餅&quot;                                                                                                    
+## [26] &quot;小芋泥球&quot;                                                                                                  
+## [27] &quot;深海鱈魚條&quot;                                                                                                
+## [28] &quot;黃金魷米花&quot;                                                                                                
+## [29] &quot;奶香螺絲捲&quot;                                                                                                
+## [30] &quot;小雞塊&quot;                                                                                                    
+## [31] &quot;披薩球&quot;                                                                                                    
+## [32] &quot;泰式雞排&quot;                                                                                                  
+## [33] &quot;泰式雞翅&quot;                                                                                                  
+## [34] &quot;泰式醬包&quot;                                                                                                  
+## [35] &quot;可樂小寶特瓶350ML&quot;                                                                                         
+## [36] &quot;雪碧小寶特瓶350ML&quot;</code></pre>
+<h5 id="m8pq店家在wane_after的菜單">m8pq店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;m8pq&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>m8pq_wax_after</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>m8pq_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;【1號餐】&quot;                     &quot;【2號餐】&quot;                    
+##  [3] &quot;【4號餐】&quot;                     &quot;【5號全家餐】&quot;                
+##  [5] &quot;【5號全家餐(含飲料)】&quot;         &quot;【6號全家特餐】&quot;              
+##  [7] &quot;【全腿餐】&quot;                    &quot;【全塊餐】&quot;                   
+##  [9] &quot;【腿塊混搭餐】&quot;                &quot;【全腿餐(含飲料)】&quot;           
+## [11] &quot;【全塊餐(含飲料)】&quot;            &quot;【腿塊混搭餐(含飲料)】&quot;       
+## [13] &quot;【全翅餐】&quot;                    &quot;【全翅餐(含飲料)】&quot;           
+## [15] &quot;雞腿&quot;                          &quot;雞塊&quot;                         
+## [17] &quot;雞翅&quot;                          &quot;無骨雞腿排&quot;                   
+## [19] &quot;泰式雞翅(4支)&quot;                 &quot;花雕雞香腸(1條)&quot;              
+## [21] &quot;黃金地瓜條(小)&quot;                &quot;洋蔥圈(6個)&quot;                  
+## [23] &quot;花枝丸(4個)&quot;                   &quot;山藥捲(4條)&quot;                  
+## [25] &quot;小芋泥球(6顆)&quot;                 &quot;黃金魷米花(1份)&quot;              
+## [27] &quot;薯餅(3片)&quot;                     &quot;芝麻球(4顆)&quot;                  
+## [29] &quot;地瓜球(4顆)&quot;                   &quot;深海鱈魚條(2條)&quot;              
+## [31] &quot;奶香螺絲捲(2個)&quot;               &quot;小雞塊(5個)&quot;                  
+## [33] &quot;披薩球(4顆)&quot;                   &quot;煉乳螺絲捲(2個)&quot;              
+## [35] &quot;乳酪甜心酥(4顆)&quot;               &quot;玉米布丁酥&quot;                   
+## [37] &quot;辣椒粉(3小包)&quot;                 &quot;胡椒粉(3小包)&quot;                
+## [39] &quot;泰式醬(1包)&quot;                   &quot;可樂小寶特瓶350ml&quot;            
+## [41] &quot;雪碧小寶特瓶350ml&quot;             &quot;  可樂大寶特瓶1250ml&quot;         
+## [43] &quot;雪碧大寶特瓶1250ml&quot;            &quot;本店每筆訂單酌收餐點包裝費1元&quot;</code></pre>
+<ul>
+<li>可以發現到這間店和第二間一樣都是胖老爹炸雞，熱門品項也大致相同（少了3號餐，多了雞腿的品項）。</li>
+<li>比較特別的是熱門品項[波霸脆薯條(小)]並無出現在after的菜單裡，速食店居然會有沒賣薯條的時候。</li>
+<li>一樣將它的價格取出並做比較及觀察</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">product=</span><span class="fu">c</span>(<span class="st">&quot;2號餐&quot;</span>,<span class="st">&quot;4號餐&quot;</span>,<span class="st">&quot;5號全家餐&quot;</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>                     <span class="st">&quot;腿塊混搭餐&quot;</span>,<span class="st">&quot;雞腿&quot;</span>,<span class="st">&quot;波霸脆薯條(小)&quot;</span>),</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>           <span class="at">before=</span><span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">185</span>,<span class="dv">399</span>,<span class="dv">479</span>,<span class="dv">65</span>,<span class="dv">55</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>           <span class="at">after=</span><span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">195</span>,<span class="dv">439</span>,<span class="dv">509</span>,<span class="dv">70</span>,<span class="cn">NA</span>))</span></code></pre></div>
+<pre><code>##          product before after
+## 1          2號餐    140   150
+## 2          4號餐    185   195
+## 3      5號全家餐    399   439
+## 4     腿塊混搭餐    479   509
+## 5           雞腿     65    70
+## 6 波霸脆薯條(小)     55    NA</code></pre>
+<ul>
+<li>可以發現到胖老爹熱門套餐類的漲幅都是相同的　　</li>
+<li>由於有兩間是相同的胖老爹炸雞，但處於不同分店，再取出第四間店觀察</li>
+</ul>
+<h5 id="shopcode為q8sf店家"><strong>shopcode為q8sf店家</strong></h5>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;q8sf&quot;</span>],</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;q8sf&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before     41.0000
+## 2  after    178.3333</code></pre>
+<h5 id="q8sf店家的熱門品項">q8sf店家的熱門品項</h5>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>popularItems[<span class="st">&quot;q8sf&quot;</span>]</span></code></pre></div>
+<pre><code>## $q8sf
+## [1] &quot;個人份雞肉【綜合部位】&quot; &quot;海帶根X2&quot;               &quot;A套餐：個人份雞肉5配菜&quot;
+## [4] &quot;B套餐：半隻雞4配菜&quot;     &quot;C套餐：半隻雞7配菜&quot;     &quot;水蓮菜&quot;</code></pre>
+<h5 id="q8sf店家在wane_before的菜單">q8sf店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;q8sf&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>q8sf_wax_before</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>q8sf_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;半隻雞【去骨】&quot;         &quot;個人份雞肉【綜合部位】&quot; &quot;舒肥雞肉&quot;              
+##  [4] &quot;洋蔥X2&quot;                 &quot;洋地瓜X2&quot;               &quot;海帶根X2&quot;              
+##  [7] &quot;A套餐&quot;                  &quot;B套餐&quot;                  &quot;C套餐&quot;                 
+## [10] &quot;D套餐&quot;                  &quot;E套餐&quot;                  &quot;F套餐&quot;                 
+## [13] &quot;高麗菜&quot;                 &quot;花椰菜&quot;                 &quot;玉米筍&quot;                
+## [16] &quot;四季豆&quot;                 &quot;黑木耳&quot;                 &quot;苦瓜&quot;                  
+## [19] &quot;秋葵&quot;                   &quot;蓮藕&quot;                   &quot;小黃瓜&quot;                
+## [22] &quot;洋蔥&quot;                   &quot;海帶根&quot;                 &quot;馬鈴薯&quot;                
+## [25] &quot;龍鬚菜&quot;                 &quot;金針菇&quot;                 &quot;杏鮑菇&quot;                
+## [28] &quot;筍片&quot;                   &quot;小香菇&quot;                 &quot;水蓮菜&quot;                
+## [31] &quot;洋地瓜&quot;                 &quot;豆芽菜&quot;                 &quot;大豆干&quot;                
+## [34] &quot;小豆干&quot;                 &quot;米血&quot;                   &quot;甜不辣&quot;                
+## [37] &quot;鳥蛋&quot;                   &quot;百頁豆腐&quot;               &quot;豆皮&quot;                  
+## [40] &quot;魚板豆腐&quot;               &quot;煙燻豬頭皮&quot;             &quot;柴魚白蘿蔔&quot;            
+## [43] &quot;蜜糖紅蘿蔔&quot;             &quot;黑輪&quot;                   &quot;小貢丸&quot;                
+## [46] &quot;滷海帶&quot;                 &quot;雞腸&quot;                   &quot;雞屁股&quot;                
+## [49] &quot;雞蛋黃&quot;                 &quot;雞心&quot;                   &quot;雞胗&quot;                  
+## [52] &quot;雞冠&quot;                   &quot;雞皮&quot;                   &quot;鹹度選擇&quot;              
+## [55] &quot;口味選擇&quot;               &quot;不加料選擇&quot;</code></pre>
+<h5 id="q8sf店家在wane_after的菜單">q8sf店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;q8sf&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>q8sf_wax_after</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>q8sf_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;半隻雞【去骨】&quot;         &quot;個人份雞肉【綜合部位】&quot; &quot;舒肥雞肉&quot;              
+##  [4] &quot;洋蔥X2&quot;                 &quot;洋地瓜X2&quot;               &quot;海帶根X2&quot;              
+##  [7] &quot;A套餐：個人份雞肉5配菜&quot; &quot;B套餐：半隻雞4配菜&quot;     &quot;C套餐：半隻雞7配菜&quot;    
+## [10] &quot;D套餐：半隻雞11配菜&quot;    &quot;E套餐：全雞10樣菜&quot;      &quot;F套餐：全雞14樣配菜&quot;   
+## [13] &quot;高麗菜&quot;                 &quot;花椰菜&quot;                 &quot;玉米筍&quot;                
+## [16] &quot;四季豆&quot;                 &quot;黑木耳&quot;                 &quot;苦瓜&quot;                  
+## [19] &quot;秋葵&quot;                   &quot;小黃瓜&quot;                 &quot;洋蔥&quot;                  
+## [22] &quot;海帶根&quot;                 &quot;馬鈴薯&quot;                 &quot;龍鬚菜&quot;                
+## [25] &quot;金針菇&quot;                 &quot;杏鮑菇&quot;                 &quot;筍片&quot;                  
+## [28] &quot;小香菇&quot;                 &quot;水蓮菜&quot;                 &quot;洋地瓜&quot;                
+## [31] &quot;豆芽菜&quot;                 &quot;大溪黑豆乾&quot;             &quot;小豆干&quot;                
+## [34] &quot;米血糕&quot;                 &quot;甜不辣&quot;                 &quot;百頁豆腐&quot;              
+## [37] &quot;豆皮&quot;                   &quot;魚板豆腐&quot;               &quot;超薄豬頭皮&quot;            
+## [40] &quot;柴魚白蘿蔔&quot;             &quot;蜜糖紅蘿蔔&quot;             &quot;黑輪&quot;                  
+## [43] &quot;小貢丸&quot;                 &quot;滷海帶&quot;                 &quot;雞屁股&quot;                
+## [46] &quot;雞心&quot;                   &quot;雞胗&quot;                   &quot;雞皮&quot;                  
+## [49] &quot;鹹度選擇&quot;               &quot;口味選擇&quot;               &quot;不加料選擇&quot;</code></pre>
+<ul>
+<li>可以觀察到造成物價上漲的原因也是來自於品項定義的不同，在before的名稱裡並無詳述餐點內容，但在after的套餐裡有詳細說明，如[
+A套餐：個人份雞肉5配菜、B套餐：半隻雞4配菜、C套餐：半隻雞7配菜]</li>
+<li>假設套餐組合的內容物相同，取出價格比較</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">product=</span><span class="fu">c</span>(<span class="st">&quot;個人份雞肉【綜合部位】&quot;</span>,<span class="st">&quot;海帶根X2&quot;</span>,<span class="st">&quot;A套餐：個人份雞肉5配菜&quot;</span>,</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>                     <span class="st">&quot;B套餐：半隻雞4配菜&quot;</span>,<span class="st">&quot;C套餐：半隻雞7配菜&quot;</span>,<span class="st">&quot;水蓮菜&quot;</span>),</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>           <span class="at">before=</span><span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">25</span>,<span class="dv">210</span>,<span class="dv">280</span>,<span class="dv">360</span>,<span class="dv">28</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a>           <span class="at">after=</span><span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">25</span>,<span class="dv">225</span>,<span class="dv">310</span>,<span class="dv">395</span>,<span class="dv">35</span>))</span></code></pre></div>
+<pre><code>##                  product before after
+## 1 個人份雞肉【綜合部位】     70    80
+## 2               海帶根X2     25    25
+## 3 A套餐：個人份雞肉5配菜    210   225
+## 4     B套餐：半隻雞4配菜    280   310
+## 5     C套餐：半隻雞7配菜    360   395
+## 6                 水蓮菜     28    35</code></pre>
+<ul>
+<li>套餐類皆漲15至35元不等，而水蓮菜的漲幅來到了25%，上漲的幅度驚人</li>
+</ul>
+<h5 id="小結">小結</h5>
+<ul>
+<li>會有超過100%的成本上漲率，第一個原因來自於菜單內容的改變，前期還未推出的產品在後期推出，會形成計算平均價格的差異；而第二個原因來自於品項名稱定義的差異，在這種情形前後期菜單是相同的，但在命名上的不同會造成before沒抓到熱門品項而after有抓到，形成平均價格差異甚大的狀況。但第二種情形還能用觀察的再抓出價格做比較</li>
+</ul>
+<h5 id="二觀察物價上漲率小於-1的店家總共有4間">二、觀察物價上漲率小於-1的店家，總共有4間</h5>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>filtered_average_inflation_rate_wax<span class="sc">|&gt;</span>dplyr<span class="sc">::</span><span class="fu">filter</span>(inflation_rate<span class="sc">&lt;</span>(<span class="sc">-</span><span class="dv">1</span>))<span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>  <span class="fu">arrange</span>(inflation_rate)</span></code></pre></div>
+<pre><code>##      shopCode inflation_rate
+## uvrf     uvrf      -1.562964
+## wdl7     wdl7      -1.386294
+## j0ev     j0ev      -1.252763
+## r8ws     r8ws      -1.206193</code></pre>
+<h5 id="觀察是否跟前一章節相同是因為品項名稱定義造成">觀察是否跟前一章節相同，是因為品項名稱定義造成</h5>
+<h5 id="shopcode為uvrf店家"><strong>shopcode為uvrf店家</strong></h5>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;uvrf&quot;</span>],</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;uvrf&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before    329.3333
+## 2  after     69.0000</code></pre>
+<h5 id="uvrf店家的熱門品項">uvrf店家的熱門品項</h5>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>popularItems[<span class="st">&quot;uvrf&quot;</span>]</span></code></pre></div>
+<pre><code>## $uvrf
+## [1] &quot;鹽之花可頌 X2&quot;      &quot;北海道原味生乳包&quot;   &quot;白吐司&quot;             &quot;黑森林蛋糕【六吋】&quot;
+## [5] &quot;冰黑咖啡&quot;           &quot;冰拿鐵&quot;</code></pre>
+<h5 id="uvrf店家在wane_before的菜單">uvrf店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;uvrf&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>uvrf_wax_before</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>uvrf_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##   [1] &quot;艾許奶酥&quot;                        &quot;艾許菠蘿&quot;                       
+##   [3] &quot;鹽之花可頌&quot;                      &quot;艾許流沙菠蘿包&quot;                 
+##   [5] &quot;雲朵生吐司&quot;                      &quot;芋花園小蛋糕&quot;                   
+##   [7] &quot;巧克森林小蛋糕&quot;                  &quot;冰火菠蘿&quot;                       
+##   [9] &quot;芋泥菠蘿包&quot;                      &quot;熊掌包&quot;                         
+##  [11] &quot;沙拉肉鬆麵包&quot;                    &quot;蔥仔胖&quot;                         
+##  [13] &quot;全麥肉鬆餐包&quot;                    &quot;花生菠蘿夾心麵包&quot;               
+##  [15] &quot;維也納&quot;                          &quot;鹹奶油波蘿麵包&quot;                 
+##  [17] &quot;日式紅豆麵包&quot;                    &quot;起酥肉脯麵包&quot;                   
+##  [19] &quot;奶油捲麵包&quot;                      &quot;椰子奶酥&quot;                       
+##  [21] &quot;花生捲捲&quot;                        &quot;辣醬德腸&quot;                       
+##  [23] &quot;黑眼豆豆麵包&quot;                    &quot;德國香蒜麵包&quot;                   
+##  [25] &quot;奶香包&quot;                          &quot;甜甜圈&quot;                         
+##  [27] &quot;草莓甜甜圈&quot;                      &quot;丹麥藍莓&quot;                       
+##  [29] &quot;丹麥巧克力菠蘿&quot;                  &quot;紫米桂圓核桃&quot;                   
+##  [31] &quot;蜂蜜乳酪&quot;                        &quot;巧克力夏威夷豆塔&quot;               
+##  [33] &quot;伯爵夏威夷豆塔&quot;                  &quot;小山園抹茶生巧克力生乳捲&quot;       
+##  [35] &quot;草莓芋頭生乳捲&quot;                  &quot;黑雪森林蛋糕【四吋】&quot;           
+##  [37] &quot;草莓皇冠蛋糕【四吋】&quot;            &quot;搖滾草莓蛋糕【六吋】&quot;           
+##  [39] &quot;草莓嘉年華蛋糕【六吋】&quot;          &quot;黑森林蛋糕【六吋】&quot;             
+##  [41] &quot;芋到愛蛋糕【六吋】&quot;              &quot;初心之戀蛋糕【六吋】&quot;           
+##  [43] &quot;水果樂園蛋糕【六吋】&quot;            &quot;幸運之花蛋糕【六吋】&quot;           
+##  [45] &quot;度假小恐龍蛋糕【六吋】&quot;          &quot;極速跑車蛋糕【六吋】&quot;           
+##  [47] &quot;愛睏熊熊國度蛋糕【六吋】&quot;        &quot;彩虹獨角物語蛋糕【六吋】&quot;       
+##  [49] &quot;獨角獸童話蛋糕【六吋】&quot;          &quot;約定夢幻島【六吋】&quot;             
+##  [51] &quot;工程車隊長A蛋糕【六吋】&quot;         &quot;月光慶典C蛋糕【六吋】&quot;          
+##  [53] &quot;消防小勇者蛋糕【六吋】&quot;          &quot;雅典娜蛋糕【六吋】&quot;             
+##  [55] &quot;小小怪手王【六吋】&quot;              &quot;歡樂龍之谷蛋糕【六吋】&quot;         
+##  [57] &quot;摯愛蛋糕【六吋】&quot;                &quot;疾風恐龍B【六吋】&quot;              
+##  [59] &quot;芋到愛蛋糕【八吋】&quot;              &quot;搖滾草莓蛋糕【八吋】&quot;           
+##  [61] &quot;黑森林蛋糕【八吋】&quot;              &quot;冰黑咖啡&quot;                       
+##  [63] &quot;冰拿鐵&quot;                          &quot;冰焦糖瑪奇朵&quot;                   
+##  [65] &quot;冰榛果提拉拿鐵&quot;                  &quot;冰重乳拿鐵&quot;                     
+##  [67] &quot;冰玫瑰拿鐵&quot;                      &quot;冰經典左岸拿鐵&quot;                 
+##  [69] &quot;熱黑咖啡&quot;                        &quot;熱拿鐵&quot;                         
+##  [71] &quot;熱焦糖瑪奇朵&quot;                    &quot;熱榛果提拉拿鐵&quot;                 
+##  [73] &quot;熱重乳拿鐵&quot;                      &quot;熱玫瑰拿鐵&quot;                     
+##  [75] &quot;熱經典左岸拿鐵&quot;                  &quot;冰翡翠金萱&quot;                     
+##  [77] &quot;冰四季春&quot;                        &quot;冰日月潭紅玉&quot;                   
+##  [79] &quot;冰碳焙烏龍&quot;                      &quot;冰蘋果醋&quot;                       
+##  [81] &quot;桑葚醋&quot;                          &quot;青梅果醋&quot;                       
+##  [83] &quot;冰多苺果茶&quot;                      &quot;冰蜜桃冰茶&quot;                     
+##  [85] &quot;冰韓式柚子茶&quot;                    &quot;冰經典鮮奶茶&quot;                   
+##  [87] &quot;冰焦糖鮮奶茶&quot;                    &quot;冰黑糖鮮奶茶&quot;                   
+##  [89] &quot;冰巧克歐蕾&quot;                      &quot;冰英式伯爵鮮奶茶&quot;               
+##  [91] &quot;熱翡翠金萱&quot;                      &quot;熱四季春茶&quot;                     
+##  [93] &quot;熱日月潭紅玉&quot;                    &quot;熱碳焙烏龍&quot;                     
+##  [95] &quot;熱多莓果茶&quot;                      &quot;熱韓式柚子茶&quot;                   
+##  [97] &quot;熱黑糖桂圓紅棗茶&quot;                &quot;熱經典鮮奶茶&quot;                   
+##  [99] &quot;熱焦糖鮮奶茶&quot;                    &quot;熱黑糖鮮奶茶&quot;                   
+## [101] &quot;熱義式巧克歐蕾&quot;                  &quot;熱英式伯爵鮮奶茶&quot;               
+## [103] &quot;重量杯冰美式黑咖啡 &quot;             &quot;重量杯冰拿鐵 &quot;                  
+## [105] &quot;重量杯左岸拿鐵 &quot;                 &quot;重量杯冰焦糖瑪奇朵 &quot;            
+## [107] &quot;重量杯冰榛果提拉拿鐵 &quot;           &quot;重量杯冰重乳拿鐵 &quot;              
+## [109] &quot;重量杯特濃拿鐵&quot;                  &quot;重量杯冰經典鮮奶茶 &quot;            
+## [111] &quot;重量杯冰焦糖鮮奶茶 &quot;             &quot;重量杯冰巧克歐蕾 &quot;              
+## [113] &quot;重量杯冰英式伯爵鮮奶茶 &quot;         &quot;重量杯冰黑糖鮮奶茶 &quot;            
+## [115] &quot;重量杯熱美式黑咖啡 &quot;             &quot;重量杯熱拿鐵 &quot;                  
+## [117] &quot;重量杯熱經典左岸拿鐵 &quot;           &quot;重量杯熱焦糖瑪奇朵 &quot;            
+## [119] &quot;重量熱榛果堤拉拿鐵 &quot;             &quot;重量杯熱重乳拿鐵 &quot;              
+## [121] &quot;重量杯熱經典鮮奶茶 &quot;             &quot;重量杯熱焦糖鮮奶茶 &quot;            
+## [123] &quot;重量杯熱黑糖鮮奶茶 &quot;             &quot;重量杯熱巧克歐蕾 &quot;              
+## [125] &quot;重量杯熱英式伯爵鮮奶茶 &quot;         &quot;本店每筆訂單酌收餐點包裝費2元。&quot;</code></pre>
+<h5 id="uvrf店家在wane_after的菜單">uvrf店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;uvrf&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>uvrf_wax_after</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>uvrf_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;艾許菠蘿&quot;                        &quot;芋花園小蛋糕&quot;                   
+##  [3] &quot;冰火菠蘿&quot;                        &quot;草莓甜甜圈&quot;                     
+##  [5] &quot;萌萌鹿異想世界【升級款 | 6吋】&quot;  &quot;小小怪手王【升級款 | 6吋】&quot;     
+##  [7] &quot;月光慶典C【升級款 | 6吋】&quot;       &quot;幸運之花蛋糕【六吋】&quot;           
+##  [9] &quot;雅典娜蛋糕【六吋】&quot;              &quot;黑森林蛋糕【八吋】&quot;             
+## [11] &quot;芋到愛蛋糕【八吋】&quot;              &quot;水果樂園蛋糕【八吋】&quot;           
+## [13] &quot;冰黑咖啡&quot;                        &quot;冰拿鐵&quot;                         
+## [15] &quot;冰焦糖瑪奇朵&quot;                    &quot;冰榛果提拉拿鐵&quot;                 
+## [17] &quot;冰重乳拿鐵&quot;                      &quot;冰玫瑰拿鐵&quot;                     
+## [19] &quot;冰經典左岸拿鐵&quot;                  &quot;熱黑咖啡&quot;                       
+## [21] &quot;熱拿鐵&quot;                          &quot;熱焦糖瑪奇朵&quot;                   
+## [23] &quot;熱榛果提拉拿鐵&quot;                  &quot;熱重乳拿鐵&quot;                     
+## [25] &quot;熱玫瑰拿鐵&quot;                      &quot;熱經典左岸拿鐵&quot;                 
+## [27] &quot;冰翡翠金萱&quot;                      &quot;冰四季春&quot;                       
+## [29] &quot;冰日月潭紅玉&quot;                    &quot;冰碳焙烏龍&quot;                     
+## [31] &quot;冰蘋果醋&quot;                        &quot;桑葚醋&quot;                         
+## [33] &quot;青梅果醋&quot;                        &quot;冰多苺果茶&quot;                     
+## [35] &quot;冰蜜桃冰茶&quot;                      &quot;冰韓式柚子茶&quot;                   
+## [37] &quot;冰經典鮮奶茶&quot;                    &quot;冰焦糖鮮奶茶&quot;                   
+## [39] &quot;冰黑糖鮮奶茶&quot;                    &quot;冰巧克歐蕾&quot;                     
+## [41] &quot;冰英式伯爵鮮奶茶&quot;                &quot;熱翡翠金萱&quot;                     
+## [43] &quot;熱四季春茶&quot;                      &quot;熱日月潭紅玉&quot;                   
+## [45] &quot;熱碳焙烏龍&quot;                      &quot;熱多莓果茶&quot;                     
+## [47] &quot;熱韓式柚子茶&quot;                    &quot;熱黑糖桂圓紅棗茶&quot;               
+## [49] &quot;熱經典鮮奶茶&quot;                    &quot;熱焦糖鮮奶茶&quot;                   
+## [51] &quot;熱黑糖鮮奶茶&quot;                    &quot;熱義式巧克歐蕾&quot;                 
+## [53] &quot;熱英式伯爵鮮奶茶&quot;                &quot;重量杯冰美式黑咖啡 &quot;            
+## [55] &quot;重量杯冰拿鐵 &quot;                   &quot;重量杯左岸拿鐵 &quot;                
+## [57] &quot;重量杯冰焦糖瑪奇朵 &quot;             &quot;重量杯冰榛果提拉拿鐵 &quot;          
+## [59] &quot;重量杯冰重乳拿鐵 &quot;               &quot;重量杯特濃拿鐵&quot;                 
+## [61] &quot;重量杯冰經典鮮奶茶 &quot;             &quot;重量杯冰焦糖鮮奶茶 &quot;            
+## [63] &quot;重量杯冰巧克歐蕾 &quot;               &quot;重量杯冰英式伯爵鮮奶茶 &quot;        
+## [65] &quot;重量杯冰黑糖鮮奶茶 &quot;             &quot;重量杯熱美式黑咖啡 &quot;            
+## [67] &quot;重量杯熱拿鐵 &quot;                   &quot;重量杯熱經典左岸拿鐵 &quot;          
+## [69] &quot;重量杯熱焦糖瑪奇朵 &quot;             &quot;重量熱榛果堤拉拿鐵 &quot;            
+## [71] &quot;重量杯熱重乳拿鐵 &quot;               &quot;重量杯熱經典鮮奶茶 &quot;            
+## [73] &quot;重量杯熱焦糖鮮奶茶 &quot;             &quot;重量杯熱黑糖鮮奶茶 &quot;            
+## [75] &quot;重量杯熱巧克歐蕾 &quot;               &quot;重量杯熱英式伯爵鮮奶茶 &quot;        
+## [77] &quot;本店每筆訂單酌收餐點包裝費2元。&quot;</code></pre>
+<ul>
+<li>可以看出[黑森林蛋糕【六吋】]只出現在before的菜單裡，after只有八吋的黑森林蛋糕，而整模的蛋糕屬於菜單裡較高單價的商品(六吋黑森林蛋糕850、八吋黑森林蛋糕1063)，會使before的平均物價高出許多</li>
+</ul>
+<h5 id="shopcode為wdl7店家"><strong>shopcode為wdl7店家</strong></h5>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;wdl7&quot;</span>],</span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;wdl7&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before         140
+## 2  after          35</code></pre>
+<h5 id="wdl7店家的熱門品項">wdl7店家的熱門品項</h5>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>popularItems[<span class="st">&quot;wdl7&quot;</span>]</span></code></pre></div>
+<pre><code>## $wdl7
+## [1] &quot;香酥豬排餐盒（炸）&quot;   &quot;滷控肉餐盒&quot;           &quot;香酥雞排餐盒（炸）&quot;  
+## [4] &quot;卡拉雞餐盒(炸)&quot;       &quot;香酥雞排（單點）&quot;     &quot;旗魚黑輪包蛋（單點）&quot;</code></pre>
+<h5 id="wdl7店家在wane_before的菜單">wdl7店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;wdl7&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>wdl7_wax_before</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>wdl7_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;梅干控肉餐盒&quot;         &quot;香酥雞排餐盒（炸）&quot;   &quot;旗魚黑輪（包蛋）餐盒&quot;
+##  [4] &quot;MoMo百元餐盒&quot;         &quot;愛吃菜餐盒&quot;           &quot;香酥雞排&quot;            
+##  [7] &quot;香酥豬排&quot;             &quot;旗魚黑輪（包蛋）&quot;     &quot;椰香奶酥厚片（甜）&quot;  
+## [10] &quot;香蒜厚片（鹹）&quot;       &quot;抹茶厚片（甜）&quot;       &quot;細滑花生厚片（甜）&quot;  
+## [13] &quot;顆粒花生厚片（鹹）&quot;   &quot;巧克力厚片（甜）&quot;     &quot;芋頭奶酥厚片【甜】&quot;  
+## [16] &quot;布丁奶酥厚片【甜】&quot;   &quot;純奶酥厚片（甜）&quot;     &quot;可樂&quot;                
+## [19] &quot;雪碧&quot;</code></pre>
+<h5 id="wdl7店家在wane_after的菜單">wdl7店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;wdl7&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>wdl7_wax_after</span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>wdl7_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;瓜仔肉餐盒M&quot;        &quot;香酥雞排（單點）&quot;   &quot;香酥豬排(單點）&quot;    &quot;天婦羅炸蝦（單點）&quot;
+##  [5] &quot;SOSO小資輕食套餐&quot;   &quot;巧克力厚片（甜）&quot;   &quot;椰香奶酥厚片（甜）&quot; &quot;抹茶厚片（甜）&quot;    
+##  [9] &quot;細滑花生厚片（甜）&quot; &quot;顆粒花生厚片（鹹）&quot; &quot;香蒜厚片（鹹）&quot;     &quot;布丁奶酥厚片【甜】&quot;
+## [13] &quot;芋頭奶酥厚片【甜】&quot; &quot;純奶酥厚片（甜）&quot;   &quot;可樂&quot;               &quot;雪碧（檸檬風味）&quot;</code></pre>
+<ul>
+<li>before和after的菜單有些許不同，而after又只抓取到[香酥雞排（單點）]的資料。想比較這個品項在前後期的價格，但發現如果以[香酥雞排]這個名稱對應，before的價格是50元而after是35元，有點好奇一般店家會一次降15元嗎？（還是內容物不同？）</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">item=</span>wdl7_wax_before<span class="sc">$</span>product,</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>           <span class="at">price=</span>wdl7_wax_before<span class="sc">$</span>discountedPrice)<span class="sc">|&gt;</span></span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(item<span class="sc">==</span><span class="st">&quot;香酥雞排&quot;</span>) <span class="ot">-&gt;</span> wd17_before</span>
+<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">item=</span>wdl7_wax_after<span class="sc">$</span>product,</span>
+<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a>           <span class="at">price=</span>wdl7_wax_after<span class="sc">$</span>discountedPrice)<span class="sc">|&gt;</span></span>
+<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(item<span class="sc">==</span><span class="st">&quot;香酥雞排（單點）&quot;</span>) <span class="ot">-&gt;</span> wd17_after</span>
+<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a><span class="fu">bind_rows</span>(wd17_before,wd17_after)</span></code></pre></div>
+<pre><code>##               item price
+## 1         香酥雞排    50
+## 2 香酥雞排（單點）    35</code></pre>
+<h5 id="shopcode為j0ev店家"><strong>shopcode為j0ev店家</strong></h5>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;j0ev&quot;</span>],</span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;j0ev&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before         105
+## 2  after          30</code></pre>
+<h5 id="j0ev店家的熱門品項">j0ev店家的熱門品項</h5>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>popularItems[<span class="st">&quot;j0ev&quot;</span>]</span></code></pre></div>
+<pre><code>## $j0ev
+## [1] &quot;招牌咖哩飯&quot; &quot;麻婆豆腐飯&quot; &quot;日式燒肉飯&quot; &quot;手工豆漿&quot;</code></pre>
+<h5 id="j0ev店家在wane_before的菜單">j0ev店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;j0ev&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>j0ev_wax_before</span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>j0ev_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>## [1] &quot;招牌咖哩飯&quot;   &quot;滷肉飯便當&quot;   &quot;麻婆豆腐飯&quot;   &quot;泡菜豬肉丼飯&quot; &quot;豬肉丼飯&quot;    
+## [6] &quot;日式燒肉飯&quot;   &quot;手工豆漿&quot;     &quot;奶茶&quot;</code></pre>
+<h5 id="j0ev店家在wane_after的菜單">j0ev店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;j0ev&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>j0ev_wax_after</span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>j0ev_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>## [1] &quot;鮮肉水煎包&quot;   &quot;韭菜水煎包&quot;   &quot;高麗菜水煎包&quot; &quot;手工豆漿&quot;     &quot;奶茶&quot;</code></pre>
+<ul>
+<li>此間店前後的商品差距甚大，不禁好奇這是哪間店？只有飲料的部分前後期相同，主食方面菜單大改。</li>
+</ul>
+<h5 id="shopcode為r8ws店家"><strong>shopcode為r8ws店家</strong></h5>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wax_before[<span class="st">&quot;r8ws&quot;</span>],</span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a>                               average_menu_cost_wax_after[<span class="st">&quot;r8ws&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before    150.3333
+## 2  after     45.0000</code></pre>
+<h5 id="r8ws店家的熱門品項">r8ws店家的熱門品項</h5>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a>popularItems[<span class="st">&quot;r8ws&quot;</span>]</span></code></pre></div>
+<pre><code>## $r8ws
+## [1] &quot;港式凍檸茶X2&quot;              &quot;招牌家傳牛肉麵 日式拉麵&quot;   &quot;招牌家傳牛肉麵 手工刀削麵&quot;
+## [4] &quot;清燉牛肉麵 日式拉麵&quot;       &quot;清燉牛肉麵 手工刀削麵&quot;</code></pre>
+<h5 id="r8ws店家在wane_before的菜單">r8ws店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>before[<span class="st">&quot;r8ws&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>r8ws_wax_before</span>
+<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>r8ws_wax_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;港式凍檸茶X2&quot;                    &quot;清燉牛肉湯麵【無肉】日式拉麵&quot;   
+##  [3] &quot;紅燒牛肉湯麵【無肉】日式拉麵&quot;    &quot;清燉牛肉湯麵【無肉】手工刀削麵&quot; 
+##  [5] &quot;紅燒牛肉湯麵【無肉】手工刀削麵&quot;  &quot;清燉牛肉麵 日式拉麵&quot;            
+##  [7] &quot;清燉牛肉麵 手工刀削麵&quot;           &quot;凍檸茶&quot;                         
+##  [9] &quot;凍檸樂&quot;                          &quot;凍檸七&quot;                         
+## [11] &quot;冰絲襪奶茶&quot;                      &quot;冰鴛鴦奶茶&quot;                     
+## [13] &quot;本店每筆訂單酌收餐點包裝費1元。&quot;</code></pre>
+<h5 id="r8ws店家在wane_after的菜單">r8ws店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>menu_wax<span class="sc">$</span>after[<span class="st">&quot;r8ws&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>r8ws_wax_after</span>
+<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>r8ws_wax_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>## [1] &quot;港式凍檸茶X2&quot;                    &quot;胡麻玉米筍&quot;                     
+## [3] &quot;胡麻花椰菜&quot;                      &quot;凍檸茶&quot;                         
+## [5] &quot;凍檸樂&quot;                          &quot;凍檸七&quot;                         
+## [7] &quot;冰絲襪奶茶&quot;                      &quot;冰鴛鴦奶茶&quot;                     
+## [9] &quot;本店每筆訂單酌收餐點包裝費1元。&quot;</code></pre>
+<ul>
+<li>after的菜單裡主食都消失了，只剩飲料部分還存在</li>
+</ul>
+<h4 id="蛋荒較趨緩時期">蛋荒較趨緩時期</h4>
+<h5 id="一先觀察物價上漲率大於1的店家總共有20間">一、先觀察物價上漲率大於1的店家，總共有20間</h5>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a>filtered_average_inflation_rate_wane<span class="sc">|&gt;</span></span>
+<span id="cb79-2"><a href="#cb79-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(inflation_rate<span class="sc">&gt;</span><span class="dv">1</span>)<span class="sc">|&gt;</span></span>
+<span id="cb79-3"><a href="#cb79-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(inflation_rate))</span></code></pre></div>
+<pre><code>##      shopCode inflation_rate
+## k5al     k5al       2.015245
+## w88l     w88l       1.937942
+## kccq     kccq       1.394327
+## r8ws     r8ws       1.360407
+## vd0e     vd0e       1.324292
+## l37o     l37o       1.303895
+## wdl7     wdl7       1.280934
+## il9w     il9w       1.264462
+## jg2r     jg2r       1.243582
+## edqs     edqs       1.238402
+## j05a     j05a       1.176179
+## wp6x     wp6x       1.167169
+## cii4     cii4       1.143374
+## dgj1     dgj1       1.140915
+## cf1p     cf1p       1.120591
+## v3nv     v3nv       1.069150
+## jz50     jz50       1.059472
+## chpw     chpw       1.040343
+## z1xk     z1xk       1.029619
+## pb2n     pb2n       1.023939</code></pre>
+<h5 id="再取出物價上漲率最高的三間做觀察-1"><em>再取出物價上漲率最高的三間做觀察</em></h5>
+<h5 id="shopcode為k5al店家"><strong>shopcode為k5al店家</strong></h5>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;k5al&quot;</span>],</span>
+<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;k5al&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before        39.0
+## 2  after       292.6</code></pre>
+<h5 id="k5al店家的熱門品項">k5al店家的熱門品項</h5>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a>popularItems[<span class="st">&quot;k5al&quot;</span>]</span></code></pre></div>
+<pre><code>## $k5al
+## [1] &quot;熟成嫩肩牛排300gミスジ Blade steak&quot;       
+## [2] &quot;熟成骰子牛200gサイコロ牛 Diced beef steak&quot;
+## [3] &quot;熟成骰子牛300gサイコロ牛 Diced beef steak&quot;
+## [4] &quot;起司漢堡排Hamburg&quot;                        
+## [5] &quot;豬排250g/豚ステーキpork chop&quot;             
+## [6] &quot;馬鈴薯沙拉&quot;</code></pre>
+<h5 id="k5al店家在wane_before的菜單">k5al店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;k5al&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>k5al_wane_before</span>
+<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a>k5al_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;熟成嫩肩牛排300g&quot;          &quot;安格斯混切骰子牛200g&quot;      &quot;安格斯混切骰子牛300g&quot;     
+##  [4] &quot;舒肥雞腿排&quot;                &quot;蔥鹽牛舌(薄切）100g&quot;       &quot;熟成嫩肩牛排200g&quot;         
+##  [7] &quot;安格斯混切骰子牛（500g)&quot;   &quot;安格斯肋眼心300g&quot;          &quot;特上熟成嫩肩牛排200g&quot;     
+## [10] &quot;安格斯翼板牛排200g&quot;        &quot;安格斯翼板牛排300g&quot;        &quot;特製漢堡排(牛）&quot;          
+## [13] &quot;豬排&quot;                      &quot;香煎鯖魚&quot;                  &quot;黑胡椒牛肉蓋飯&quot;           
+## [16] &quot;蝦多多蓋飯&quot;                &quot;咖哩牛肉蓋飯&quot;              &quot;白飯&quot;                     
+## [19] &quot;溫泉卵&quot;                    &quot;蔥鹽四倍量&quot;                &quot;日式滷蛋&quot;                 
+## [22] &quot;鐵板蛋&quot;                    &quot;例湯&quot;                      &quot;時蔬（胡麻龍鬚菜）&quot;       
+## [25] &quot;香煎干貝（2顆）&quot;           &quot;溫泉卵+時蔬（胡麻龍鬚菜）&quot; &quot;溫泉卵+馬鈴薯沙拉&quot;        
+## [28] &quot;馬鈴薯沙拉&quot;                &quot;香煎蝦仁（3隻）&quot;           &quot;香煎蝦仁（6隻）&quot;          
+## [31] &quot;岩海苔&quot;                    &quot;炸蒜片&quot;</code></pre>
+<h5 id="k5al店家在wane_after的菜單">k5al店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;k5al&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>k5al_wane_after</span>
+<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a>k5al_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;熟成嫩肩牛排300gミスジ Blade steak&quot;        
+##  [2] &quot;熟成骰子牛200gサイコロ牛 Diced beef steak&quot; 
+##  [3] &quot;熟成骰子牛300gサイコロ牛 Diced beef steak&quot; 
+##  [4] &quot;舒肥雞腿排/雞もも肉sous vide thigh&quot;        
+##  [5] &quot;薄切蔥鹽牛舌150g薄切りタン beef tongue&quot;    
+##  [6] &quot;熟成嫩肩牛排200gミスジ Blade steak&quot;        
+##  [7] &quot;熟成骰子牛500gサイコロ牛 Diced beef steak&quot; 
+##  [8] &quot;安格斯肋眼心牛排300gリブ芯&quot;                
+##  [9] &quot;特上熟成嫩肩牛排200g特上ミスジ Blade steak&quot;
+## [10] &quot;豬排250g/豚ステーキpork chop&quot;              
+## [11] &quot;牛肩小排200g Short rib boneless&quot;           
+## [12] &quot;特上厚切牛舌150g厚切りタンBeef Tongue&quot;     
+## [13] &quot;特上熟成嫩肩牛排300g特上ミスジ Blade steak&quot;
+## [14] &quot;深海大魷魚/イカsquid&quot;                      
+## [15] &quot;黑牛燒肉便當&quot;                              
+## [16] &quot;豬排便當&quot;                                  
+## [17] &quot;炸豬排便當&quot;                                
+## [18] &quot;炸魚排便當&quot;                                
+## [19] &quot;白飯&quot;                                      
+## [20] &quot;溫泉卵&quot;                                    
+## [21] &quot;蔥鹽四倍量&quot;                                
+## [22] &quot;日式滷蛋&quot;                                  
+## [23] &quot;鐵板蛋&quot;                                    
+## [24] &quot;例湯&quot;                                      
+## [25] &quot;時蔬（胡麻龍鬚菜）&quot;                        
+## [26] &quot;溫泉卵+時蔬（胡麻龍鬚菜）&quot;                 
+## [27] &quot;溫泉卵+馬鈴薯沙拉&quot;                         
+## [28] &quot;馬鈴薯沙拉&quot;                                
+## [29] &quot;岩海苔&quot;                                    
+## [30] &quot;炸蒜片&quot;                                    
+## [31] &quot;日式炸豬排&quot;                                
+## [32] &quot;日式炸豬排（雙倍）&quot;                        
+## [33] &quot;白身魚&quot;                                    
+## [34] &quot;薯條&quot;                                      
+## [35] &quot;爆漿熔岩蝦球2顆（非常燙、請小心食用）&quot;     
+## [36] &quot;紅龍炸雞塊5塊&quot;</code></pre>
+<ul>
+<li>可以發現到在after的菜單裡除了中文以外還加入了日文及英文，造成抓取品項名稱的差異</li>
+<li>取出前後期價格來比較</li>
+</ul>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a>k5al_before<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">item=</span>k5al_wane_before<span class="sc">$</span>product,</span>
+<span id="cb89-2"><a href="#cb89-2" tabindex="-1"></a>                         <span class="at">price=</span>k5al_wane_before<span class="sc">$</span>discountedPrice)</span>
+<span id="cb89-3"><a href="#cb89-3" tabindex="-1"></a>k5al_after<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">item=</span>k5al_wane_after<span class="sc">$</span>product,</span>
+<span id="cb89-4"><a href="#cb89-4" tabindex="-1"></a>                         <span class="at">price=</span>k5al_wane_after<span class="sc">$</span>discountedPrice)</span>
+<span id="cb89-5"><a href="#cb89-5" tabindex="-1"></a></span>
+<span id="cb89-6"><a href="#cb89-6" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">product=</span><span class="fu">c</span>(<span class="st">&quot;熟成嫩肩牛排300gミスジ Blade steak&quot;</span>,</span>
+<span id="cb89-7"><a href="#cb89-7" tabindex="-1"></a>                     <span class="st">&quot;熟成骰子牛200gサイコロ牛 Diced beef steak&quot;</span>,</span>
+<span id="cb89-8"><a href="#cb89-8" tabindex="-1"></a>                     <span class="st">&quot;熟成骰子牛300gサイコロ牛 Diced beef steak&quot;</span>,</span>
+<span id="cb89-9"><a href="#cb89-9" tabindex="-1"></a>                     <span class="st">&quot;起司漢堡排Hamburg&quot;</span>,</span>
+<span id="cb89-10"><a href="#cb89-10" tabindex="-1"></a>                     <span class="st">&quot;豬排250g/豚ステーキpork chop&quot;</span>,</span>
+<span id="cb89-11"><a href="#cb89-11" tabindex="-1"></a>                     <span class="st">&quot;馬鈴薯沙拉&quot;</span>),</span>
+<span id="cb89-12"><a href="#cb89-12" tabindex="-1"></a>           <span class="at">before=</span><span class="fu">c</span>(<span class="dv">438</span>,<span class="dv">328</span>,<span class="dv">438</span>,<span class="cn">NA</span>,<span class="dv">220</span>,<span class="dv">39</span>),</span>
+<span id="cb89-13"><a href="#cb89-13" tabindex="-1"></a>           <span class="at">after=</span><span class="fu">c</span>(<span class="dv">438</span>,<span class="dv">328</span>,<span class="dv">438</span>,<span class="cn">NA</span>,<span class="dv">220</span>,<span class="dv">39</span>))</span></code></pre></div>
+<pre><code>##                                     product before after
+## 1        熟成嫩肩牛排300gミスジ Blade steak    438   438
+## 2 熟成骰子牛200gサイコロ牛 Diced beef steak    328   328
+## 3 熟成骰子牛300gサイコロ牛 Diced beef steak    438   438
+## 4                         起司漢堡排Hamburg     NA    NA
+## 5              豬排250g/豚ステーキpork chop    220   220
+## 6                                馬鈴薯沙拉     39    39</code></pre>
+<ul>
+<li>假設before的[安格斯混切骰子牛]就是after的[熟成骰子牛]，比較前後期差異可以發現到這間店的價格其實沒有調漲</li>
+</ul>
+<h5 id="shopcode為w88l店家"><strong>shopcode為w88l店家</strong></h5>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb91-2"><a href="#cb91-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;w88l&quot;</span>],</span>
+<span id="cb91-3"><a href="#cb91-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;w88l&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before        45.0
+## 2  after       312.5</code></pre>
+<h5 id="w88l店家的熱門品項">w88l店家的熱門品項</h5>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a>popularItems[<span class="st">&quot;w88l&quot;</span>]</span></code></pre></div>
+<pre><code>## $w88l
+## [1] &quot;聰明洛梅飲&quot;               &quot;可口可樂&quot;                 &quot;中包菜(半熟)加魚肉&quot;      
+## [4] &quot;大沙鍋菜(半熟)加中頭加肉&quot; &quot;大菜【半熟】加中鰱魚頭&quot;   &quot;大沙鍋菜(半熟)加魚肉&quot;</code></pre>
+<h5 id="w88l店家在wane_before的菜單">w88l店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;w88l&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>w88l_wane_before</span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a>w88l_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;沙鍋菜魚肉套餐&quot;                                                                                                                   
+##  [2] &quot;沙鍋菜套餐&quot;                                                                                                                       
+##  [3] &quot;沙鍋菜冬粉、紅茶&quot;                                                                                                                 
+##  [4] &quot;冷凍沙鍋菜&quot;                                                                                                                       
+##  [5] &quot;沙鍋菜(不含魚)&quot;                                                                                                                   
+##  [6] &quot;沙鍋菜加魚肉&quot;                                                                                                                     
+##  [7] &quot;沙鍋菜、冬粉&quot;                                                                                                                     
+##  [8] &quot;沙鍋菜、烏龍麵&quot;                                                                                                                   
+##  [9] &quot;白飯&quot;                                                                                                                             
+## [10] &quot;雞肉飯&quot;                                                                                                                           
+## [11] &quot;太陽蛋滷肉飯&quot;                                                                                                                     
+## [12] &quot;滷肉飯&quot;                                                                                                                           
+## [13] &quot;古早味紅茶&quot;                                                                                                                       
+## [14] &quot;聰明洛梅飲&quot;                                                                                                                       
+## [15] &quot;清冬粉&quot;                                                                                                                           
+## [16] &quot;大沙鍋菜&quot;                                                                                                                         
+## [17] &quot;中沙鍋菜&quot;                                                                                                                         
+## [18] &quot;小沙鍋菜&quot;                                                                                                                         
+## [19] &quot;中鰱魚頭&quot;                                                                                                                         
+## [20] &quot;魚肉&quot;                                                                                                                             
+## [21] &quot;1.本店每筆訂單酌收餐點包裝費2元    2.如勾選不需要免洗餐具則不附碗    3.本店皆使用台灣豬肉，非基改豆腐、豆皮、蔥、洋蔥、辣椒、白菜&quot;</code></pre>
+<h5 id="w88l店家在wane_after的菜單">w88l店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;w88l&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>w88l_wane_after</span>
+<span id="cb97-2"><a href="#cb97-2" tabindex="-1"></a>w88l_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>## [1] &quot;1.本店每筆訂單酌收餐點包裝費2元    2.如勾選不需要免洗餐具則不附碗    3.本店皆使用台灣豬肉，非基改豆腐、豆皮、蔥、洋蔥、辣椒、白菜&quot;
+## [2] &quot;古早味紅茶&quot;                                                                                                                       
+## [3] &quot;聰明洛梅飲&quot;                                                                                                                       
+## [4] &quot;可口可樂&quot;                                                                                                                         
+## [5] &quot;中包菜(半熟)加魚肉&quot;                                                                                                               
+## [6] &quot;大沙鍋菜(半熟)加中頭加肉&quot;                                                                                                         
+## [7] &quot;大菜【半熟】加中鰱魚頭&quot;                                                                                                           
+## [8] &quot;大沙鍋菜(半熟)加魚肉&quot;</code></pre>
+<ul>
+<li>可以發現這間店的前後期商品內容物不盡相同，before是以大、中、小沙鍋菜販售，after則是除了沙鍋菜外有加入其他肉品做綁售，此間店家的前後期價格較難以同一標準做比較。</li>
+</ul>
+<h5 id="shopcode為kccq店家"><strong>shopcode為kccq店家</strong></h5>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb99-2"><a href="#cb99-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;kccq&quot;</span>],</span>
+<span id="cb99-3"><a href="#cb99-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;kccq&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before        55.8
+## 2  after       225.0</code></pre>
+<h5 id="kccq店家的熱門品項">kccq店家的熱門品項</h5>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a>popularItems[<span class="st">&quot;kccq&quot;</span>]</span></code></pre></div>
+<pre><code>## $kccq
+## [1] &quot;(8葷12素)小鮮肉麻辣拌(乾拌)&quot; &quot;(8葷12素)小鮮肉麻辣燙(好湯)&quot;
+## [3] &quot;(3葷12素)小仙女麻辣拌(乾拌)&quot; &quot;麻辣鴨血&quot;                   
+## [5] &quot;涼皮&quot;                        &quot;三合一湯&quot;</code></pre>
+<h5 id="kccq店家在wane_before的菜單">kccq店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;kccq&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>kccq_wane_before</span>
+<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a>kccq_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;小鮮肉麻辣燙&quot;         &quot;小仙女麻辣燙&quot;         &quot;雙椒麻辣燙&quot;          
+##  [4] &quot;麻辣鴨血&quot;             &quot;滷肉飯便當(附溏心蛋)&quot; &quot;彩盒涼皮(葷)&quot;        
+##  [7] &quot;滷肉飯&quot;               &quot;椒香滷肉飯&quot;           &quot;花椒麻辣燙&quot;          
+## [10] &quot;藤椒麻辣燙&quot;           &quot;涼皮&quot;                 &quot;涼皮（斤）&quot;          
+## [13] &quot;涼麵【中】&quot;           &quot;涼麵【大】&quot;           &quot;彩盒涼麵(葷)&quot;        
+## [16] &quot;香辣涼皮鍋&quot;           &quot;札幌味噌鍋&quot;           &quot;韓式泡菜鍋&quot;          
+## [19] &quot;川香銷魂湯麵&quot;         &quot;札幌味噌湯麵&quot;         &quot;韓式泡菜湯麵&quot;        
+## [22] &quot;味噌湯&quot;               &quot;味噌蛋&quot;               &quot;味噌貢丸&quot;            
+## [25] &quot;三合一湯&quot;             &quot;方塊豆干&quot;             &quot;韓國泡菜&quot;            
+## [28] &quot;涼拌黃瓜&quot;             &quot;涼拌黑木耳&quot;           &quot;百香果冰粉&quot;          
+## [31] &quot;檸檬冰粉&quot;</code></pre>
+<h5 id="kccq店家在wane_after的菜單">kccq店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;kccq&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>kccq_wane_after</span>
+<span id="cb105-2"><a href="#cb105-2" tabindex="-1"></a>kccq_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;(8葷12素)小鮮肉麻辣拌(乾拌)&quot; &quot;(8葷12素)小鮮肉麻辣燙(好湯)&quot;
+##  [3] &quot;(3葷12素)小仙女麻辣拌(乾拌)&quot; &quot;(3葷12素)小仙女麻辣燙(好湯)&quot;
+##  [5] &quot;方塊豆干&quot;                    &quot;韓國泡菜&quot;                   
+##  [7] &quot;涼拌黃瓜&quot;                    &quot;涼拌黑木耳&quot;                 
+##  [9] &quot;百香果冰粉&quot;                  &quot;檸檬冰粉&quot;</code></pre>
+<ul>
+<li>可以發現這間店也是因為命名上的差異造成物價上漲率之高，比較兩者價格</li>
+</ul>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a>kccq_before<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">item=</span>kccq_wane_before<span class="sc">$</span>product,</span>
+<span id="cb107-2"><a href="#cb107-2" tabindex="-1"></a>                         <span class="at">price=</span>kccq_wane_before<span class="sc">$</span>discountedPrice)</span>
+<span id="cb107-3"><a href="#cb107-3" tabindex="-1"></a>kccq_after<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">item=</span>kccq_wane_after<span class="sc">$</span>product,</span>
+<span id="cb107-4"><a href="#cb107-4" tabindex="-1"></a>                         <span class="at">price=</span>kccq_wane_after<span class="sc">$</span>discountedPrice)</span>
+<span id="cb107-5"><a href="#cb107-5" tabindex="-1"></a></span>
+<span id="cb107-6"><a href="#cb107-6" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">product=</span><span class="fu">c</span>(<span class="st">&quot;(8葷12素)小鮮肉麻辣拌(乾拌)&quot;</span>,</span>
+<span id="cb107-7"><a href="#cb107-7" tabindex="-1"></a>                     <span class="st">&quot;(8葷12素)小鮮肉麻辣燙(好湯)&quot;</span>,</span>
+<span id="cb107-8"><a href="#cb107-8" tabindex="-1"></a>                     <span class="st">&quot;(3葷12素)小仙女麻辣拌(乾拌)&quot;</span>,</span>
+<span id="cb107-9"><a href="#cb107-9" tabindex="-1"></a>                     <span class="st">&quot;麻辣鴨血&quot;</span>,<span class="st">&quot;涼皮&quot;</span>,<span class="st">&quot;三合一湯&quot;</span>),</span>
+<span id="cb107-10"><a href="#cb107-10" tabindex="-1"></a>           <span class="at">before=</span><span class="fu">c</span>(<span class="cn">NA</span>,<span class="fl">152.1</span>,<span class="cn">NA</span>,<span class="dv">45</span>,<span class="fl">72.9</span>,<span class="fl">49.5</span>),</span>
+<span id="cb107-11"><a href="#cb107-11" tabindex="-1"></a>           <span class="at">after=</span><span class="fu">c</span>(<span class="dv">235</span>,<span class="dv">235</span>,<span class="dv">205</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>))</span></code></pre></div>
+<pre><code>##                       product before after
+## 1 (8葷12素)小鮮肉麻辣拌(乾拌)     NA   235
+## 2 (8葷12素)小鮮肉麻辣燙(好湯)  152.1   235
+## 3 (3葷12素)小仙女麻辣拌(乾拌)     NA   205
+## 4                    麻辣鴨血   45.0    NA
+## 5                        涼皮   72.9    NA
+## 6                    三合一湯   49.5    NA</code></pre>
+<ul>
+<li>前後期菜單有改變，唯一在前後期都有的商品是[小鮮肉麻辣燙]，但漲了83元，讓我好奇兩個品項名稱雖然一樣但內容物是否不同？</li>
+</ul>
+<h5 id="二觀察物價上漲率小於-1的店家總共有11間">二、觀察物價上漲率小於-1的店家，總共有11間</h5>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" tabindex="-1"></a>filtered_average_inflation_rate_wane<span class="sc">|&gt;</span>dplyr<span class="sc">::</span><span class="fu">filter</span>(inflation_rate<span class="sc">&lt;</span>(<span class="sc">-</span><span class="dv">1</span>))<span class="sc">|&gt;</span></span>
+<span id="cb109-2"><a href="#cb109-2" tabindex="-1"></a>  <span class="fu">arrange</span>(inflation_rate)</span></code></pre></div>
+<pre><code>##      shopCode inflation_rate
+## u1r2     u1r2      -1.805005
+## we7f     we7f      -1.582409
+## d1ls     d1ls      -1.494508
+## cysg     cysg      -1.293129
+## pv5o     pv5o      -1.273706
+## wegr     wegr      -1.259543
+## alib     alib      -1.258040
+## b5cu     b5cu      -1.168680
+## yrcc     yrcc      -1.140915
+## y1nj     y1nj      -1.089684
+## b5vu     b5vu      -1.054621</code></pre>
+<h5 id="shopcode為u1r2店家"><strong>shopcode為u1r2店家</strong></h5>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb111-2"><a href="#cb111-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;u1r2&quot;</span>],</span>
+<span id="cb111-3"><a href="#cb111-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;u1r2&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before       182.4
+## 2  after        30.0</code></pre>
+<h5 id="u1r2店家的熱門品項">u1r2店家的熱門品項</h5>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" tabindex="-1"></a>popularItems[<span class="st">&quot;u1r2&quot;</span>]</span></code></pre></div>
+<pre><code>## $u1r2
+## [1] &quot;泰式打抛雞套餐&quot;     &quot;蒜香台灣豬肉片套餐&quot; &quot;法式水煮嫩雞胸套餐&quot; &quot;義國風情雞腿排套餐&quot;
+## [5] &quot;阿嬤的滷牛腱心套餐&quot; &quot;13香滷蛋【1顆】&quot;</code></pre>
+<h5 id="u1r2店家在wane_before的菜單">u1r2店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;u1r2&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>u1r2_wane_before</span>
+<span id="cb115-2"><a href="#cb115-2" tabindex="-1"></a>u1r2_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;泰式打抛雞套餐&quot;               &quot;蒜香台灣豬肉片套餐&quot;          
+##  [3] &quot;法式水煮嫩雞胸套餐&quot;           &quot;地中海烤食蔬套餐&quot;            
+##  [5] &quot;匈牙利辣烤雞胸套餐&quot;           &quot;義國風情雞腿排套餐&quot;          
+##  [7] &quot;阿嬤的滷牛腱心套餐&quot;           &quot;挪威鹽烤鯖魚套餐&quot;            
+##  [9] &quot;清爽雞肉套餐&quot;                 &quot;清爽豬肉套餐&quot;                
+## [11] &quot;泰式雞豬套餐&quot;                 &quot;泰式雞情套餐&quot;                
+## [13] &quot;海陸大餐套餐&quot;                 &quot;十穀飯【1碗】&quot;               
+## [15] &quot;地瓜【1份】&quot;                  &quot;青菜【1份】&quot;                 
+## [17] &quot;溏心蛋【1顆】&quot;                &quot;冷泡茶【1瓶 | 甜度冰量固定】&quot;</code></pre>
+<h5 id="u1r2店家在wane_after的菜單">u1r2店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;u1r2&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>u1r2_wane_after</span>
+<span id="cb117-2"><a href="#cb117-2" tabindex="-1"></a>u1r2_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>## [1] &quot;十穀飯【1碗】&quot;                &quot;地瓜【1塊】&quot;                 
+## [3] &quot;青菜【1份】&quot;                  &quot;13香滷蛋【1顆】&quot;             
+## [5] &quot;冷泡茶【1瓶 | 甜度冰量固定】&quot;</code></pre>
+<ul>
+<li>after的菜單裡只剩配菜及飲料，主食皆無出現，難以比較前後期價格差異</li>
+</ul>
+<h5 id="shopcode為we7f店家"><strong>shopcode為we7f店家</strong></h5>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb119-2"><a href="#cb119-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;we7f&quot;</span>],</span>
+<span id="cb119-3"><a href="#cb119-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;we7f&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before         146
+## 2  after          30</code></pre>
+<h5 id="we7f店家的熱門品項">we7f店家的熱門品項</h5>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a>popularItems[<span class="st">&quot;we7f&quot;</span>]</span></code></pre></div>
+<pre><code>## $we7f
+## [1] &quot;明爐燒鴨&quot;   &quot;雙囍臨門&quot;   &quot;三寶惦記&quot;   &quot;玫瑰油雞腿&quot; &quot;四大天王&quot;   &quot;冰紅茶&quot;</code></pre>
+<h5 id="we7f店家在wane_before的菜單">we7f店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;we7f&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>we7f_wane_before</span>
+<span id="cb123-2"><a href="#cb123-2" tabindex="-1"></a>we7f_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;明爐燒鴨&quot;         &quot;雙囍臨門&quot;         &quot;三寶惦記&quot;         &quot;金牌香腸&quot;        
+##  [5] &quot;蜜汁叉燒&quot;         &quot;脆皮燒肉&quot;         &quot;玫瑰油雞腿&quot;       &quot;四大天王&quot;        
+##  [9] &quot;五樣都來&quot;         &quot;叉燒肉【一斤】&quot;   &quot;蔥油&quot;             &quot;半隻鴨&quot;          
+## [13] &quot;白飯&quot;             &quot;雞腿&quot;             &quot;滷蛋&quot;             &quot;辣椒醬油&quot;        
+## [17] &quot;新鮮的鹹蛋&quot;       &quot;脆皮燒肉【一斤】&quot; &quot;香腸【半斤】&quot;     &quot;鴨頭&quot;</code></pre>
+<h5 id="we7f店家在wane_after的菜單">we7f店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;we7f&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>we7f_wane_after</span>
+<span id="cb125-2"><a href="#cb125-2" tabindex="-1"></a>we7f_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;蔥油&quot;             &quot;半隻鴨&quot;           &quot;白飯&quot;             &quot;雞腿&quot;            
+##  [5] &quot;辣椒醬油&quot;         &quot;新鮮的鹹蛋&quot;       &quot;脆皮燒肉【一斤】&quot; &quot;香腸【半斤】&quot;    
+##  [9] &quot;鴨頭&quot;             &quot;冰紅茶&quot;</code></pre>
+<ul>
+<li>前後期菜單有些許不同，但比較兩期皆有的主食[半隻鴨]，價格皆為800，並無作價格上的調整</li>
+</ul>
+<h5 id="shopcode為d1ls店家"><strong>shopcode為d1ls店家</strong></h5>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">period=</span><span class="fu">c</span>(<span class="st">&quot;before&quot;</span>,<span class="st">&quot;after&quot;</span>),</span>
+<span id="cb127-2"><a href="#cb127-2" tabindex="-1"></a>                 <span class="at">averageCost=</span><span class="fu">c</span>(average_menu_cost_wane_before[<span class="st">&quot;d1ls&quot;</span>],</span>
+<span id="cb127-3"><a href="#cb127-3" tabindex="-1"></a>                               average_menu_cost_wane_after[<span class="st">&quot;d1ls&quot;</span>]))</span></code></pre></div>
+<pre><code>##   period averageCost
+## 1 before         312
+## 2  after          70</code></pre>
+<h5 id="d1ls店家的熱門品項">d1ls店家的熱門品項</h5>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a>popularItems[<span class="st">&quot;d1ls&quot;</span>]</span></code></pre></div>
+<pre><code>## $d1ls
+## [1] &quot;6入甜甜圈&quot;      &quot;10入甜甜圈&quot;     &quot;檸檬優格波堤&quot;   &quot;檸檬蜜糖波堤\n&quot; &quot;哞~草莓牛奶&quot;   
+## [6] &quot;皇家伯爵茶歐蕾&quot;</code></pre>
+<h5 id="d1ls店家在wane_before的菜單">d1ls店家在wane_before的菜單</h5>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>before[<span class="st">&quot;d1ls&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>d1ls_wane_before</span>
+<span id="cb131-2"><a href="#cb131-2" tabindex="-1"></a>d1ls_wane_before<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;如果選擇品項售完，由夥伴隨機幫您挑選喔！&quot;        
+##  [2] &quot;圖片僅供參考，依實際門市提供餐點為主。&quot;          
+##  [3] &quot;如對訂單有任何疑問，請與外送平台客服聯繫，謝謝！&quot;
+##  [4] &quot;優惠餐組數量有限，售完為止；無法點購即本日結束。&quot;
+##  [5] &quot;本店使用豬肉之原產地：台灣&quot;                      
+##  [6] &quot;6入甜甜圈&quot;                                       
+##  [7] &quot;10入甜甜圈&quot;                                      
+##  [8] &quot;歡樂派對&quot;                                        
+##  [9] &quot;一〇八抹茶茶廊豆香抹茶生波堤\\n&quot;                 
+## [10] &quot;一〇八抹茶茶廊雙層豆香抹茶生波堤\\n&quot;             
+## [11] &quot;一〇八抹茶茶廊蜜糖抹茶波堤\\n&quot;                   
+## [12] &quot;蜜糖波堤&quot;                                        
+## [13] &quot;雙層巧克力波堤&quot;                                  
+## [14] &quot;草莓波堤&quot;                                        
+## [15] &quot;草莓巧克力波堤&quot;                                  
+## [16] &quot;蜜糖巧克力波堤&quot;                                  
+## [17] &quot;卡士達法蘭奇&quot;                                    
+## [18] &quot;天使法蘭奇&quot;                                      
+## [19] &quot;巧克力歐菲香&quot;                                    
+## [20] &quot;青醬燻雞Mini披薩\\n&quot;                             
+## [21] &quot;北海道雙色乳酪瑪芬&quot;                              
+## [22] &quot;粉莓香橙蘇打&quot;                                    
+## [23] &quot;粉莓香橙冰茶&quot;                                    
+## [24] &quot;熱草莓烏龍茶&quot;                                    
+## [25] &quot;熱琥珀烏龍茶&quot;                                    
+## [26] &quot;「可爾必思」&quot;                                    
+## [27] &quot;台灣無糖青茶&quot;                                    
+## [28] &quot;美式珈琲&quot;                                        
+## [29] &quot;皇家伯爵紅茶&quot;                                    
+## [30] &quot;蜂蜜桔子茶&quot;                                      
+## [31] &quot;蘋果紅茶&quot;</code></pre>
+<h5 id="d1ls店家在wane_after的菜單">d1ls店家在wane_after的菜單</h5>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" tabindex="-1"></a>menu_wane<span class="sc">$</span>after[<span class="st">&quot;d1ls&quot;</span>]<span class="sc">|&gt;</span>jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()<span class="ot">-&gt;</span>d1ls_wane_after</span>
+<span id="cb133-2"><a href="#cb133-2" tabindex="-1"></a>d1ls_wane_after<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;如果選擇品項售完，由夥伴隨機幫您挑選喔！&quot;               
+##  [2] &quot;圖片僅供參考，依實際門市提供餐點為主。&quot;                 
+##  [3] &quot;如對訂單有任何疑問，請與外送平台客服聯繫，謝謝！&quot;       
+##  [4] &quot;優惠餐組數量有限，售完為止；無法點購即本日結束。&quot;       
+##  [5] &quot;本店使用豬肉之原產地：台灣 本店使用牛肉之原產地：巴拉圭&quot;
+##  [6] &quot;哞~愛文芒果牛奶 \\u3000&quot;                                
+##  [7] &quot;翡翠檸檬青茶\\n&quot;                                        
+##  [8] &quot;蜂蜜檸檬飲\\n&quot;                                          
+##  [9] &quot;愛文芒果可爾必思氣泡\\n&quot;                                
+## [10] &quot;熱琥珀烏龍茶&quot;                                           
+## [11] &quot;摩卡珈琲&quot;                                               
+## [12] &quot;可可伯爵茶歐蕾&quot;                                         
+## [13] &quot;卡布奇諾&quot;                                               
+## [14] &quot;「可爾必思」&quot;                                           
+## [15] &quot;台灣無糖青茶&quot;                                           
+## [16] &quot;美式珈琲&quot;                                               
+## [17] &quot;拿鐵珈琲&quot;                                               
+## [18] &quot;皇家伯爵紅茶&quot;                                           
+## [19] &quot;蜂蜜桔子茶&quot;                                             
+## [20] &quot;蘋果紅茶&quot;                                               
+## [21] &quot;皇家伯爵茶歐蕾&quot;</code></pre>
+<ul>
+<li>由品項名稱可以猜測此間店應該是賣甜甜圈及飲料的店家，但在after的菜單並無出現任何甜甜圈的品項，有可能是品項已售完？</li>
+</ul>
+
+</body>
+</html>
