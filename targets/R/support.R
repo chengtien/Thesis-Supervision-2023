@@ -372,3 +372,49 @@ get_popularItems_from_filepath <- function(filepath) {
     }
   )
 }
+
+calculate_inflation_rate <- function(menu_cost_before, menu_cost_after) {
+  shopcode<-intersect(names(menu_cost_before),names(menu_cost_after))
+  selected_menu_cost_before <- menu_cost_before[names(menu_cost_before) %in% shopcode]
+  selected_menu_cost_after <- menu_cost_after[names(menu_cost_after) %in% shopcode]
+  inflation_rate <- log(selected_menu_cost_after) - log(selected_menu_cost_before)
+  result <- data.frame(shopCode = names(inflation_rate), inflation_rate)
+  return(result)
+}
+
+compute_percentage<-function(filter_inflation_rate){
+  filter_inflation_rate|>dplyr::filter(inflation_rate != 0)|> nrow() -> numberOfShopInflation
+  nrow(filter_inflation_rate)->total
+  (numberOfShopInflation/total) -> percentage
+  return(percentage)
+}
+
+compute_average_menu_cost <- function(menu, PopularItems) {
+  menu|> jsonlite::fromJSON()->shop
+  shopCode <- names(menu)
+  product <- shop$product
+  price <- shop$discountedPrice
+  names(price) <- product
+
+  mean(price[PopularItems], na.rm=T)
+}
+
+compute_all_average_menuCosts <- function(menu_wane_before, popularItems) {
+  average_menu_cost_wane_before <- vector("numeric", length=length(menu_wane_before)) |>
+    setNames(names(menu_wane_before))
+
+  for (i in seq_along(menu_wane_before)) {
+    menu_cost_i <-
+      tryCatch(
+        {
+          popularItems_i = popularItems[[names(menu_wane_before[i])]]
+          compute_average_menu_cost(menu_wane_before[[i]], popularItems_i)
+        },
+        error= function(e){
+          NA
+        }
+      )
+    average_menu_cost_wane_before[[i]] <- menu_cost_i
+  }
+  average_menu_cost_wane_before
+}

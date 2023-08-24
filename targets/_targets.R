@@ -2,6 +2,7 @@ library(targets)
 library(econDV2)
 library(foodDelivery)
 library(knitr)
+library(dplyr)
 source("R/support.R")
 # options(clustermq.scheduler = "multiprocess")
 list(
@@ -124,9 +125,35 @@ list(
   ### before----
   menu_cost_wane_before %t=% compute_all_menuCosts(menu_wane$before, popularItems),
   ### after----
-  menu_cost_wane_after %t=% compute_all_menuCosts(menu_wane$after, popularItems)
+  menu_cost_wane_after %t=% compute_all_menuCosts(menu_wane$after, popularItems),
+  ##4.2 inflation rate  ----
+  ### a.原始資料----
+  inflation_rate_wax %t=% calculate_inflation_rate(menu_cost_wax_before, menu_cost_wax_after),
+  inflation_rate_wane %t=% calculate_inflation_rate(menu_cost_wane_before, menu_cost_wane_after),
+  ### b.移除Nan.Na.Inf的資料----
+  filtered_inflation_rate_wax %t=% {inflation_rate_wax|> dplyr::filter_all(all_vars(!is.na(.) & !is.nan(.) & !is.infinite(.)))},
+  filtered_inflation_rate_wane %t=% {inflation_rate_wane|> dplyr::filter_all(all_vars(!is.na(.) & !is.nan(.) & !is.infinite(.)))},
+  ### c.物價有上漲的店家比例以表格方式呈現----
+  tar_target(
+    InflationRatePercentage,data.frame(period=c("wax","wane"),
+                                       percentage=c(compute_percentage(filtered_inflation_rate_wax),
+                                                    compute_percentage(filtered_inflation_rate_wane)))),
+  ##4.3 店家熱門菜單的平均物價計算  ----
+  average_menu_cost_wax_before %t=% compute_all_average_menuCosts(menu_wax$before, popularItems),
+  average_menu_cost_wax_after %t=% compute_all_average_menuCosts(menu_wax$after, popularItems),
+  average_menu_cost_wane_before %t=% compute_all_average_menuCosts(menu_wane$before, popularItems),
+  average_menu_cost_wane_after %t=% compute_all_average_menuCosts(menu_wane$after, popularItems),
+  ### a.平均物價上漲率----
+  average_inflation_rate_wax %t=% calculate_inflation_rate(average_menu_cost_wax_before,average_menu_cost_wax_after),
+  average_inflation_rate_wane %t=% calculate_inflation_rate(average_menu_cost_wane_before,average_menu_cost_wane_after),
+  ### b.移除Nan.Na.Inf的資料----
+  filtered_average_inflation_rate_wax %t=% {average_inflation_rate_wax|>filter_all(all_vars(!is.na(.) & !is.nan(.) & !is.infinite(.)))},
+  filtered_average_inflation_rate_wane %t=% {average_inflation_rate_wane|>filter_all(all_vars(!is.na(.) & !is.nan(.) & !is.infinite(.)))},
+  ### c.平均物價有上漲的店家佔總店家的比例----
+  tar_target(
+    AverageInflationRatePercentage,data.frame(period=c("wax","wane"),
+                                       percentage=c(compute_percentage(filtered_average_inflation_rate_wax),
+                                                    compute_percentage(filtered_average_inflation_rate_wane))))
+
+
 )
-
-
-
-

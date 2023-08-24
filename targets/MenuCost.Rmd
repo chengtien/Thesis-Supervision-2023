@@ -1,0 +1,574 @@
+---
+title: "Menu Cost"
+author: "Cheng,Tien"
+date: "2023-08-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("R/support.R")
+library(targets)
+library(dplyr)
+tar_load(AverageInflationRatePercentage)
+tar_load(c(popularItems,average_menu_cost_wax_before,average_menu_cost_wax_after,
+           average_menu_cost_wane_before,average_menu_cost_wane_after))
+tar_load(c(filtered_average_inflation_rate_wax,filtered_average_inflation_rate_wane))
+tar_load(c(menu_wax,menu_wane))
+```
+
+#### 計算平均物價有上漲的店家佔總店家比例
+
+-   蛋荒較嚴重時，有較高比例的店家物價是上漲的
+
+```{r}
+AverageInflationRatePercentage
+```
+
+#### 蛋荒較嚴重時期
+
+##### 一、先觀察物價上漲率大於1的店家，總共有68間
+
+```{r}
+filtered_average_inflation_rate_wax|>
+  dplyr::filter(inflation_rate>1)|>
+  arrange(desc(inflation_rate))
+```
+
+##### *再取出物價上漲率最高的三間做觀察*
+
+##### **shopcode為lh86店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["lh86"],
+                               average_menu_cost_wax_after["lh86"]))
+
+```
+
+##### lh86店家的熱門品項
+
+```{r}
+popularItems["lh86"]
+```
+
+##### lh86店家在wane_before的菜單
+
+```{r}
+menu_wax$before["lh86"]|>jsonlite::fromJSON()->lh86_wax_before
+lh86_wax_before$product
+```
+
+##### lh86店家在wane_after的菜單
+
+```{r}
+menu_wax$after["lh86"]|>jsonlite::fromJSON()->lh86_wax_after
+lh86_wax_after$product
+```
+
+-   可以發現在before時只有計算到[胡麻豆腐]的價格
+-   after則是抓取[御上蒲燒鰻魚餐盒、胡麻豆腐]的價格
+-   但熱門品項[聖選之最舒肥牛板腱餐盒、御膳牛五花餐盒、滿肉饗宴牛五花燒肉丼、客選雙拼牛五花燒肉丼]並未出現在wane時期的菜單裡，我猜測這幾個品項是蛋荒較趨緩時才推出的商品
+
+##### **shopcode為e1iw店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["e1iw"],
+                               average_menu_cost_wax_after["e1iw"]))
+```
+
+##### e1iw店家的熱門品項
+
+```{r}
+popularItems["e1iw"]
+```
+
+##### e1iw店家在wane_before的菜單
+
+```{r}
+menu_wax$before["e1iw"]|>jsonlite::fromJSON()->e1iw_wax_before
+e1iw_wax_before$product
+```
+
+##### e1iw店家在wane_after的菜單
+
+```{r}
+menu_wax$after["e1iw"]|>jsonlite::fromJSON()->e1iw_wax_after
+e1iw_wax_after$product
+```
+
+-   可以發現到造成價格的差異來自於品項名稱定義的不同，before的套餐皆無用【】符號。
+-   假設before和after的套餐內容並無實際差別，且在before的"混搭餐"跟after的"腿塊混搭餐"是同樣商品，則抓出價格比較
+
+```{r}
+data.frame(product=c("2號餐","3號餐","4號餐",
+                     "5號全家餐","腿塊混搭餐", "波霸脆薯條(小)"),
+           before=c(140,175,185,399,479,55),
+           after=c(150,189,195,439,509,65))
+```
+
+-   可以發現到熱門品項的價格皆有上漲的趨勢，上漲的幅度大概在10元至40元不等
+
+##### **shopcode為m8pq店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["m8pq"],
+                               average_menu_cost_wax_after["m8pq"]))
+
+```
+
+##### m8pq店家的熱門品項
+
+```{r}
+popularItems["m8pq"]
+```
+
+##### m8pq店家在wane_before的菜單
+
+```{r}
+menu_wax$before["m8pq"]|>jsonlite::fromJSON()->m8pq_wax_before
+m8pq_wax_before$product
+```
+
+##### m8pq店家在wane_after的菜單
+
+```{r}
+menu_wax$after["m8pq"]|>jsonlite::fromJSON()->m8pq_wax_after
+m8pq_wax_after$product
+```
+
+-   可以發現到這間店和第二間一樣都是胖老爹炸雞，熱門品項也大致相同（少了3號餐，多了雞腿的品項）。
+-   比較特別的是熱門品項[波霸脆薯條(小)]並無出現在after的菜單裡，速食店居然會有沒賣薯條的時候。
+-   一樣將它的價格取出並做比較及觀察
+
+```{r}
+data.frame(product=c("2號餐","4號餐","5號全家餐",
+                     "腿塊混搭餐","雞腿","波霸脆薯條(小)"),
+           before=c(140,185,399,479,65,55),
+           after=c(150,195,439,509,70,NA))
+```
+
+-   可以發現到胖老爹熱門套餐類的漲幅都是相同的　　
+-   由於有兩間是相同的胖老爹炸雞，但處於不同分店，再取出第四間店觀察
+
+##### **shopcode為q8sf店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["q8sf"],
+                               average_menu_cost_wax_after["q8sf"]))
+```
+
+##### q8sf店家的熱門品項
+
+```{r}
+popularItems["q8sf"]
+```
+
+##### q8sf店家在wane_before的菜單
+
+```{r}
+menu_wax$before["q8sf"]|>jsonlite::fromJSON()->q8sf_wax_before
+q8sf_wax_before$product
+```
+
+##### q8sf店家在wane_after的菜單
+
+```{r}
+menu_wax$after["q8sf"]|>jsonlite::fromJSON()->q8sf_wax_after
+q8sf_wax_after$product
+```
+
+-   可以觀察到造成物價上漲的原因也是來自於品項定義的不同，在before的名稱裡並無詳述餐點內容，但在after的套餐裡有詳細說明，如[ A套餐：個人份雞肉5配菜、B套餐：半隻雞4配菜、C套餐：半隻雞7配菜]
+-   假設套餐組合的內容物相同，取出價格比較
+
+```{r}
+data.frame(product=c("個人份雞肉【綜合部位】","海帶根X2","A套餐：個人份雞肉5配菜",
+                     "B套餐：半隻雞4配菜","C套餐：半隻雞7配菜","水蓮菜"),
+           before=c(70,25,210,280,360,28),
+           after=c(80,25,225,310,395,35))
+```
+
+-   套餐類皆漲15至35元不等，而水蓮菜的漲幅來到了25%，上漲的幅度驚人
+
+##### 小結
+
+-   會有超過100%的成本上漲率，第一個原因來自於菜單內容的改變，前期還未推出的產品在後期推出，會形成計算平均價格的差異；而第二個原因來自於品項名稱定義的差異，在這種情形前後期菜單是相同的，但在命名上的不同會造成before沒抓到熱門品項而after有抓到，形成平均價格差異甚大的狀況。但第二種情形還能用觀察的再抓出價格做比較
+
+##### 二、觀察物價上漲率小於-1的店家，總共有4間
+
+```{r}
+filtered_average_inflation_rate_wax|>dplyr::filter(inflation_rate<(-1))|>
+  arrange(inflation_rate)
+```
+
+##### 觀察是否跟前一章節相同，是因為品項名稱定義造成
+
+##### **shopcode為uvrf店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["uvrf"],
+                               average_menu_cost_wax_after["uvrf"]))
+```
+
+##### uvrf店家的熱門品項
+
+```{r}
+popularItems["uvrf"]
+```
+
+##### uvrf店家在wane_before的菜單
+
+```{r}
+menu_wax$before["uvrf"]|>jsonlite::fromJSON()->uvrf_wax_before
+uvrf_wax_before$product
+```
+
+##### uvrf店家在wane_after的菜單
+
+```{r}
+menu_wax$after["uvrf"]|>jsonlite::fromJSON()->uvrf_wax_after
+uvrf_wax_after$product
+```
+
+-   可以看出[黑森林蛋糕【六吋】]只出現在before的菜單裡，after只有八吋的黑森林蛋糕，而整模的蛋糕屬於菜單裡較高單價的商品(六吋黑森林蛋糕850、八吋黑森林蛋糕1063)，會使before的平均物價高出許多
+
+##### **shopcode為wdl7店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["wdl7"],
+                               average_menu_cost_wax_after["wdl7"]))
+```
+
+##### wdl7店家的熱門品項
+
+```{r}
+popularItems["wdl7"]
+```
+
+##### wdl7店家在wane_before的菜單
+
+```{r}
+menu_wax$before["wdl7"]|>jsonlite::fromJSON()->wdl7_wax_before
+wdl7_wax_before$product
+```
+
+##### wdl7店家在wane_after的菜單
+
+```{r}
+menu_wax$after["wdl7"]|>jsonlite::fromJSON()->wdl7_wax_after
+wdl7_wax_after$product
+```
+
+-   before和after的菜單有些許不同，而after又只抓取到[香酥雞排（單點）]的資料。想比較這個品項在前後期的價格，但發現如果以[香酥雞排]這個名稱對應，before的價格是50元而after是35元，有點好奇一般店家會一次降15元嗎？（還是內容物不同？）
+
+```{r}
+data.frame(item=wdl7_wax_before$product,
+           price=wdl7_wax_before$discountedPrice)|>
+  dplyr::filter(item=="香酥雞排") -> wd17_before
+data.frame(item=wdl7_wax_after$product,
+           price=wdl7_wax_after$discountedPrice)|>
+  dplyr::filter(item=="香酥雞排（單點）") -> wd17_after
+bind_rows(wd17_before,wd17_after)
+```
+
+##### **shopcode為j0ev店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["j0ev"],
+                               average_menu_cost_wax_after["j0ev"]))
+```
+
+##### j0ev店家的熱門品項
+
+```{r}
+popularItems["j0ev"]
+```
+
+##### j0ev店家在wane_before的菜單
+
+```{r}
+menu_wax$before["j0ev"]|>jsonlite::fromJSON()->j0ev_wax_before
+j0ev_wax_before$product
+```
+
+##### j0ev店家在wane_after的菜單
+
+```{r}
+menu_wax$after["j0ev"]|>jsonlite::fromJSON()->j0ev_wax_after
+j0ev_wax_after$product
+```
+
+-   此間店前後的商品差距甚大，不禁好奇這是哪間店？只有飲料的部分前後期相同，主食方面菜單大改。
+
+##### **shopcode為r8ws店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wax_before["r8ws"],
+                               average_menu_cost_wax_after["r8ws"]))
+```
+
+##### r8ws店家的熱門品項
+
+```{r}
+popularItems["r8ws"]
+```
+
+##### r8ws店家在wane_before的菜單
+
+```{r}
+menu_wax$before["r8ws"]|>jsonlite::fromJSON()->r8ws_wax_before
+r8ws_wax_before$product
+```
+
+##### r8ws店家在wane_after的菜單
+
+```{r}
+menu_wax$after["r8ws"]|>jsonlite::fromJSON()->r8ws_wax_after
+r8ws_wax_after$product
+```
+
+-   after的菜單裡主食都消失了，只剩飲料部分還存在
+
+#### 蛋荒較趨緩時期
+
+##### 一、先觀察物價上漲率大於1的店家，總共有20間
+
+```{r}
+filtered_average_inflation_rate_wane|>
+  dplyr::filter(inflation_rate>1)|>
+  arrange(desc(inflation_rate))
+```
+
+##### *再取出物價上漲率最高的三間做觀察*
+
+##### **shopcode為k5al店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["k5al"],
+                               average_menu_cost_wane_after["k5al"]))
+
+```
+
+##### k5al店家的熱門品項
+
+```{r}
+popularItems["k5al"]
+```
+
+##### k5al店家在wane_before的菜單
+
+```{r}
+menu_wane$before["k5al"]|>jsonlite::fromJSON()->k5al_wane_before
+k5al_wane_before$product
+```
+
+##### k5al店家在wane_after的菜單
+
+```{r}
+menu_wane$after["k5al"]|>jsonlite::fromJSON()->k5al_wane_after
+k5al_wane_after$product
+```
+
+-   可以發現到在after的菜單裡除了中文以外還加入了日文及英文，造成抓取品項名稱的差異
+-   取出前後期價格來比較
+
+```{r}
+k5al_before<- data.frame(item=k5al_wane_before$product,
+                         price=k5al_wane_before$discountedPrice)
+k5al_after<- data.frame(item=k5al_wane_after$product,
+                         price=k5al_wane_after$discountedPrice)
+
+data.frame(product=c("熟成嫩肩牛排300gミスジ Blade steak",
+                     "熟成骰子牛200gサイコロ牛 Diced beef steak",
+                     "熟成骰子牛300gサイコロ牛 Diced beef steak",
+                     "起司漢堡排Hamburg",
+                     "豬排250g/豚ステーキpork chop",
+                     "馬鈴薯沙拉"),
+           before=c(438,328,438,NA,220,39),
+           after=c(438,328,438,NA,220,39))
+
+```
+
+-   假設before的[安格斯混切骰子牛]就是after的[熟成骰子牛]，比較前後期差異可以發現到這間店的價格其實沒有調漲
+
+##### **shopcode為w88l店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["w88l"],
+                               average_menu_cost_wane_after["w88l"]))
+
+```
+
+##### w88l店家的熱門品項
+
+```{r}
+popularItems["w88l"]
+```
+
+##### w88l店家在wane_before的菜單
+
+```{r}
+menu_wane$before["w88l"]|>jsonlite::fromJSON()->w88l_wane_before
+w88l_wane_before$product
+```
+
+##### w88l店家在wane_after的菜單
+
+```{r}
+menu_wane$after["w88l"]|>jsonlite::fromJSON()->w88l_wane_after
+w88l_wane_after$product
+```
+
+-   可以發現這間店的前後期商品內容物不盡相同，before是以大、中、小沙鍋菜販售，after則是除了沙鍋菜外有加入其他肉品做綁售，此間店家的前後期價格較難以同一標準做比較。
+
+##### **shopcode為kccq店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["kccq"],
+                               average_menu_cost_wane_after["kccq"]))
+
+```
+
+##### kccq店家的熱門品項
+
+```{r}
+popularItems["kccq"]
+```
+
+##### kccq店家在wane_before的菜單
+
+```{r}
+menu_wane$before["kccq"]|>jsonlite::fromJSON()->kccq_wane_before
+kccq_wane_before$product
+```
+
+##### kccq店家在wane_after的菜單
+
+```{r}
+menu_wane$after["kccq"]|>jsonlite::fromJSON()->kccq_wane_after
+kccq_wane_after$product
+```
+
+-   可以發現這間店也是因為命名上的差異造成物價上漲率之高，比較兩者價格
+
+```{r}
+kccq_before<- data.frame(item=kccq_wane_before$product,
+                         price=kccq_wane_before$discountedPrice)
+kccq_after<- data.frame(item=kccq_wane_after$product,
+                         price=kccq_wane_after$discountedPrice)
+
+data.frame(product=c("(8葷12素)小鮮肉麻辣拌(乾拌)",
+                     "(8葷12素)小鮮肉麻辣燙(好湯)",
+                     "(3葷12素)小仙女麻辣拌(乾拌)",
+                     "麻辣鴨血","涼皮","三合一湯"),
+           before=c(NA,152.1,NA,45,72.9,49.5),
+           after=c(235,235,205,NA,NA,NA))
+```
+
+-   前後期菜單有改變，唯一在前後期都有的商品是[小鮮肉麻辣燙]，但漲了83元，讓我好奇兩個品項名稱雖然一樣但內容物是否不同？
+
+##### 二、觀察物價上漲率小於-1的店家，總共有11間
+
+```{r}
+filtered_average_inflation_rate_wane|>dplyr::filter(inflation_rate<(-1))|>
+  arrange(inflation_rate)
+```
+
+##### **shopcode為u1r2店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["u1r2"],
+                               average_menu_cost_wane_after["u1r2"]))
+```
+
+##### u1r2店家的熱門品項
+
+```{r}
+popularItems["u1r2"]
+```
+
+##### u1r2店家在wane_before的菜單
+
+```{r}
+menu_wane$before["u1r2"]|>jsonlite::fromJSON()->u1r2_wane_before
+u1r2_wane_before$product
+```
+
+##### u1r2店家在wane_after的菜單
+
+```{r}
+menu_wane$after["u1r2"]|>jsonlite::fromJSON()->u1r2_wane_after
+u1r2_wane_after$product
+```
+
+-   after的菜單裡只剩配菜及飲料，主食皆無出現，難以比較前後期價格差異
+
+##### **shopcode為we7f店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["we7f"],
+                               average_menu_cost_wane_after["we7f"]))
+```
+
+##### we7f店家的熱門品項
+
+```{r}
+popularItems["we7f"]
+```
+
+##### we7f店家在wane_before的菜單
+
+```{r}
+menu_wane$before["we7f"]|>jsonlite::fromJSON()->we7f_wane_before
+we7f_wane_before$product
+```
+
+##### we7f店家在wane_after的菜單
+
+```{r}
+menu_wane$after["we7f"]|>jsonlite::fromJSON()->we7f_wane_after
+we7f_wane_after$product
+```
+
+-   前後期菜單有些許不同，但比較兩期皆有的主食[半隻鴨]，價格皆為800，並無作價格上的調整
+
+##### **shopcode為d1ls店家**
+
+```{r}
+data.frame(period=c("before","after"),
+                 averageCost=c(average_menu_cost_wane_before["d1ls"],
+                               average_menu_cost_wane_after["d1ls"]))
+```
+
+##### d1ls店家的熱門品項
+
+```{r}
+popularItems["d1ls"]
+```
+
+##### d1ls店家在wane_before的菜單
+
+```{r}
+menu_wane$before["d1ls"]|>jsonlite::fromJSON()->d1ls_wane_before
+d1ls_wane_before$product
+```
+
+##### d1ls店家在wane_after的菜單
+
+```{r}
+menu_wane$after["d1ls"]|>jsonlite::fromJSON()->d1ls_wane_after
+d1ls_wane_after$product
+```
+- 由品項名稱可以猜測此間店應該是賣甜甜圈及飲料的店家，但在after的菜單並無出現任何甜甜圈的品項，有可能是品項已售完？
