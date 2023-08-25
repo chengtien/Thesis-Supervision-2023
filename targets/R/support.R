@@ -418,3 +418,34 @@ compute_all_average_menuCosts <- function(menu_wane_before, popularItems) {
   }
   average_menu_cost_wane_before
 }
+construct_popularItems_common_across_threePeriods <- function(menu_wax, menu_wane, popularItems) {
+
+  names(menu_wax$before) |>
+    intersect(
+      names(menu_wax$after)
+    ) |>
+    intersect(
+      names(menu_wane$after)
+    ) -> allShopCodes
+
+  FindAllPrice <- vector("list", length(allShopCodes)) |>
+    setNames(allShopCodes)
+  for (i in seq_along(allShopCodes)) {
+    shopCodeX <- allShopCodes[[i]]
+    item <- popularItems[[shopCodeX]]
+    menu_wax_before_parsed <- parseMenu_allowNA(menu_wax$before[[shopCodeX]])
+    menu_wax_after_parsed <- parseMenu_allowNA(menu_wax$after[[shopCodeX]])
+    menu_wane_after_parsed <- parseMenu_allowNA(menu_wane$after[[shopCodeX]])
+
+    # 檢查item是否出現在對應的三期菜單中
+    item |>
+      intersect(menu_wax_before_parsed$product) |>
+      intersect(menu_wax_after_parsed$product) |>
+      intersect(menu_wane_after_parsed$product) -> FindAllPrice[[i]]
+  }
+  FindAllPrice
+}
+parseMenu_allowNA <- function(menuX) {
+  if(is.na(menuX)) return(character(0))
+  jsonlite::fromJSON(menuX)
+}

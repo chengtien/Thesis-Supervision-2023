@@ -153,7 +153,17 @@ list(
   tar_target(
     AverageInflationRatePercentage,data.frame(period=c("wax","wane"),
                                        percentage=c(compute_percentage(filtered_average_inflation_rate_wax),
-                                                    compute_percentage(filtered_average_inflation_rate_wane))))
-
+                                                    compute_percentage(filtered_average_inflation_rate_wane)))),
+  ##4.4 三期均有熱門商品品項----
+  ### a. 各店家可追踪品項----
+  persistent_popularItems %t=% construct_popularItems_common_across_threePeriods(
+    menu_wax = menu_wax,
+    menu_wane = menu_wane,
+    popularItems = popularItems
+  ),
+  ### b. 各店家品項數 ----
+  persistent_popularItems_count %t=% purrr::map_int(persistent_popularItems, length),
+  ### c. 可追踪品項數統計 ----
+  table_persistent_popularItems_count %t=% table(persistent_popularItems_count)
 
 )
