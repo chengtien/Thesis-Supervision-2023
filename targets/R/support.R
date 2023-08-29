@@ -514,3 +514,40 @@ get_mealOffering_shopCodes <- function(wax_data_before) {
     ) |>
     dplyr::pull(shopCode)
 }
+compute_inflationRate_logX_minus_logY <- function(.before, .after) {
+
+  cpi_wax <- log(.after)-log(.before)
+
+  cpi_wax |>
+    is.nan() -> pickNan
+  pickFinite <- abs(cpi_wax) != Inf
+
+  cpi_wax[!pickNan & pickFinite] |>
+    na.omit() -> cpi_wax_valid
+  cpi_wax_valid
+
+}
+
+summarise_inflationRate <- function(cpi_wax_valid) {
+  cpi_wax_valid |>
+    cut(
+      c(-Inf, -1, -1e-7, 1e-7, 1, Inf),
+      ordered_result = T
+    )  -> fct_cpi
+  levels(fct_cpi)[c(2,3,4)] <- c("(-1,0)","0","(0,1]")
+  table(fct_cpi)
+}
+
+getTrackingShopCodes_for_mealOfferingShops <- function(list_datas) {
+  # Meal offering shops that exist for three periods
+
+  purrr::map(
+    seq_along(list_datas),
+    ~get_mealOffering_shopCodes(list_datas[[.x]])
+  ) -> list_mealOfferingShopCodes
+
+  purrr::reduce(
+    list_mealOfferingShopCodes,
+    intersect
+  )
+}
