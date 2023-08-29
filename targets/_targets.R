@@ -171,6 +171,10 @@ list(
     mealOffering_shopCodes,
     readRDS("data/mealOffering_shopCodes.Rds")
   ),
+  menu_wax_offerMeal %t=% {wax_data_before |>
+    dplyr::filter(
+      !pick_shops_offering_no_meal(category)
+    )},
   #### business_hour ----
   tar_target(business_hour_types,
              readRDS("data/business_hour_types.Rds"))
