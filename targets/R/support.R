@@ -441,7 +441,7 @@ construct_popularItems_common_across_threePeriods <- function(menu_wax, menu_wan
     item |>
       intersect(menu_wax_before_parsed$product) |>
       intersect(menu_wax_after_parsed$product) |>
-      intersect(menu_wane_after_parsed$product) -> FindAllPrice[[i]]
+      intersect(menu_wane_after_parsed$product) -> FindAllPrice[[allShopCodes[[i]]]]
   }
   FindAllPrice
 }
@@ -506,4 +506,11 @@ pick_shops_offering_no_meal <- function(category) {
   category |>
     remove_otherpairings_in_drinkShop() |>
     stringr::str_detect("\\[,?\\]")
+}
+get_mealOffering_shopCodes <- function(wax_data_before) {
+  wax_data_before |>
+    dplyr::filter(
+      !pick_shops_offering_no_meal(category)
+    ) |>
+    dplyr::pull(shopCode)
 }
