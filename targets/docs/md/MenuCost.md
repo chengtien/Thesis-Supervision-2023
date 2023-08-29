@@ -1069,48 +1069,54 @@ Cheng,Tien
 
 #### 細分persistent_popularItems_count的型態
 
+    ## persistent_popularItems_count
+    ##     0     1     2     3     4     5     6 
+    ##  5557   835  1644  2274  3491  6366 17710
+
 ##### **以是否為正餐來討論**
 
-##### 在三期中產品名稱相同的店家，有多少比例是販售正餐的
+##### 在三期中產品名稱相同的店家，販售正餐的比例
 
-| persistent_popularItems_count | mealOffering_percentage |
-|------------------------------:|------------------------:|
-|                             0 |               0.6998380 |
-|                             1 |               0.7149701 |
-|                             2 |               0.6879562 |
-|                             3 |               0.7132806 |
-|                             4 |               0.7043827 |
-|                             5 |               0.7075086 |
-|                             6 |               0.7026539 |
+| ShopCount | Probability |
+|:----------|------------:|
+| 6         |   0.4671956 |
+| 5         |   0.1688280 |
+| 4         |   0.0921738 |
+| 3         |   0.0608200 |
+| 2         |   0.0425740 |
+| 1         |   0.0223007 |
+| 0         |   0.1461079 |
+
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
 
 ##### **以營業時段來討論**
 
 ##### 六個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-71-1.png)<!-- -->
 
 ##### 五個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-70-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-72-1.png)<!-- -->
 
 ##### 四個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-71-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-73-1.png)<!-- -->
 
 ##### 三個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-72-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-74-1.png)<!-- -->
 
 ##### 二個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-73-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-75-1.png)<!-- -->
 
 ##### 一個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-74-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-76-1.png)<!-- -->
 
 ##### 零個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-75-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-77-1.png)<!-- -->
 
 - 可以發現到：不論店家有幾項熱門產品在三期命名相同，這些店家的營業時段多集中在Dinner、Lunch以及Bartime上
