@@ -497,7 +497,7 @@ pie_plot_business_hours<-function(intersection_counts){
 remove_otherpairings_in_drinkShop <- function(category) {
   category |>
     stringr::str_remove_all(
-      "'(甜點|咖啡|蛋糕|甜甜圈|豆花|甜點)'"
+      "'(甜點|咖啡|蛋糕|甜甜圈|豆花|甜點|飲料)'"
     ) |>
     stringr::str_remove_all("\\s") |>
     stringr::str_remove_all(",,")
@@ -505,5 +505,5 @@ remove_otherpairings_in_drinkShop <- function(category) {
 pick_shops_offering_no_meal <- function(category) {
   category |>
     remove_otherpairings_in_drinkShop() |>
-    stringr::str_detect("\\[,?('飲料')?\\]")
+    stringr::str_detect("\\[,?\\]")
 }
