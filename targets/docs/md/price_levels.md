@@ -7,10 +7,15 @@
   
 ## Inflation of Restaurant Dinning Cost
 
-|                 | (-Inf,-1]| (-1,0)|     0| (0,1]| (1, Inf]|
-|:----------------|---------:|------:|-----:|-----:|--------:|
-|summary_cpi_wax  |         0|    279| 11469|  3504|        0|
-|summary_cpi_wane |         0|    263| 12579|  2410|        0|
+  * Shops that exist through all periods.   
+  * Shops who have constant 6 popular items.   
+  * Shops who offer meals.   
+
+|                 | (-Inf,-1]| (-1,0)|     0| (0,1]| (1, Inf]| mean_inflationRates|
+|:----------------|---------:|------:|-----:|-----:|--------:|-------------------:|
+|summary_cpi_wax  |         0|    279| 11469|  3504|        0|           0.0150506|
+|summary_cpi_wane |         0|    263| 12579|  2410|        0|           0.0102684|
+
 
 ## Demand and supply
 
