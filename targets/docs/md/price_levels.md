@@ -7,14 +7,14 @@
   
 ## Inflation of Restaurant Dinning Cost
 
-  * Shops that exist through all periods.   
+  * Shops that exist through out all periods (totally duration: two quarters).   
   * Shops who have constant 6 popular items.   
   * Shops who offer meals.   
 
-|                 | (-Inf,-1]| (-1,0)|     0| (0,1]| (1, Inf]| mean_inflationRates|
+|                 | (-Inf,-1]| (-1,0)|     0| (0,1]| (1, Inf]| mean_inflationRates (%)|
 |:----------------|---------:|------:|-----:|-----:|--------:|-------------------:|
-|summary_cpi_wax  |         0|    279| 11469|  3504|        0|           0.0150506|
-|summary_cpi_wane |         0|    263| 12579|  2410|        0|           0.0102684|
+|summary_cpi_wax  |         0|    279| 11469|  3504|        0|           1.50506|
+|summary_cpi_wane |         0|    263| 12579|  2410|        0|           1.02684|
 
 
 ## Demand and supply
