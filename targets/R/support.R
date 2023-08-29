@@ -449,3 +449,48 @@ parseMenu_allowNA <- function(menuX) {
   if(is.na(menuX)) return(character(0))
   jsonlite::fromJSON(menuX)
 }
+
+peristentPopularItems_mealOffering<-function(shopcode_count,count){
+  names(persistent_popularItems_count[persistent_popularItems_count==count]) ->shopcode_count
+  shopcode_count|>intersect(mealOffering_shopCodes)->shopcode_count_mealOffering
+  length(shopcode_count_mealOffering)/length(shopcode_count)
+}
+
+shop_business_hour<-function(types){
+  names_with <- vector("list",length = length(business_hour_types))|>
+    setNames(names(business_hour_types))
+  for (i in 1:length(business_hour_types)) {
+    names_with[[i]] <- business_hour_types[[i]][grep(types, business_hour_types[[i]])]
+  }
+  names_with <- names_with[sapply(names_with, length) > 0]
+  return(names_with)
+}
+
+intersection_counts <- function(shopcode_count) {
+  c(
+    sum(length(intersect(shopcode_count, names(names_with_breakfast)))),
+    sum(length(intersect(shopcode_count, names(names_with_lunch)))),
+    sum(length(intersect(shopcode_count, names(names_with_dinner)))),
+    sum(length(intersect(shopcode_count, names(names_with_bartime)))),
+    sum(length(intersect(shopcode_count, names(names_with_brunch)))),
+    sum(length(intersect(shopcode_count, names(names_with_midnight)))),
+    sum(length(intersect(shopcode_count, names(names_with_hightea))))
+  )}
+
+pie_plot_business_hours<-function(intersection_counts){
+  periods <- c("Breakfast", "Lunch", "Dinner", "Bartime", "Brunch", "Midnight", "Hightea")
+  data <- data.frame(periods, intersection_counts)
+  data <- data[order(data$intersection_counts, decreasing = TRUE), ]
+  data$percentage <- (data$intersection_counts / sum(data$intersection_counts)) * 100
+  my_colors <- c("#4682A9", "#749BC2", "#91C8E4", "#FFEADD", "#DFD7BF","#F2EAD3", "#F5F5F5")
+  ggplot(data, aes(x = "", y = percentage, fill = reorder(periods, -intersection_counts))) +
+    geom_bar(stat = "identity", width = 1) +
+    scale_fill_manual(values = my_colors) +
+    coord_polar(theta = "y") +
+    geom_text(aes(label = paste(round(percentage, 1), "%\n", periods)),
+              position = position_stack(vjust = 0.5),
+              size=3) +
+    labs(title = "Percentages by Period",fill="") +
+    theme_void()
+
+}

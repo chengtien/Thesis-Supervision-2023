@@ -164,6 +164,15 @@ list(
   ### b. 各店家品項數 ----
   persistent_popularItems_count %t=% purrr::map_int(persistent_popularItems, length),
   ### c. 可追踪品項數統計 ----
-  table_persistent_popularItems_count %t=% table(persistent_popularItems_count)
+  table_persistent_popularItems_count %t=% table(persistent_popularItems_count),
+  ### d. 以多個面向觀察 ----
+  #### mealoffering ----
+  tar_target(
+    mealOffering_shopCodes,
+    readRDS("data/mealOffering_shopCodes.Rds")
+  ),
+  #### business_hour ----
+  tar_target(business_hour_types,
+             readRDS("data/business_hour_types.Rds"))
 
 )
