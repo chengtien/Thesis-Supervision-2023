@@ -383,7 +383,7 @@ calculate_inflation_rate <- function(menu_cost_before, menu_cost_after) {
 }
 
 compute_percentage<-function(filter_inflation_rate){
-  filter_inflation_rate|>dplyr::filter(inflation_rate != 0)|> nrow() -> numberOfShopInflation
+  filter_inflation_rate|>dplyr::filter(inflation_rate > 0)|> nrow() -> numberOfShopInflation
   nrow(filter_inflation_rate)->total
   (numberOfShopInflation/total) -> percentage
   return(percentage)

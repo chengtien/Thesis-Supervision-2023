@@ -29,12 +29,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 -   蛋荒較嚴重時，有較高比例的店家物價是上漲的
 
-
 |period | percentage|
 |:------|----------:|
-|wax    |  0.3938977|
-|wane   |  0.3545240|
+|wax    |  0.2871515|
+|wane   |  0.2509112|
 
+```{r}
+AverageInflationRatePercentage<-data.frame(period=c("wax","wane"),
+                                           percentage=c(compute_percentage(filtered_average_inflation_rate_wax),compute_percentage(filtered_average_inflation_rate_wane)))
+```
 
 #### wax物價上漲率之四分位值
 
