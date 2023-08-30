@@ -10,26 +10,155 @@ knitr::opts_chunk$set(echo = TRUE)
 source("R/support.R")
 library(targets)
 library(dplyr)
+library(ggplot2)
+library(gridExtra)
 tar_load(AverageInflationRatePercentage)
 tar_load(c(popularItems,average_menu_cost_wax_before,average_menu_cost_wax_after,
            average_menu_cost_wane_before,average_menu_cost_wane_after))
 tar_load(c(filtered_average_inflation_rate_wax,filtered_average_inflation_rate_wane))
 tar_load(c(menu_wax,menu_wane))
+tar_load(c(persistent_popularItems_count,table_persistent_popularItems_count))
+tar_load(mealOffering_shopCodes)
+tar_load(business_hour_types)
+tar_load(menu_wax_offerMeal)
+tar_load(tracking_shopCodes_mealOffering)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 #### 計算平均物價有上漲的店家佔總店家比例
 
 -   蛋荒較嚴重時，有較高比例的店家物價是上漲的
 
+
+|period | percentage|
+|:------|----------:|
+|wax    |  0.3938977|
+|wane   |  0.3545240|
+
+
+#### wax物價上漲率之四分位值
+
+|     |           |
+|:----|----------:|
+|0%   | -1.5629639|
+|25%  |  0.0000000|
+|50%  |  0.0000000|
+|75%  |  0.0170736|
+|100% |  1.6669364|
+
 ```{r}
-AverageInflationRatePercentage
+data <- data.frame(values = filtered_average_inflation_rate_wax$inflation_rate)
+ggplot(data, aes(x = values)) +
+  geom_histogram(binwidth = 1,breaks=seq(-1.5, 1.5, by = 0.02), fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Inflation Rates") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 20),
+  )
 ```
+
+
+#### wane物價上漲率之四分位值
+|     |           |
+|:----|----------:|
+|0%   | -1.8050047|
+|25%  |  0.0000000|
+|50%  |  0.0000000|
+|75%  |  0.0016175|
+|100% |  2.0152448|
+
+```{r}
+data <- data.frame(values = filtered_average_inflation_rate_wane$inflation_rate)
+ggplot(data, aes(x = values)) +
+  geom_histogram(binwidth = 1,breaks=seq(-1.5, 1.5, by = 0.02), fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Inflation Rates") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 20),
+  )
+```
+
+
+
+
+
+
 
 #### 蛋荒較嚴重時期
 
 ##### 一、先觀察物價上漲率大於1的店家，總共有68間
+|shopCode | inflation_rate|
+|:--------|--------------:|
+|lh86     |       1.666936|
+|e1iw     |       1.544980|
+|m8pq     |       1.513661|
+|q8sf     |       1.470082|
+|seuv     |       1.463255|
+|d1ls     |       1.392725|
+|a1ef     |       1.377926|
+|b2np     |       1.377926|
+|d4hj     |       1.377926|
+|i3cc     |       1.377926|
+|s5te     |       1.377926|
+|y0yj     |       1.377926|
+|ynqu     |       1.377926|
+|z4nx     |       1.377926|
+|z5va     |       1.377926|
+|pr81     |       1.368276|
+|b8db     |       1.356694|
+|e3jc     |       1.356694|
+|e7bo     |       1.356694|
+|jedi     |       1.356694|
+|q6yu     |       1.356694|
+|lsd5     |       1.346513|
+|z7ko     |       1.318491|
+|z3bf     |       1.301379|
+|y2de     |       1.297883|
+|y9tu     |       1.297883|
+|z4wd     |       1.297883|
+|a0ba     |       1.297767|
+|y7lb     |       1.272566|
+|y1ys     |       1.270593|
+|y9yy     |       1.270593|
+|a5ji     |       1.251946|
+|z0zd     |       1.237684|
+|cysg     |       1.234744|
+|b9xu     |       1.217724|
+|awvt     |       1.178655|
+|o2kj     |       1.163151|
+|vl3z     |       1.152680|
+|pefn     |       1.150135|
+|s6bd     |       1.144223|
+|z2km     |       1.144223|
+|lz5w     |       1.140634|
+|y7ht     |       1.139434|
+|p5au     |       1.137979|
+|artg     |       1.124208|
+|t4bt     |       1.124208|
+|z9uh     |       1.124208|
+|t2jb     |       1.092371|
+|zmrx     |       1.091177|
+|n4xa     |       1.086190|
+|mi87     |       1.078410|
+|y4id     |       1.060872|
+|bj3q     |       1.058538|
+|tceg     |       1.041160|
+|d3sc     |       1.039642|
+|l0q6     |       1.039642|
+|xdj5     |       1.036009|
+|c2dr     |       1.019872|
+|r2is     |       1.014143|
+|u9kk     |       1.005522|
+|t7wo     |       1.001929|
+|d0gl     |       1.000428|
+|d1sd     |       1.000428|
+|e7yc     |       1.000428|
+|e9ke     |       1.000428|
+|l6pf     |       1.000428|
+|z0rb     |       1.000428|
+|z7je     |       1.000428|
 
-```{r}
+```{r,include=FALSE}
 filtered_average_inflation_rate_wax|>
   dplyr::filter(inflation_rate>1)|>
   arrange(desc(inflation_rate))
@@ -38,13 +167,12 @@ filtered_average_inflation_rate_wax|>
 ##### *再取出物價上漲率最高的三間做觀察*
 
 ##### **shopcode為lh86店家**
+|period | averageCost|
+|:------|-----------:|
+|before |      39.690|
+|after  |     210.195|
 
-```{r}
-data.frame(period=c("before","after"),
-                 averageCost=c(average_menu_cost_wax_before["lh86"],
-                               average_menu_cost_wax_after["lh86"]))
 
-```
 
 ##### lh86店家的熱門品項
 
@@ -71,12 +199,12 @@ lh86_wax_after$product
 -   但熱門品項[聖選之最舒肥牛板腱餐盒、御膳牛五花餐盒、滿肉饗宴牛五花燒肉丼、客選雙拼牛五花燒肉丼]並未出現在wane時期的菜單裡，我猜測這幾個品項是蛋荒較趨緩時才推出的商品
 
 ##### **shopcode為e1iw店家**
+|period | averageCost|
+|:------|-----------:|
+|before |     55.0000|
+|after  |    257.8333|
 
-```{r}
-data.frame(period=c("before","after"),
-                 averageCost=c(average_menu_cost_wax_before["e1iw"],
-                               average_menu_cost_wax_after["e1iw"]))
-```
+
 
 ##### e1iw店家的熱門品項
 
@@ -92,18 +220,29 @@ e1iw_wax_before$product
 ```
 
 ##### e1iw店家在wane_after的菜單
-
 ```{r}
-menu_wax$after["e1iw"]|>jsonlite::fromJSON()->e1iw_wax_after
+menu_wax$after["e1iw"]|>jsonlite::fromJSON()-> e1iw_wax_after
 e1iw_wax_after$product
+
 ```
+
+
 
 -   可以發現到造成價格的差異來自於品項名稱定義的不同，before的套餐皆無用【】符號。
 -   假設before和after的套餐內容並無實際差別，且在before的"混搭餐"跟after的"腿塊混搭餐"是同樣商品，則抓出價格比較
 
-```{r}
+|product        | before| after|
+|:--------------|------:|-----:|
+|2號餐          |    140|   150|
+|3號餐          |    175|   189|
+|4號餐          |    185|   195|
+|5號全家餐      |    399|   439|
+|腿塊混搭餐     |    479|   509|
+|波霸脆薯條(小) |     55|    65|
+
+```{r,include=FALSE}
 data.frame(product=c("2號餐","3號餐","4號餐",
-                     "5號全家餐","腿塊混搭餐", "波霸脆薯條(小)"),
+                     "5號全家餐","腿塊混搭餐","波霸脆薯條(小)"),
            before=c(140,175,185,399,479,55),
            after=c(150,189,195,439,509,65))
 ```
@@ -111,8 +250,12 @@ data.frame(product=c("2號餐","3號餐","4號餐",
 -   可以發現到熱門品項的價格皆有上漲的趨勢，上漲的幅度大概在10元至40元不等
 
 ##### **shopcode為m8pq店家**
+|period | averageCost|
+|:------|-----------:|
+|before |        60.0|
+|after  |       272.6|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["m8pq"],
                                average_menu_cost_wax_after["m8pq"]))
@@ -143,7 +286,16 @@ m8pq_wax_after$product
 -   比較特別的是熱門品項[波霸脆薯條(小)]並無出現在after的菜單裡，速食店居然會有沒賣薯條的時候。
 -   一樣將它的價格取出並做比較及觀察
 
-```{r}
+|product        | before| after|
+|:--------------|------:|-----:|
+|2號餐          |    140|   150|
+|4號餐          |    185|   195|
+|5號全家餐      |    399|   439|
+|腿塊混搭餐     |    479|   509|
+|雞腿           |     65|    70|
+|波霸脆薯條(小) |     55|    NA|
+
+```{r,include=FALSE}
 data.frame(product=c("2號餐","4號餐","5號全家餐",
                      "腿塊混搭餐","雞腿","波霸脆薯條(小)"),
            before=c(140,185,399,479,65,55),
@@ -154,8 +306,13 @@ data.frame(product=c("2號餐","4號餐","5號全家餐",
 -   由於有兩間是相同的胖老爹炸雞，但處於不同分店，再取出第四間店觀察
 
 ##### **shopcode為q8sf店家**
+|period | averageCost|
+|:------|-----------:|
+|before |     41.0000|
+|after  |    178.3333|
 
-```{r}
+
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["q8sf"],
                                average_menu_cost_wax_after["q8sf"]))
@@ -184,7 +341,16 @@ q8sf_wax_after$product
 -   可以觀察到造成物價上漲的原因也是來自於品項定義的不同，在before的名稱裡並無詳述餐點內容，但在after的套餐裡有詳細說明，如[ A套餐：個人份雞肉5配菜、B套餐：半隻雞4配菜、C套餐：半隻雞7配菜]
 -   假設套餐組合的內容物相同，取出價格比較
 
-```{r}
+|product             | before| after|
+|:-------------------|------:|-----:|
+|個人份雞肉【綜合部位】  |     70|    80|
+|海帶根X2            |     25|    25|
+|A套餐：個人份雞肉5配菜 |    210|   225|
+|B套餐：半隻雞4配菜  |    280|   310|
+|C套餐：半隻雞7配菜  |    360|   395|
+|水蓮菜              |     28|    35|
+
+```{r,include=FALSE}
 data.frame(product=c("個人份雞肉【綜合部位】","海帶根X2","A套餐：個人份雞肉5配菜",
                      "B套餐：半隻雞4配菜","C套餐：半隻雞7配菜","水蓮菜"),
            before=c(70,25,210,280,360,28),
@@ -198,8 +364,14 @@ data.frame(product=c("個人份雞肉【綜合部位】","海帶根X2","A套餐�
 -   會有超過100%的成本上漲率，第一個原因來自於菜單內容的改變，前期還未推出的產品在後期推出，會形成計算平均價格的差異；而第二個原因來自於品項名稱定義的差異，在這種情形前後期菜單是相同的，但在命名上的不同會造成before沒抓到熱門品項而after有抓到，形成平均價格差異甚大的狀況。但第二種情形還能用觀察的再抓出價格做比較
 
 ##### 二、觀察物價上漲率小於-1的店家，總共有4間
+|     |shopCode | inflation_rate|
+|:----|:--------|--------------:|
+|uvrf |uvrf     |      -1.562964|
+|wdl7 |wdl7     |      -1.386294|
+|j0ev |j0ev     |      -1.252763|
+|r8ws |r8ws     |      -1.206193|
 
-```{r}
+```{r,include=FALSE}
 filtered_average_inflation_rate_wax|>dplyr::filter(inflation_rate<(-1))|>
   arrange(inflation_rate)
 ```
@@ -207,8 +379,12 @@ filtered_average_inflation_rate_wax|>dplyr::filter(inflation_rate<(-1))|>
 ##### 觀察是否跟前一章節相同，是因為品項名稱定義造成
 
 ##### **shopcode為uvrf店家**
+|period | averageCost|
+|:------|-----------:|
+|before |    329.3333|
+|after  |     69.0000|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["uvrf"],
                                average_menu_cost_wax_after["uvrf"]))
@@ -237,8 +413,12 @@ uvrf_wax_after$product
 -   可以看出[黑森林蛋糕【六吋】]只出現在before的菜單裡，after只有八吋的黑森林蛋糕，而整模的蛋糕屬於菜單裡較高單價的商品(六吋黑森林蛋糕850、八吋黑森林蛋糕1063)，會使before的平均物價高出許多
 
 ##### **shopcode為wdl7店家**
+|period | averageCost|
+|:------|-----------:|
+|before |         140|
+|after  |          35|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["wdl7"],
                                average_menu_cost_wax_after["wdl7"]))
@@ -266,7 +446,12 @@ wdl7_wax_after$product
 
 -   before和after的菜單有些許不同，而after又只抓取到[香酥雞排（單點）]的資料。想比較這個品項在前後期的價格，但發現如果以[香酥雞排]這個名稱對應，before的價格是50元而after是35元，有點好奇一般店家會一次降15元嗎？（還是內容物不同？）
 
-```{r}
+|item           | price|
+|:--------------|-----:|
+|香酥雞排       |    50|
+|香酥雞排（單點） |    35|
+
+```{r,include=FALSE}
 data.frame(item=wdl7_wax_before$product,
            price=wdl7_wax_before$discountedPrice)|>
   dplyr::filter(item=="香酥雞排") -> wd17_before
@@ -277,8 +462,12 @@ bind_rows(wd17_before,wd17_after)
 ```
 
 ##### **shopcode為j0ev店家**
+|period | averageCost|
+|:------|-----------:|
+|before |         105|
+|after  |          30|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["j0ev"],
                                average_menu_cost_wax_after["j0ev"]))
@@ -307,8 +496,12 @@ j0ev_wax_after$product
 -   此間店前後的商品差距甚大，不禁好奇這是哪間店？只有飲料的部分前後期相同，主食方面菜單大改。
 
 ##### **shopcode為r8ws店家**
+|period | averageCost|
+|:------|-----------:|
+|before |    150.3333|
+|after  |     45.0000|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wax_before["r8ws"],
                                average_menu_cost_wax_after["r8ws"]))
@@ -339,8 +532,30 @@ r8ws_wax_after$product
 #### 蛋荒較趨緩時期
 
 ##### 一、先觀察物價上漲率大於1的店家，總共有20間
+|shopCode | inflation_rate|
+|:--------|--------------:|
+|k5al     |       2.015245|
+|w88l     |       1.937942|
+|kccq     |       1.394327|
+|r8ws     |       1.360407|
+|vd0e     |       1.324292|
+|l37o     |       1.303895|
+|wdl7     |       1.280934|
+|il9w     |       1.264462|
+|jg2r     |       1.243582|
+|edqs     |       1.238401|
+|j05a     |       1.176179|
+|wp6x     |       1.167169|
+|cii4     |       1.143374|
+|dgj1     |       1.140915|
+|cf1p     |       1.120591|
+|v3nv     |       1.069150|
+|jz50     |       1.059472|
+|chpw     |       1.040343|
+|z1xk     |       1.029619|
+|pb2n     |       1.023939|
 
-```{r}
+```{r,include=FALSE}
 filtered_average_inflation_rate_wane|>
   dplyr::filter(inflation_rate>1)|>
   arrange(desc(inflation_rate))
@@ -349,8 +564,12 @@ filtered_average_inflation_rate_wane|>
 ##### *再取出物價上漲率最高的三間做觀察*
 
 ##### **shopcode為k5al店家**
+|period | averageCost|
+|:------|-----------:|
+|before |        39.0|
+|after  |       292.6|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["k5al"],
                                average_menu_cost_wane_after["k5al"]))
@@ -380,7 +599,16 @@ k5al_wane_after$product
 -   可以發現到在after的菜單裡除了中文以外還加入了日文及英文，造成抓取品項名稱的差異
 -   取出前後期價格來比較
 
-```{r}
+|product                                   | before| after|
+|:-----------------------------------------|------:|-----:|
+|熟成嫩肩牛排300gミスジ Blade steak        |    438|   438|
+|熟成骰子牛200gサイコロ牛 Diced beef steak |    328|   328|
+|熟成骰子牛300gサイコロ牛 Diced beef steak |    438|   438|
+|起司漢堡排Hamburg                         |     NA|    NA|
+|豬排250g/豚ステーキpork chop              |    220|   220|
+|馬鈴薯沙拉                                |     39|    39|
+
+```{r,include=FALSE}
 k5al_before<- data.frame(item=k5al_wane_before$product,
                          price=k5al_wane_before$discountedPrice)
 k5al_after<- data.frame(item=k5al_wane_after$product,
@@ -400,8 +628,12 @@ data.frame(product=c("熟成嫩肩牛排300gミスジ Blade steak",
 -   假設before的[安格斯混切骰子牛]就是after的[熟成骰子牛]，比較前後期差異可以發現到這間店的價格其實沒有調漲
 
 ##### **shopcode為w88l店家**
+|period | averageCost|
+|:------|-----------:|
+|before |        45.0|
+|after  |       312.5|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["w88l"],
                                average_menu_cost_wane_after["w88l"]))
@@ -431,8 +663,12 @@ w88l_wane_after$product
 -   可以發現這間店的前後期商品內容物不盡相同，before是以大、中、小沙鍋菜販售，after則是除了沙鍋菜外有加入其他肉品做綁售，此間店家的前後期價格較難以同一標準做比較。
 
 ##### **shopcode為kccq店家**
+|period | averageCost|
+|:------|-----------:|
+|before |        55.8|
+|after  |       225.0|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["kccq"],
                                average_menu_cost_wane_after["kccq"]))
@@ -461,7 +697,16 @@ kccq_wane_after$product
 
 -   可以發現這間店也是因為命名上的差異造成物價上漲率之高，比較兩者價格
 
-```{r}
+|product                         | before| after|
+|:-------------------------------|------:|-----:|
+|(8葷12素)小鮮肉麻辣拌(乾拌)   |     NA|   235|
+|(8葷12素)小鮮肉麻辣燙(好湯) |  152.1|   235|
+|(3葷12素)小仙女麻辣拌(乾拌)  |     NA|   205|
+|麻辣鴨血                        |   45.0|    NA|
+|涼皮                            |   72.9|    NA|
+|三合一湯                        |   49.5|    NA|
+
+```{r,include=FALSE}
 kccq_before<- data.frame(item=kccq_wane_before$product,
                          price=kccq_wane_before$discountedPrice)
 kccq_after<- data.frame(item=kccq_wane_after$product,
@@ -478,15 +723,32 @@ data.frame(product=c("(8葷12素)小鮮肉麻辣拌(乾拌)",
 -   前後期菜單有改變，唯一在前後期都有的商品是[小鮮肉麻辣燙]，但漲了83元，讓我好奇兩個品項名稱雖然一樣但內容物是否不同？
 
 ##### 二、觀察物價上漲率小於-1的店家，總共有11間
+|shopCode | inflation_rate|
+|:--------|--------------:|
+|u1r2     |      -1.805005|
+|we7f     |      -1.582409|
+|d1ls     |      -1.494508|
+|cysg     |      -1.293129|
+|pv5o     |      -1.273706|
+|wegr     |      -1.259543|
+|alib     |      -1.258040|
+|b5cu     |      -1.168680|
+|yrcc     |      -1.140915|
+|y1nj     |      -1.089684|
+|b5vu     |      -1.054621|
 
-```{r}
+```{r,include=FALSE}
 filtered_average_inflation_rate_wane|>dplyr::filter(inflation_rate<(-1))|>
   arrange(inflation_rate)
 ```
 
 ##### **shopcode為u1r2店家**
+|period | averageCost|
+|:------|-----------:|
+|before |       182.4|
+|after  |        30.0|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["u1r2"],
                                average_menu_cost_wane_after["u1r2"]))
@@ -515,8 +777,12 @@ u1r2_wane_after$product
 -   after的菜單裡只剩配菜及飲料，主食皆無出現，難以比較前後期價格差異
 
 ##### **shopcode為we7f店家**
+|period | averageCost|
+|:------|-----------:|
+|before |         146|
+|after  |          30|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["we7f"],
                                average_menu_cost_wane_after["we7f"]))
@@ -545,8 +811,12 @@ we7f_wane_after$product
 -   前後期菜單有些許不同，但比較兩期皆有的主食[半隻鴨]，價格皆為800，並無作價格上的調整
 
 ##### **shopcode為d1ls店家**
+|period | averageCost|
+|:------|-----------:|
+|before |         312|
+|after  |          70|
 
-```{r}
+```{r,include=FALSE}
 data.frame(period=c("before","after"),
                  averageCost=c(average_menu_cost_wane_before["d1ls"],
                                average_menu_cost_wane_after["d1ls"]))
@@ -572,3 +842,166 @@ menu_wane$after["d1ls"]|>jsonlite::fromJSON()->d1ls_wane_after
 d1ls_wane_after$product
 ```
 - 由品項名稱可以猜測此間店應該是賣甜甜圈及飲料的店家，但在after的菜單並無出現任何甜甜圈的品項，有可能是品項已售完？
+
+
+#### 細分persistent_popularItems_count的型態
+```{r}
+table_persistent_popularItems_count
+```
+
+
+##### **以是否為正餐來討論**
+```{r,include=FALSE}
+names(persistent_popularItems_count[persistent_popularItems_count==6]) ->shopcode_count_6
+names(persistent_popularItems_count[persistent_popularItems_count==5]) ->shopcode_count_5
+names(persistent_popularItems_count[persistent_popularItems_count==4]) ->shopcode_count_4
+names(persistent_popularItems_count[persistent_popularItems_count==3]) ->shopcode_count_3
+names(persistent_popularItems_count[persistent_popularItems_count==2]) ->shopcode_count_2
+names(persistent_popularItems_count[persistent_popularItems_count==1]) ->shopcode_count_1
+names(persistent_popularItems_count[persistent_popularItems_count==0]) ->shopcode_count_0
+```
+
+##### 在三期中產品名稱相同的店家，販售正餐的比例
+
+
+|ShopCount | Probability|
+|:---------|-----------:|
+|6         |   0.4671750|
+|5         |   0.1688294|
+|4         |   0.0922318|
+|3         |   0.0607884|
+|2         |   0.0426008|
+|1         |   0.0222448|
+|0         |   0.1461299|
+
+```{r}
+total_shops <- sum(
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_6)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_5)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_4)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_3)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_2)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_1)),
+    length(intersect(tracking_shopCodes_mealOffering, shopcode_count_0))
+  )
+probabilities <- c(
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_6)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_5)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_4)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_3)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_2)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_1)) / total_shops,
+  length(intersect(tracking_shopCodes_mealOffering, shopcode_count_0)) / total_shops
+)
+
+data <- data.frame(
+  ShopCount = c("6", "5", "4", "3", "2", "1", "0"),
+  Probability = probabilities
+)
+
+ggplot(data, aes(x = ShopCount, y = Probability)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Number of Popular Items in Shop",
+       y = "Probability of Shops with Meal Offering",
+       ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+```
+
+
+
+##### **以營業時段來討論**
+```{r}
+#breakfast時段的店家
+names_with_breakfast<-shop_business_hour("breakfast")
+
+#lunch時段的店家
+names_with_lunch<-shop_business_hour("lunch")
+
+#dinner時段的店家
+names_with_dinner<-shop_business_hour("dinner")
+
+#brunch時段的店家
+names_with_brunch<-shop_business_hour("brunch")
+
+#hightea時段的店家
+names_with_hightea<-shop_business_hour("hightea")
+
+#bartime時段的店家
+names_with_bartime<-shop_business_hour("bartime")
+
+#midnigjt時段的店家
+names_with_midnight<-shop_business_hour("midnight")
+
+periods <- c("Breakfast", "Lunch", "Dinner", "Bartime", "Brunch", "Midnight", "Hightea")
+```
+
+##### 六個品項的店家當中的營業時間分布    
+```{r}
+intersection_count_6<-intersection_counts(shopcode_count_6)
+pie_plot_business_hours(intersection_count_6)
+
+```
+
+##### 五個品項的店家當中的營業時間分布
+```{r}
+intersection_count_5<-intersection_counts(shopcode_count_5)
+pie_plot_business_hours(intersection_count_5)
+```
+
+
+##### 四個品項的店家當中的營業時間分布
+```{r}
+intersection_count_4<-intersection_counts(shopcode_count_4)
+pie_plot_business_hours(intersection_count_4)
+```
+
+##### 三個品項的店家當中的營業時間分布
+```{r}
+intersection_count_3<-intersection_counts(shopcode_count_3)
+pie_plot_business_hours(intersection_count_3)
+```
+
+##### 二個品項的店家當中的營業時間分布
+```{r}
+intersection_count_2<-intersection_counts(shopcode_count_2)
+pie_plot_business_hours(intersection_count_2)
+```
+
+##### 一個品項的店家當中的營業時間分布
+```{r}
+intersection_count_1<-intersection_counts(shopcode_count_1)
+pie_plot_business_hours(intersection_count_1)
+```
+
+##### 零個品項的店家當中的營業時間分布
+```{r}
+intersection_count_0<-intersection_counts(shopcode_count_0)
+pie_plot_business_hours(intersection_count_0)
+```
+
+
+- 可以發現到：不論店家有幾項熱門產品在三期命名相同，這些店家的營業時段多集中在Dinner、Lunch以及Bartime上
+
+
+
+
+##### 選出在breakfast、lunch、dinner提供正餐的shopcode名單
+|business_hour | numberOfShop|
+|:-------------|------------:|
+|breakfast     |         6224|
+|lunch         |        23229|
+|dinner        |        24814|
+
+
+```{r,include=FALSE}
+offermeal_breakfast<-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering)
+offermeal_lunch<-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering)
+offermeal_dinner<-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering)
+data.frame(business_hour=c("breakfast","lunch","dinner"),
+           numberOfShop=c(length(offermeal_breakfast),length(offermeal_lunch),
+                          length(offermeal_dinner)))
+```
+
+
