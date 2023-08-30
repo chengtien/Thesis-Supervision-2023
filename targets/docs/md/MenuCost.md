@@ -22,7 +22,7 @@ Cheng,Tien
 | 75%  |  0.0170736 |
 | 100% |  1.6669364 |
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 #### wane物價上漲率之四分位值
 
@@ -34,7 +34,7 @@ Cheng,Tien
 | 75%  |  0.0016175 |
 | 100% |  2.0152448 |
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 #### 蛋荒較嚴重時期
 
@@ -1071,7 +1071,7 @@ Cheng,Tien
 
     ## persistent_popularItems_count
     ##     0     1     2     3     4     5     6 
-    ##  5557   835  1644  2274  3491  6366 17710
+    ##  2720   835  1644  2274  3491  6366 17710
 
 ##### **以是否為正餐來討論**
 
@@ -1079,44 +1079,53 @@ Cheng,Tien
 
 | ShopCount | Probability |
 |:----------|------------:|
-| 6         |   0.4671956 |
-| 5         |   0.1688280 |
-| 4         |   0.0921738 |
-| 3         |   0.0608200 |
-| 2         |   0.0425740 |
-| 1         |   0.0223007 |
-| 0         |   0.1461079 |
+| 6         |   0.4671750 |
+| 5         |   0.1688294 |
+| 4         |   0.0922318 |
+| 3         |   0.0607884 |
+| 2         |   0.0426008 |
+| 1         |   0.0222448 |
+| 0         |   0.1461299 |
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-76-1.png)<!-- -->
+\`\`\`
 
 ##### **以營業時段來討論**
 
 ##### 六個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-71-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-78-1.png)<!-- -->
 
 ##### 五個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-72-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-79-1.png)<!-- -->
 
 ##### 四個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-73-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-80-1.png)<!-- -->
 
 ##### 三個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-74-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-81-1.png)<!-- -->
 
 ##### 二個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-75-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-82-1.png)<!-- -->
 
 ##### 一個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-76-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-83-1.png)<!-- -->
 
 ##### 零個品項的店家當中的營業時間分布
 
-![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-77-1.png)<!-- -->
+![](/../../raw/main/docs/md/MenuCost_files/figure-gfm/unnamed-chunk-84-1.png)<!-- -->
 
 - 可以發現到：不論店家有幾項熱門產品在三期命名相同，這些店家的營業時段多集中在Dinner、Lunch以及Bartime上
+
+##### 選出在breakfast、lunch、dinner提供正餐的shopcode名單
+
+| business_hour | numberOfShop |
+|:--------------|-------------:|
+| breakfast     |         6224 |
+| lunch         |        23229 |
+| dinner        |        24814 |
