@@ -551,3 +551,35 @@ getTrackingShopCodes_for_mealOfferingShops <- function(list_datas) {
     intersect
   )
 }
+
+summarise_price<-function(period){
+  period|>cut(c(0,200,400,600,800,1000,1200,1400,1600,1800,2000,Inf))->fct_price
+  levels(fct_price)[5:11]<-c("(800,1000]","(1000,1200]","(1200,1400]","(1400,1600]",
+                             "(1600,1800]","(1800,2000]","(2000,Inf]")
+  table(fct_price)
+}
+
+summarise_AvgPrice<-function(period){
+  period|>cut(c(0,50,100,150,200,250,Inf))->fct_price
+  table(fct_price)
+}
+
+summary_byGroup<-function(menu_cost_wax_before,wax_data_before,mealoffering_6_shopcode){
+  data1<-data.frame(shopCode=names(menu_cost_wax_before[mealoffering_6_shopcode]),
+                    price=menu_cost_wax_before[mealoffering_6_shopcode])
+
+  wax_data_before|>select(shopCode,county)->shopcodeCounty
+
+
+  shopcodeCounty %>%
+    dplyr::filter(shopCode %in% mealoffering_6_shopcode)->shopcodeCounty
+  shopcodeCounty|>left_join(data1,by="shopCode")|>
+    mutate(county = ifelse(shopCode == "y1ew", "新北市", county))->shopcodeCounty
+
+  shopcodeCounty %>%
+    group_by(county) %>%
+    summarise(avg_price = mean(price, na.rm = TRUE))->summary
+
+
+
+}

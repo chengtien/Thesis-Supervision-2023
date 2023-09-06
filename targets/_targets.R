@@ -255,5 +255,37 @@ list(
     cbind(
       tb_cpi_summary, mean_inflationRates
     )
-  }
+  },
+  ##5.4 穩定六項熱門商品且賣正餐餐廳 熱門商品價格分布 ----
+  ### a.總價格 ----
+  summary_price_wax_before %t=% summarise_price(menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+  summary_price_wax_after %t=% summarise_price(menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+  summary_price_wane_after %t=% summarise_price(menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems]),
+  tb_price_summary %t=% { rbind(
+    summary_price_wax_before,
+    summary_price_wax_after,
+    summary_price_wane_after)|>
+      cbind(mean=c(mean(menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+                  mean(menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+                  mean(menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])))},
+  ### b.平均價格----
+  summary_AvgPrice_wax_before %t=% summarise_AvgPrice(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+  summary_AvgPrice_wax_after %t=% summarise_AvgPrice(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+  summary_AvgPrice_wane_after %t=% summarise_AvgPrice(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems]),
+  tb_AvgPrice_summary %t=% {rbind(
+    summary_AvgPrice_wax_before,
+    summary_AvgPrice_wax_after,
+    summary_AvgPrice_wane_after)|>cbind(mean=c(mean(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+                                               mean(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+                                               mean(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])))},
+  ##5.4 以城市來作分類 ----
+  summary_byGroup_wax_before %t=% summary_byGroup(menu_cost_wax_before,wax_data_before,tracking_shopCodes_mealOffering_6popularItems),
+  summary_byGroup_wax_after %t=% summary_byGroup(menu_cost_wax_after,wax_data_after,tracking_shopCodes_mealOffering_6popularItems),
+  summary_byGroup_wane_after %t=% summary_byGroup(menu_cost_wane_after,wane_data_after,tracking_shopCodes_mealOffering_6popularItems),
+
+  tb_price_byGroup_summary %t=% data.frame(county=summary_byGroup_wax_before$county,
+                                           wax_before_avgPrice=summary_byGroup_wax_before$avg_price,
+                                           wax_after_avgPrice=summary_byGroup_wax_after$avg_price,
+                                           wane_after_avgPrice=summary_byGroup_wane_after$avg_price)
+
 )
