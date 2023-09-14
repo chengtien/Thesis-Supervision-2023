@@ -552,6 +552,15 @@ getTrackingShopCodes_for_mealOfferingShops <- function(list_datas) {
   )
 }
 
+summarise_inflationRate2 <- function(cpi_wax_valid) {
+  cpi_wax_valid |>
+    cut(
+      c(-Inf,-0.2,-0.1, -1e-7, 1e-7,0.1, 0.2,Inf),
+      ordered_result = T
+    )  -> fct_cpi
+  levels(fct_cpi)[c(1:7)] <- c("(-Inf,-0.2]","(-0.2,-0.1]","(-0.1,0]","0","(0,0.1]","(0.1,0.2]","(0.2,Inf]")
+  table(fct_cpi)
+}
 summarise_price<-function(period){
   period|>cut(c(0,200,400,600,800,1000,1200,1400,1600,1800,2000,Inf))->fct_price
   levels(fct_price)[5:11]<-c("(800,1000]","(1000,1200]","(1200,1400]","(1400,1600]",

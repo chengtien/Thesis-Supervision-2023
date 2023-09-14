@@ -278,14 +278,34 @@ list(
     summary_AvgPrice_wane_after)|>cbind(mean=c(mean(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
                                                mean(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
                                                mean(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])))},
-  ##5.4 以城市來作分類 ----
-  summary_byGroup_wax_before %t=% summary_byGroup(menu_cost_wax_before,wax_data_before,tracking_shopCodes_mealOffering_6popularItems),
-  summary_byGroup_wax_after %t=% summary_byGroup(menu_cost_wax_after,wax_data_after,tracking_shopCodes_mealOffering_6popularItems),
-  summary_byGroup_wane_after %t=% summary_byGroup(menu_cost_wane_after,wane_data_after,tracking_shopCodes_mealOffering_6popularItems),
+  ##5.5 以城市來作分類之CPI ----
+  average_inflation_rate_wax_mealoffering_6 %t=% {average_inflation_rate_wax|>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
+  average_inflation_rate_wane_mealoffering_6 %t=% {average_inflation_rate_wane|>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
+  shopcodeCounty %t=% {wax_data_before|>select(shopCode,county)|>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
 
-  tb_price_byGroup_summary %t=% data.frame(county=summary_byGroup_wax_before$county,
-                                           wax_before_avgPrice=summary_byGroup_wax_before$avg_price,
-                                           wax_after_avgPrice=summary_byGroup_wax_after$avg_price,
-                                           wane_after_avgPrice=summary_byGroup_wane_after$avg_price)
+  CPI_byGroup_wax %t=% {
+    average_inflation_rate_wax_mealoffering_6|>
+      left_join(shopcodeCounty,by="shopCode")|>
+      mutate(county = ifelse(shopCode == "y1ew", "新北市", county))
+  },
+  CPI_byGroup_wane %t=% {
+    average_inflation_rate_wane_mealoffering_6|>
+      left_join(shopcodeCounty,by="shopCode")|>
+      mutate(county = ifelse(shopCode == "y1ew", "新北市", county))
+  },
+  CPI_summary_byGroup_wax %t=% {CPI_byGroup_wax|>
+      group_by(county)|>
+      summarise(mean_inflationRate=mean(inflation_rate))},
+  CPI_summary_byGroup_wane %t=% {CPI_byGroup_wane|>
+      group_by(county)|>
+      summarise(mean_inflationRate=mean(inflation_rate))},
+  tb_CPI_summary_byGroup %t=% {
+    data.frame(county=CPI_summary_byGroup_wax$county,
+               CPI_wax=CPI_summary_byGroup_wax$mean_inflationRate,
+               CPI_wane=CPI_summary_byGroup_wane$mean_inflationRate)
+    }
 
 )
