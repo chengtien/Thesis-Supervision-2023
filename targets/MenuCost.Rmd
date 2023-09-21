@@ -14,6 +14,7 @@ library(ggplot2)
 library(gridExtra)
 library(plotly)
 library(tidyr)
+library(readxl)
 tar_load(AverageInflationRatePercentage)
 tar_load(c(popularItems,average_menu_cost_wax_before,average_menu_cost_wax_after,
            average_menu_cost_wane_before,average_menu_cost_wane_after))
@@ -1006,40 +1007,7 @@ pie_plot_business_hours(intersection_count_0)
 
 
 
-##### 選出在breakfast、lunch、dinner提供正餐的shopcode名單
-|business_hour | numberOfShop|
-|:-------------|------------:|
-|breakfast     |         6224|
-|lunch         |        23229|
-|dinner        |        24814|
 
-
-```{r,include=FALSE}
-offermeal_breakfast<-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering)
-offermeal_lunch<-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering)
-offermeal_dinner<-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering)
-data.frame(business_hour=c("breakfast","lunch","dinner"),
-           numberOfShop=c(length(offermeal_breakfast),length(offermeal_lunch),
-                          length(offermeal_dinner)))
-```
-
-##### 選出在breakfast、lunch、dinner提供正餐且持續6項的shopcode名單
-
-|business_hour | numberOfShop|
-|:-------------|------------:|
-|breakfast     |         3514|
-|lunch         |        12398|
-|dinner        |        12954|
-
-```{r,include=FALSE}
-offermeal_6items_breakfast<-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering_6popularItems)
-offermeal_6items_lunch<-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering_6popularItems)
-offermeal_6items_dinner<-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering_6popularItems)
-data.frame(business_hour=c("breakfast","lunch","dinner"),
-           numberOfShop=c(length(offermeal_6items_breakfast),
-                          length(offermeal_6items_lunch),
-                          length(offermeal_6items_dinner)))
-```
 
 #### 以持續六項且供應正餐的店家作討論
 |                 | (-Inf,-0.2]| (-0.2,-0.1]| (-0.1,0]|     0| (0,0.1]| (0.1,0.2]| (0.2,Inf]| mean_inflationRates|
@@ -1112,9 +1080,101 @@ grid.arrange(histogram_wax, histogram_wane, ncol = 2)
 ```
 
 
-- 從圖中可以發現到，在蛋荒嚴重時有11469間店家是物價上漲率為0(以2月3日為前期,4月27日為後期)，而在蛋荒趨緩時增為12579間店家(以4月27日為前期,7月26日為後期)，且在蛋荒趨緩時，物價上漲率大於0的店家數量有減少的趨勢。
+- 從圖中可以發現到，在蛋荒嚴重時有11469間店家是物價上漲率為0(以2月3日為前期,4月27日為後期)，而在蛋荒趨緩時增為12579間店家(以4月27日為前期,7月26日為後期)，增加了1110間餐廳。在蛋荒趨緩時，物價上漲率大於0的店家數量有減少的趨勢。
 
 
+
+
+
+```{r,include=FALSE}
+offermeal_breakfast<-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering)
+offermeal_lunch<-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering)
+offermeal_dinner<-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering)
+data.frame(business_hour=c("breakfast","lunch","dinner"),
+           numberOfShop=c(length(offermeal_breakfast),length(offermeal_lunch),
+                          length(offermeal_dinner)))
+```
+
+##### 選出在breakfast、lunch、dinner提供正餐且持續6項的shopcode名單
+
+|business_hour | numberOfShop|
+|:-------------|------------:|
+|breakfast     |         3514|
+|lunch         |        12398|
+|dinner        |        12954|
+
+```{r,include=FALSE}
+offermeal_6items_breakfast<-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering_6popularItems)
+offermeal_6items_lunch<-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering_6popularItems)
+offermeal_6items_dinner<-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering_6popularItems)
+data.frame(business_hour=c("breakfast","lunch","dinner"),
+           numberOfShop=c(length(offermeal_6items_breakfast),
+                          length(offermeal_6items_lunch),
+                          length(offermeal_6items_dinner)))
+```
+
+
+##### 以營業時間來討論
+
+```{r}
+intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Breakfast
+intersect(names(names_with_lunch),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Lunch
+intersect(names(names_with_dinner),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Dinner
+```
+
+|business_hour |   wax_cpi|  wane_cpi|
+|:-------------|---------:|---------:|
+|breakfast     | 0.0185956| 0.0095789|
+|lunch         | 0.0145903| 0.0096474|
+|dinner        | 0.0138364| 0.0103931|
+
+```{r}
+average_inflation_rate_wax_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Breakfast)->wax_cpi_breakfast
+average_inflation_rate_wane_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Breakfast)->wane_cpi_breakfast
+
+average_inflation_rate_wax_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Lunch)->wax_cpi_lunch
+average_inflation_rate_wane_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Lunch)->wane_cpi_lunch
+
+average_inflation_rate_wax_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Dinner)->wax_cpi_dinner
+average_inflation_rate_wane_mealoffering_6|>
+  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Dinner)->wane_cpi_dinner
+
+data.frame(business_hour=c("breakfast","lunch","dinner"),
+           CPI_wax=c(mean(wax_cpi_breakfast$inflation_rate),
+                     mean(wax_cpi_lunch$inflation_rate),
+                     mean(wax_cpi_dinner$inflation_rate)),
+           CPI_wane=c(mean(wane_cpi_breakfast$inflation_rate),
+                     mean(wane_cpi_lunch$inflation_rate),
+                     mean(wane_cpi_dinner$inflation_rate)))->df
+
+df|>tidyr::pivot_longer(cols=c("CPI_wax","CPI_wane"),names_to = "Period",values_to = "inflation_rate")->data_long2
+data_long2$Period<-factor(data_long2$Period,
+                            levels = c("CPI_wax", "CPI_wane"))
+
+```
+
+
+ 
+
+```{r}
+plot_ly(data_long2, x = ~Period, y = ~inflation_rate,color = ~business_hour,text = ~paste0(business_hour, ": ", scales::percent(inflation_rate)),hoverinfo="text") %>%
+  add_lines(line = list(width = 3)) %>%
+  layout(title = "Inflation Rate by Business Hour",
+         xaxis = list(title = "Period"),
+         yaxis = list(title = "Inflation Rate"),
+         hovermode = "closest"
+         ) %>%
+  add_markers()%>%
+  layout(showlegend = FALSE)
+```
+
+- 以早午晚餐三個時段來觀察，可以看出在蛋荒嚴重時期，早餐時段的店家之物價上漲率在1.8596%左右，是三個時段當中最高的。這是否跟早餐店需要用到大量的雞蛋有關聯?
+- 蛋荒趨緩時期物價上漲率最高的則是晚餐時段的店家，約在1.0393%，猜測是否跟菜價上漲有關?而早餐時段的物價上漲率則有放緩的趨勢，來到0.9579%
 
 
 ##### 以城市分類並計算CPI
@@ -1266,73 +1326,14 @@ plot_ly(municipality_CPI, x = ~Period, y = ~InflationRate,
 - 而台北市在wane時期是所有直轄市中上漲幅度最小的，只有0.9%
 
 
-##### 以營業時間來討論
-
-```{r}
-intersect(names(names_with_breakfast),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Breakfast
-intersect(names(names_with_lunch),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Lunch
-intersect(names(names_with_dinner),tracking_shopCodes_mealOffering_6popularItems)->shopCodes_mealOffering_6popularItems_Dinner
-```
-
-|business_hour |   wax_cpi|  wane_cpi|
-|:-------------|---------:|---------:|
-|breakfast     | 0.0185956| 0.0095789|
-|lunch         | 0.0145903| 0.0096474|
-|dinner        | 0.0138364| 0.0103931|
-
-```{r}
-average_inflation_rate_wax_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Breakfast)->wax_cpi_breakfast
-average_inflation_rate_wane_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Breakfast)->wane_cpi_breakfast
-
-average_inflation_rate_wax_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Lunch)->wax_cpi_lunch
-average_inflation_rate_wane_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Lunch)->wane_cpi_lunch
-
-average_inflation_rate_wax_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Dinner)->wax_cpi_dinner
-average_inflation_rate_wane_mealoffering_6|>
-  dplyr::filter(shopCode %in% shopCodes_mealOffering_6popularItems_Dinner)->wane_cpi_dinner
-
-data.frame(business_hour=c("breakfast","lunch","dinner"),
-           CPI_wax=c(mean(wax_cpi_breakfast$inflation_rate),
-                     mean(wax_cpi_lunch$inflation_rate),
-                     mean(wax_cpi_dinner$inflation_rate)),
-           CPI_wane=c(mean(wane_cpi_breakfast$inflation_rate),
-                     mean(wane_cpi_lunch$inflation_rate),
-                     mean(wane_cpi_dinner$inflation_rate)))->df
-
-df|>tidyr::pivot_longer(cols=c("CPI_wax","CPI_wane"),names_to = "Period",values_to = "inflation_rate")->data_long2
-data_long2$Period<-factor(data_long2$Period,
-                            levels = c("CPI_wax", "CPI_wane"))
-
-```
 
 
- 
-
-```{r}
-plot_ly(data_long2, x = ~Period, y = ~inflation_rate,color = ~business_hour,text = ~paste0(business_hour, ": ", scales::percent(inflation_rate)),hoverinfo="text") %>%
-  add_lines(line = list(width = 3)) %>%
-  layout(title = "Inflation Rate by Business Hour",
-         xaxis = list(title = "Period"),
-         yaxis = list(title = "Inflation Rate"),
-         hovermode = "closest"
-         ) %>%
-  add_markers()%>%
-  layout(showlegend = FALSE)
-```
-
-- 以早午晚餐三個時段來觀察，可以看出在蛋荒嚴重時期，早餐時段的店家之物價上漲率在1.8596%左右，是三個時段當中最高的。這是否跟早餐店需要用到大量的雞蛋有關聯?
-- 蛋荒趨緩時期物價上漲率最高的則是晚餐時段的店家，約在1.0393%，而早餐時段的物價上漲率則有放緩的趨勢，來到0.9579%
 
 
 ##### 主計處公布之資料
 ###### 抓出主計處公布之外食費與其他外送平台餐廳可能所需成本(包括穀類及其製品、肉類、肉類製品、蛋類、水產品、蔬菜、食用油、調味品)的消費者物價指數，並使用2月、4月及7月資料進行比較
 ```{r,warning=FALSE}
-category_CPI_Index<-readxl::read_xlsx("C:/NTPU/thesis/category_CPI_Index.xlsx")
+category_CPI_Index<-readxl::read_xlsx("DepartmentOfBudget/category_CPI_Index.xlsx")
 
 data.frame(category=category_CPI_Index$category,
            CPI_wax=log(category_CPI_Index$Apr)-log(category_CPI_Index$Feb),
@@ -1357,3 +1358,227 @@ plot_ly(category_InflationRate_long, x = ~Period, y = ~InflationRate,color = ~ca
 ```
 
 - 除了蔬菜有較高的漲幅、蛋類有明顯跌幅外，其餘種類皆無太明顯的漲跌幅。而外食費的上漲幅度也趨緩，從1.4677%降至0.8878%。
+
+
+##### 台北市政府主計處公布之資料
+```{r}
+food_CPI_Index_Taipei<-read_xlsx("DepartmentOfBudget/Taipei/food_CPI_Index.xlsx")
+filtered_Taipei <- long_data %>% filter(county == "臺北市")
+data.frame(category=food_CPI_Index_Taipei$category,
+           CPI_wax=log(food_CPI_Index_Taipei$Apr)-log(food_CPI_Index_Taipei$Feb),
+           CPI_wane=log(food_CPI_Index_Taipei$Jul)-log(food_CPI_Index_Taipei$Apr))->food_InflationRate_Taipei
+
+food_InflationRate_Taipei|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->food_InflationRate_Taipei_long
+food_InflationRate_Taipei_long$Period<-factor(food_InflationRate_Taipei_long$Period,levels = c("CPI_wax","CPI_wane"))
+
+
+plot_ly(food_InflationRate_Taipei_long, x = ~Period, y = ~InflationRate,
+                text = ~paste0("臺北市政府公布之食物類:", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3))%>%
+  add_trace(
+    data = filtered_Taipei,
+    x = ~Period,
+    y = ~InflationRate,
+    type = "scatter",
+    mode = "lines",
+    line = list(width = 3),
+    text = ~paste0( "外送平台統計: ", scales::percent(InflationRate)), 
+    hoverinfo = "text"
+  )%>%
+  layout(
+    title = "Inflation Rate ",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )
+```
+- 比較臺北市政府主計處公布之食物類CPI指數與Foodpanda平台統計資料做比較
+- 四月至七月跌幅從何而來？蛋類供給量增加，蛋價明顯下跌
+
+```{r}
+category_CPI_Index_Taipei<-readxl::read_xlsx("DepartmentOfBudget/Taipei/category_CPI_Index_Taipei.xlsx")
+
+data.frame(category=category_CPI_Index_Taipei$category,
+           CPI_wax=log(category_CPI_Index_Taipei$Apr)-log(category_CPI_Index_Taipei$Feb),
+           CPI_wane=log(category_CPI_Index_Taipei$Jul)-log(category_CPI_Index_Taipei$Apr))->category_InflationRate_Taipei
+
+category_InflationRate_Taipei|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->category_InflationRate_Taipei_long
+category_InflationRate_Taipei_long$Period<-factor(category_InflationRate_Taipei_long$Period,levels = c("CPI_wax","CPI_wane"))
+category_InflationRate_Taipei_long$category<-factor(category_InflationRate_Taipei_long$category,levels = c("穀類及其製品","肉類","肉類製品","水產品","食用油","調味品","外食費","蛋類","蔬菜"
+))
+color_vector4<-c("#FAF1E4","#FAF0E6","#DAC0A3","#EFB495",
+                 "#FFEECC","#FFDDCC","#4682A9","#35A29F","#C63D2F")
+
+
+
+
+
+filtered_Taipei <- long_data %>% filter(county == "臺北市")
+
+plot_ly(category_InflationRate_Taipei_long, x = ~Period, y = ~InflationRate,
+                color = ~category, colors = color_vector4,
+                text = ~paste0(category, ": ", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3)) %>%
+  layout(
+    title = "Inflation Rate by Category",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )%>%
+  add_markers()
+
+
+```
+
+
+##### 台中市政府主計處公布之資料
+```{r}
+food_CPI_Index_Taichung<-read_xlsx("DepartmentOfBudget/Taichung/food_CPI_index_Taicgung.xlsx")
+filtered_Taichung <- long_data %>% filter(county == "臺中市")
+data.frame(category=food_CPI_Index_Taichung$category,
+           CPI_wax=log(food_CPI_Index_Taichung$Apr)-log(food_CPI_Index_Taichung$Feb),
+           CPI_wane=log(food_CPI_Index_Taichung$Jul)-log(food_CPI_Index_Taichung$Apr))->food_InflationRate_Taichung
+
+food_InflationRate_Taichung|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->food_InflationRate_Taichung_long
+food_InflationRate_Taichung_long$Period<-factor(food_InflationRate_Taichung_long$Period,levels = c("CPI_wax","CPI_wane"))
+
+
+plot_ly(food_InflationRate_Taichung_long, x = ~Period, y = ~InflationRate,
+                text = ~paste0("臺中市政府公布之食物類:", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3))%>%
+  add_trace(
+    data = filtered_Taichung,
+    x = ~Period,
+    y = ~InflationRate,
+    type = "scatter",
+    mode = "lines",
+    line = list(width = 3),
+    text = ~paste0( "外送平台統計: ", scales::percent(InflationRate)), 
+    hoverinfo = "text"
+  )%>%
+  layout(
+    title = "Inflation Rate ",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )
+```
+- 在蛋荒嚴重時期，Foodpanda平台上臺中市的CPI上漲率為1.79%，台中市政府公布的CPI上漲率為1.8%，兩者差異不大。但在蛋荒趨緩時期，Foodpanda上的CPI上漲率在1.13%，而台中市政府主計處公布的為-1.2。
+
+```{r}
+
+
+category_CPI_Index_Taichung<-readxl::read_xlsx("DepartmentOfBudget/Taichung/category_CPI_Index_Taichung.xlsx")
+
+data.frame(category=category_CPI_Index_Taichung$category,
+           CPI_wax=log(category_CPI_Index_Taichung$Apr)-log(category_CPI_Index_Taichung$Feb),
+           CPI_wane=log(category_CPI_Index_Taichung$Jul)-log(category_CPI_Index_Taichung$Apr))->category_InflationRate_Taichung
+
+category_InflationRate_Taichung|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->category_InflationRate_Taichung_long
+category_InflationRate_Taichung_long$Period<-factor(category_InflationRate_Taichung_long$Period,levels = c("CPI_wax","CPI_wane"))
+category_InflationRate_Taichung_long$category<-factor(category_InflationRate_Taichung_long$category,levels = c("穀類及其製品","肉類","肉類製品","水產品","食用油","調味品","外食費","蛋類","蔬菜"
+))
+color_vector4<-c("#FAF1E4","#FAF0E6","#DAC0A3","#EFB495",
+                 "#FFEECC","#FFDDCC","#4682A9","#35A29F","#C63D2F")
+
+
+
+
+plot_ly(category_InflationRate_Taichung_long, x = ~Period, y = ~InflationRate,
+                color = ~category, colors = color_vector4,
+                text = ~paste0(category, ": ", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3)) %>%
+  layout(
+    title = "Inflation Rate by Category",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )%>%
+  add_markers()
+
+```
+- 台中市的蔬菜類CPI漲幅較小
+
+##### 新北市政府主計處公布之資料
+```{r}
+food_CPI_Index_NewTaipei<-read_xlsx("DepartmentOfBudget/NewTaipei/food_CPI_Index_NewTaipei.xlsx")
+filtered_NewTaipei <- long_data %>% filter(county == "新北市")
+data.frame(category=food_CPI_Index_NewTaipei$category,
+           CPI_wax=log(food_CPI_Index_NewTaipei$Apr)-log(food_CPI_Index_NewTaipei$Feb),
+           CPI_wane=log(food_CPI_Index_NewTaipei$Jul)-log(food_CPI_Index_NewTaipei$Apr))->food_InflationRate_NewTaipei
+
+food_InflationRate_NewTaipei|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->food_InflationRate_NewTaipei_long
+food_InflationRate_NewTaipei_long$Period<-factor(food_InflationRate_NewTaipei_long$Period,levels = c("CPI_wax","CPI_wane"))
+
+
+plot_ly(food_InflationRate_NewTaipei_long, x = ~Period, y = ~InflationRate,
+                text = ~paste0("新北市政府公布之食物類:", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3))%>%
+  add_trace(
+    data = filtered_NewTaipei,
+    x = ~Period,
+    y = ~InflationRate,
+    type = "scatter",
+    mode = "lines",
+    line = list(width = 3),
+    text = ~paste0( "外送平台統計: ", scales::percent(InflationRate)), 
+    hoverinfo = "text"
+  )%>%
+  layout(
+    title = "Inflation Rate ",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )
+```
+- 新北市政府公布的CPI資料從1.2%下降至0.1%，相較於台北市及台中市，是直轄市中唯一上漲的。
+
+```{r}
+
+
+category_CPI_Index_NewTaipei<-readxl::read_xlsx("DepartmentOfBudget/NewTaipei/category_CPI_Index_NewTaipei.xlsx")
+
+data.frame(category=category_CPI_Index_NewTaipei$category,
+           CPI_wax=log(category_CPI_Index_NewTaipei$Apr)-log(category_CPI_Index_NewTaipei$Feb),
+           CPI_wane=log(category_CPI_Index_NewTaipei$Jul)-log(category_CPI_Index_NewTaipei$Apr))->category_InflationRate_NewTaipei
+
+category_InflationRate_NewTaipei|>
+  tidyr::pivot_longer(cols = starts_with("CPI"),names_to = "Period",values_to = "InflationRate")->category_InflationRate_NewTaipei_long
+category_InflationRate_NewTaipei_long$Period<-factor(category_InflationRate_NewTaipei_long$Period,levels = c("CPI_wax","CPI_wane"))
+category_InflationRate_NewTaipei_long$category<-factor(category_InflationRate_NewTaipei_long$category,levels = c("穀類及其製品","肉類","肉類製品","水產品","食用油","調味品","外食費","蛋類","蔬菜"
+))
+color_vector4<-c("#FAF1E4","#FAF0E6","#DAC0A3","#EFB495",
+                 "#FFEECC","#FFDDCC","#4682A9","#35A29F","#C63D2F")
+
+
+plot_ly(category_InflationRate_NewTaipei_long, x = ~Period, y = ~InflationRate,
+                color = ~category, colors = color_vector4,
+                text = ~paste0(category, ": ", scales::percent(InflationRate)),
+                hoverinfo = "text") %>%
+  add_lines(line = list(width = 3)) %>%
+  layout(
+    title = "Inflation Rate by Category",
+    xaxis = list(title = "Period"),
+    yaxis = list(title = "Inflation Rate"),
+    hovermode = "closest",
+    showlegend = FALSE
+  )%>%
+  add_markers()
+```
+
+- 新北市政府公布的細項CPI中，蔬菜漲幅較高，來到11.3888%
