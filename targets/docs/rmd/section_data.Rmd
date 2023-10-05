@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = F, warning = F)
+```
+
+```{r}
+library(plotly)
+library(dplyr)
+```
+
+
+# 消費者物價指數
+
+  * 用途是什麼？定義是什麼？
+  * 說明Foodpanda資料可以用來計算外食成本的可能性。
+  * 使用Foodpanda母體資料來計算平均外食成本的難度的哪？
+    * 一籃商品的挑戰：固定一籃容易嗎？就算固定一籃，要追踪同一家店好幾期容易嗎？
+    * 不同類籃商品的權重如何決定：Foodpanda的商家分配不代表消費者的消費分配，如何將商家分配轉換成消費分配？
+  * 面對上述的挑戰，你的折衷方案是什麼？各折衷方案的缺點是什麼？
+    * 一籃商品挑戰：只使用有六項人氣商品且可追蹤的商家，缺點是樣本代表性可能扭曲，例如：某地區，或某類型的餐廳佔比因此而偏高，或偏低。或許可以透過加權方式來解決。
+    * 不同類籃商品的權重：不同商家的人氣商品在期間內的銷售比例是不同的，較多人買的商家他的消費權重要越高。如何取得商家銷售權重值？
+    
+```{r}
+dRateNum_dataFrame = readRDS("../../data/dRateNum_dataFrame.Rds")
+```
+
+```{r}
+# draw the historgram of dRateNum for each time
+dRateNum_dataFrame %>%
+  plot_ly(x = ~dRateNum, color = ~time, type = "histogram", histnorm = "probability density", nbinsx = 100) %>%
+  layout(barmode = "overlay", title = "dRateNum Histogram", 
+  xaxis = list(title = "dRateNum", range = c(0,1200)), 
+  yaxis = list(title = "Probability Density", range=c(0, 0.019)))
+
+```
+
