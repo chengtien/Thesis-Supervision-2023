@@ -1,3 +1,14 @@
+focus_dataFrame_on = function(wax_data_before, tracking_shopCodes_mealOffering_6popularItems){
+  wax_data_before |>
+    dplyr::select(
+      shopCode, rateNum
+    ) |>
+    dplyr::filter(
+      shopCode %in% tracking_shopCodes_mealOffering_6popularItems
+    ) ->
+    df
+  df
+}
 summarise_menuChange_fromAllShops <- function(summaryMenuChangeInEachShop) {
   # summaryMenuChangeInEachShop = summaryMenuChangeInEachShop_wane
   summaryMenuChangeInEachShop |>
