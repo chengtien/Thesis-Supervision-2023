@@ -31,6 +31,9 @@ library(dplyr)
 dRateNum_dataFrame = readRDS("../../data/dRateNum_dataFrame.Rds")
 ```
 
+## 商家銷售權重值
+
+
 ```{r}
 # draw the historgram of dRateNum for each time
 dRateNum_dataFrame %>%
