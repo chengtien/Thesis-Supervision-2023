@@ -362,5 +362,16 @@ list(
         dRateNum = rateNum - dplyr::lag(rateNum)
       ) |>
       na.omit()
-  }
+  },
+  # 6. 餐飲分類 ----
+  ## 6.1 區域美食/非區域分類 ----
+  wax_data_before_cat %t=% create_region_nonRegion_category(wax_data_before),
+  wax_data_after_cat %t=% create_region_nonRegion_category(wax_data_after),
+  wane_data_before_cat %t=% create_region_nonRegion_category(wane_data_before),
+  wane_data_after_cat %t=% create_region_nonRegion_category(wane_data_after),
+  ## 6.2 區域分類統計 ----
+  tb_region_wax_before %t=% table_regionCategory(wax_data_before_cat),
+  tb_region_wax_after %t=% table_regionCategory(wax_data_after_cat),
+  tb_region_wane_before %t=% table_regionCategory(wane_data_before_cat),
+  tb_region_wane_after %t=% table_regionCategory(wane_data_before_cat)
 )
