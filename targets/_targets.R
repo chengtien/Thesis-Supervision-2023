@@ -373,5 +373,21 @@ list(
   tb_region_wax_before %t=% table_regionCategory(wax_data_before_cat),
   tb_region_wax_after %t=% table_regionCategory(wax_data_after_cat),
   tb_region_wane_before %t=% table_regionCategory(wane_data_before_cat),
-  tb_region_wane_after %t=% table_regionCategory(wane_data_before_cat)
+  tb_region_wane_after %t=% table_regionCategory(wane_data_before_cat),
+  summary_byCatRegion %t=% list(
+    tb_region_wax_before,
+    tb_region_wax_after,
+    tb_region_wane_after
+  ),
+  summary_wide_table_foodRegions %t=% {
+    summary_byCatRegion |> create_wide_table_regionCat() -> tb_count
+    summary_byCatRegion |> create_wide_table_regionCat(type="proportionTable") -> tb_prop
+    list(
+      count = tb_count,
+      proportion = tb_prop
+    )
+  }
+
 )
+
+
