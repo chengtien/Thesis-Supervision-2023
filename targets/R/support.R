@@ -624,7 +624,7 @@ create_factors_for_nonRegionalCategories <- function(wane_data_after_cat) {
   fct_snack <- factor(lgl_snack, levels=c(TRUE, FALSE), labels=c("小吃/甜點","非小吃/甜點"))
   fct_drink <- factor(lgl_drink, levels=c(TRUE, FALSE), labels=c("飲料","非飲料"))
   data.frame(
-    wane_data_after_cat$shopCode,
+    shopCode = wane_data_after_cat$shopCode,
     dessertOffer = fct_snack,
     drinkOffer = fct_drink
   )
