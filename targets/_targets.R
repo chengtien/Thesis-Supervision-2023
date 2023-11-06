@@ -364,6 +364,9 @@ list(
       na.omit()
   },
   # 6. 餐飲分類 ----
+  shop_cat_offeringMeal %t=% create_factor_offeringMeals(wax_data_before),
+  shop_cat_regional %t=% create_region_nonRegion_category(wax_data_before),
+  shop_cat_noRegional %t=% create_factors_for_nonRegionalCategories(shop_cat_regional),
   ## 6.1 區域美食/非區域分類 ----
   wax_data_before_cat %t=% create_region_nonRegion_category(wax_data_before),
   wax_data_after_cat %t=% create_region_nonRegion_category(wax_data_after),
