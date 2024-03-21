@@ -3,7 +3,11 @@ library(econDV2)
 library(foodDelivery)
 library(knitr)
 library(dplyr)
+library(tarchetypes)
+library(tibble)
+source("R/ggplot_setup.R")
 source("R/support.R")
+phase2_available_dates = readRDS("data/phase2_available_dates.Rds")
 # options(clustermq.scheduler = "multiprocess")
 list(
   # 1. import data ----
@@ -306,6 +310,290 @@ list(
     data.frame(county=CPI_summary_byGroup_wax$county,
                CPI_wax=CPI_summary_byGroup_wax$mean_inflationRate,
                CPI_wane=CPI_summary_byGroup_wane$mean_inflationRate)
-    }
+    },
+  ## Rate number analysis ----
+  list_focused_dataFrame %t=% purrr::map(
+    list(
+      wax_data_before,
+      wax_data_after,
+      wane_data_after
+    ),
+    function(.x) focus_dataFrame_on(.x, tracking_shopCodes_mealOffering_6popularItems)
+  ),
+  merged_focused_dataFrame %t=% {
+    list_focused_dataFrame |>
+      purrr::reduce(
+        function(.acc, .x) dplyr::left_join(.acc, .x, by = "shopCode")
+      ) -> df
+    names(df)[-1] <- c("m02", "m04", "m07")
+    df
+  },
+  rateNum_dataFrame_long %t=% {
+    merged_focused_dataFrame |>
+      tidyr::pivot_longer(
+        cols = -1,
+        names_to = "time",
+        values_to = "rateNum"
+      )
+  },
+  dRateNum_dataFrame %t=% {
+    rateNum_dataFrame_long |>
+      dplyr::group_by(shopCode) |>
+      dplyr::mutate(
+        dRateNum = rateNum - dplyr::lag(rateNum)
+      ) |>
+      na.omit()
+  },
+  # 6. 餐飲分類 ----
+  shop_cat_offeringMeal %t=% create_factor_offeringMeals(wax_data_before),
+  shop_cat_regional %t=% create_region_nonRegion_category(wax_data_before),
+  shop_cat_noRegional %t=% create_factors_for_nonRegionalCategories(shop_cat_regional),
+  ## 6.1 區域美食/非區域分類 ----
+  wax_data_before_cat %t=% create_region_nonRegion_category(wax_data_before),
+  wax_data_after_cat %t=% create_region_nonRegion_category(wax_data_after),
+  wane_data_before_cat %t=% create_region_nonRegion_category(wane_data_before),
+  wane_data_after_cat %t=% create_region_nonRegion_category(wane_data_after),
+  ## 6.2 區域分類統計 ----
+  tb_region_wax_before %t=% table_regionCategory(wax_data_before_cat),
+  tb_region_wax_after %t=% table_regionCategory(wax_data_after_cat),
+  tb_region_wane_before %t=% table_regionCategory(wane_data_before_cat),
+  tb_region_wane_after %t=% table_regionCategory(wane_data_before_cat),
+  summary_byCatRegion %t=% list(
+    tb_region_wax_before,
+    tb_region_wax_after,
+    tb_region_wane_after
+  ),
+  summary_wide_table_foodRegions %t=% {
+    summary_byCatRegion |> create_wide_table_regionCat() -> tb_count
+    summary_byCatRegion |> create_wide_table_regionCat(type="proportionTable") -> tb_prop
+    list(
+      count = tb_count,
+      proportion = tb_prop
+    )
+  },
+  ## 7.供餐時段 ----
+  tar_target(
+    scheduleFile, "data/schedules.Rds", format="file"),
+  ##7.1 原始資料 ----
+  schedules %t=% readRDS(scheduleFile),
+  get_businessHourTypes %t=% construct_get_businessHourTypes(),
+  tar_target(
+    business_hour_typesFile, "data/business_hour_types.Rds", format="file"
+  ),
+  ##7.2 各店家七類營業時段 ----
+  bhours %t=% readRDS(business_hour_typesFile),
+  # jsonlite::fromJSON("local-data/business_hours.json"),
+  ###a. data frame格式 ----
+  business_wday_time %t=% get_dataFrame_business_day_time(bhours),
+  ##7.3 七類營業時段統計 ----
+  summary_competition_by_businessHours %t=% {
+    summarise_competition_by_businessHours(business_wday_time)
+  },
+  tar_target(shop0806_path, "local-data/shop0806.Rds", format = 'file'),
+  tar_target(taiwan_township_sf_path,"local-data/taiwan_township.Rds", format = 'file'),
+  # 參考期資料 ----
+  shop0806 %t=% readRDS(shop0806_path),
+  taiwan_township_sf %t=% readRDS(taiwan_township_sf_path),
+  # 熱門菜單----
+  tar_target(popularItemsOnMenus_path, "data/popularItemsOnMenus.Rds",format = "file"),
+  popularItemsOnMenus %t=% readRDS(popularItemsOnMenus_path),
+  tar_target(popularItemsOnMenus_path2, "data/popularItemsOnMenus2.Rds",format = "file"),
+  popularItemsOnMenus2 %t=% readRDS(popularItemsOnMenus_path2),
+  # 各期各店家人氣消費成本 ----
+  #  count: 參考期的6項人氣有供應幾項
+  okMenus_df2 %t=% {
+    popularItemsOnMenus2 |>
+      purrr::keep(~{is.null(.x$error)}) |>
+      purrr::map(~{.x$result}) -> result
+    names(result) |>
+      purrr::map_dfr(
+        ~{
+          convert_okMenus2_to_data_frame2(result[[.x]]) -> dfX
+          dfX$date <- lubridate::ymd(.x)
+          dfX
+        }
+      )
+  },
+  okMenus_df %t=% {
+    popularItemsOnMenus |>
+      purrr::keep(~{is.null(.x$error)}) |>
+      purrr::map(~{.x$result}) |>
+      convert_okMenus_to_data_frame()
+  },
+  plot_popularItemsOffer %t=% plot_variation_popularItems(okMenus_df),
+  okMenus_6count_df %t=% filter_6count_okMenus(okMenus_df),
+  plot_popularItemsOffer6_continuity %t=%
+    plot_6countPopularItem_continuity(okMenus_6count_df),
+  ### 各期用來計算forward inflation rate的店家 -----
+  sampled_shops_each_date %t=% get_sampled_shops_each_date(okMenus_6count_df),
+  summary_sampleSize_by_dates %t=% get_summary_sampleSize_by_dates(okMenus_df),
+  summary_validSampleSize_by_dates %t=% get_summary_validSampleSize_by_dates(sampled_shops_each_date, summary_sampleSize_by_dates),
+  okMenus_6count_df_valid %t=% {
+    okMenus_6count_df |>
+      dplyr::filter(
+        nextCount == 6
+      )
+  },
+  # 權重準備 ----
+  ## 參考期特徵分配 ----
+  shop0806_county %t=% {
+    shop0806 |>
+      dplyr::select(
+        shopCode, county
+      ) |>
+      dplyr::filter(
+        !(county %in% c("",'金門縣','澎湖縣'))
+      ) |>
+      na.omit() |>
+      dplyr::mutate(
+        county = factor(county)
+      )
+  },
+  ## 各期店家特徵分配 ----
+  menu_cost %t=% {
+    1:nrow(summary_validSampleSize_by_dates) |>
+      purrr::map(
+        ~{
+          currentDate <- summary_validSampleSize_by_dates$date[[.x]]
+          nextDate <- summary_validSampleSize_by_dates$leadDate[[.x]]
+          cost_data_for_one_period <- construct_cost_data_for_one_period(okMenus_6count_df_valid, currentDate, nextDate, okMenus_df2)
+          cost_data_for_one_period
+        }
+      ) |>
+      setNames(summary_validSampleSize_by_dates$date) -> result
 
+    result |>
+      purrr::map(
+        ~{
+          .x |>
+            dplyr::left_join(
+              shop0806_county,
+              by="shopCode"
+            ) |>
+            dplyr::filter(
+              inflation < 25,
+              inflation > -25,
+              !is.na(inflation)
+            )
+        })
+  },
+  ## 各期含權重資料 -----
+  menu_cost_weights %t=% {
+    menu_cost |>
+      purrr::map(
+        ~{
+          .x$county |>
+            table() |>
+            prop.table() -> sample_distX
+
+          weightDF <- data.frame(
+            county= names(sample_distX),
+            weight = as.numeric(pop_distribution/sample_distX)
+          )
+
+          .x |>
+            dplyr::left_join(
+              weightDF,
+              by="county"
+            )
+        }
+      )
+  },
+  ## 各期物價上漲率 -----
+  summary_inflation %t=% {
+    purrr::map_dfr(
+      menu_cost_weights,
+      ~{
+        .x |>
+          na.omit() |>
+          dplyr::summarise(
+            inflation = weighted.mean(inflation, weight, na.rm=T)
+          )
+      }
+    )-> df
+    df$date = names(menu_cost_weights)
+    df |>
+      dplyr::relocate(date)  |>
+      dplyr::mutate(
+        days = {
+          ds = lubridate::ymd(date)
+          as.numeric(
+            dplyr::lead(ds)-ds
+          )
+        },
+        inflation_byDay = {
+          inflation/days
+        },
+        inflation_annualise = {
+          inflation_byDay*365
+        }
+      )
+  },
+  # 其他 ----
+  pop_distribution %t=% {
+    shop0806_county$county |>
+      table() |>
+      prop.table()
+  },
+
+  extract_menu_and_available_popular_items %t=%
+    Construct_extract_menu_and_available_popular_items(popularItems),
+  # distribution ----
+  ## by city
+  dist_by_city %t=% {
+    shop0806 %>%
+      group_by(city) |>
+      summarise(
+        n = n()/nrow(shop0806) *100
+      ) |>
+      ungroup() |>
+      arrange(
+        desc(n)
+      )
+  },
+  #6. 營業時段 ----
+
+  ##6.1 原始資料 ----
+
+
+
+  ##6.2 各店家七類營業時段 ----
+
+  # jsonlite::fromJSON("local-data/business_hours.json"),
+  ###a. data frame格式 ----
+
+  ##6.3 七類營業時段統計 ----
+
+  ##6.4 只含有供餐 ----
+  MealBusiness_wday_time %t=% {
+    get_dataFrame_business_day_time(bhours[mealOffering_shopCodes])
+  },
+  summary_meal_competition_by_businessHours %t=% {
+    summarise_competition_by_businessHours(MealBusiness_wday_time)
+  },
+  # Thesis All Data----
+  tar_target(
+    combinedokMenu, "data/combinedokMenu.Rds", format="file"
+  ),
+  tar_target(
+    okMenus_6count_df_combined, "data/okMenus_6count_df_combined.Rds", format="file"
+  ),
+  tar_target(
+    sampled_shops_each_date_combined, "data/sampled_shops_each_date_combined.Rds", format="file"
+  ),
+  tar_target(
+    summary_sampleSize_by_dates_combined, "data/summary_sampleSize_by_dates_combined.Rds", format="file"
+  ),
+  tar_target(
+    summary_validSampleSize_by_dates_combined, "data/summary_validSampleSize_by_dates_combined.Rds", format="file"
+  ),
+  tar_target(
+    okMenus_6count_df_valid_combined, "data/okMenus_6count_df_valid_combined.Rds", format="file"
+  ),
+  tar_target(
+    menu_cost_mealoffering, "data/menu_cost_mealoffering.Rds", format="file"
+  ),
+  tar_target(
+    inflation_Mealoffering, "data/inflation_Mealoffering.Rds", format="file"
+  )
 )
