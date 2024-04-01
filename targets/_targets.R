@@ -231,7 +231,7 @@ list(
       tracking_shopCodes_mealOffering,
       tracking_shopCodes_offer_6_popularItems
     ),
-  ##5.2 計算上漲率及summarise ----
+  ## 5.2 計算上漲率及summarise ----
   cpi_wax %t=% compute_inflationRate_logX_minus_logY(
     menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems],
     menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]
@@ -240,7 +240,7 @@ list(
     menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems],
     menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems]
   ),
-  ##5.3 統計降價，不調價，漲價 ----
+  ## 5.3 統計降價，不調價，漲價 ----
   summary_cpi_wax %t=% summarise_inflationRate(cpi_wax),
   summary_cpi_wane %t=% summarise_inflationRate(cpi_wane),
   tb_cpi_summary %t=% {
@@ -260,57 +260,82 @@ list(
       tb_cpi_summary, mean_inflationRates
     )
   },
-  ##5.4 穩定六項熱門商品且賣正餐餐廳 熱門商品價格分布 ----
+  ## 5.4 穩定六項熱門商品且賣正餐餐廳 熱門商品價格分布 ----
   ### a.總價格 ----
   summary_price_wax_before %t=% summarise_price(menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
   summary_price_wax_after %t=% summarise_price(menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
   summary_price_wane_after %t=% summarise_price(menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems]),
-  tb_price_summary %t=% { rbind(
-    summary_price_wax_before,
-    summary_price_wax_after,
-    summary_price_wane_after)|>
-      cbind(mean=c(mean(menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
-                  mean(menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
-                  mean(menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])))},
+  tb_price_summary %t=% {
+    rbind(
+      summary_price_wax_before,
+      summary_price_wax_after,
+      summary_price_wane_after
+    ) |>
+      cbind(mean = c(
+        mean(menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+        mean(menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+        mean(menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])
+      ))
+  },
   ### b.平均價格----
   summary_AvgPrice_wax_before %t=% summarise_AvgPrice(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
   summary_AvgPrice_wax_after %t=% summarise_AvgPrice(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
   summary_AvgPrice_wane_after %t=% summarise_AvgPrice(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems]),
-  tb_AvgPrice_summary %t=% {rbind(
-    summary_AvgPrice_wax_before,
-    summary_AvgPrice_wax_after,
-    summary_AvgPrice_wane_after)|>cbind(mean=c(mean(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
-                                               mean(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
-                                               mean(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])))},
-  ##5.5 以城市來作分類之CPI ----
-  average_inflation_rate_wax_mealoffering_6 %t=% {average_inflation_rate_wax|>
-      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
-  average_inflation_rate_wane_mealoffering_6 %t=% {average_inflation_rate_wane|>
-      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
-  shopcodeCounty %t=% {wax_data_before|>select(shopCode,county)|>
-      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)},
-
+  tb_AvgPrice_summary %t=% {
+    rbind(
+      summary_AvgPrice_wax_before,
+      summary_AvgPrice_wax_after,
+      summary_AvgPrice_wane_after
+    ) |> cbind(mean = c(
+      mean(average_menu_cost_wax_before[tracking_shopCodes_mealOffering_6popularItems]),
+      mean(average_menu_cost_wax_after[tracking_shopCodes_mealOffering_6popularItems]),
+      mean(average_menu_cost_wane_after[tracking_shopCodes_mealOffering_6popularItems])
+    ))
+  },
+  ## 5.5 以城市來作分類之CPI ----
+  average_inflation_rate_wax_mealoffering_6 %t=% {
+    average_inflation_rate_wax |>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)
+  },
+  average_inflation_rate_wane_mealoffering_6 %t=% {
+    average_inflation_rate_wane |>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)
+  },
+  shopcodeCounty %t=% {
+    wax_data_before |>
+      select(shopCode, county) |>
+      dplyr::filter(shopCode %in% tracking_shopCodes_mealOffering_6popularItems)
+  },
   CPI_byGroup_wax %t=% {
-    average_inflation_rate_wax_mealoffering_6|>
-      left_join(shopcodeCounty,by="shopCode")|>
+    average_inflation_rate_wax_mealoffering_6 |>
+      left_join(shopcodeCounty, by = "shopCode") |>
       mutate(county = ifelse(shopCode == "y1ew", "新北市", county))
   },
   CPI_byGroup_wane %t=% {
-    average_inflation_rate_wane_mealoffering_6|>
-      left_join(shopcodeCounty,by="shopCode")|>
+    average_inflation_rate_wane_mealoffering_6 |>
+      left_join(shopcodeCounty, by = "shopCode") |>
       mutate(county = ifelse(shopCode == "y1ew", "新北市", county))
   },
-  CPI_summary_byGroup_wax %t=% {CPI_byGroup_wax|>
-      group_by(county)|>
-      summarise(mean_inflationRate=mean(inflation_rate))},
-  CPI_summary_byGroup_wane %t=% {CPI_byGroup_wane|>
-      group_by(county)|>
-      summarise(mean_inflationRate=mean(inflation_rate))},
+  CPI_summary_byGroup_wax %t=% {
+    CPI_byGroup_wax |>
+      group_by(county) |>
+      summarise(mean_inflationRate = mean(inflation_rate))
+  },
+  CPI_summary_byGroup_wane %t=% {
+    CPI_byGroup_wane |>
+      group_by(county) |>
+      summarise(mean_inflationRate = mean(inflation_rate))
+  },
   tb_CPI_summary_byGroup %t=% {
-    data.frame(county=CPI_summary_byGroup_wax$county,
-               CPI_wax=CPI_summary_byGroup_wax$mean_inflationRate,
-               CPI_wane=CPI_summary_byGroup_wane$mean_inflationRate)
-    },
+
+    data.frame(
+      county = CPI_summary_byGroup_wax$county,
+      CPI_wax = CPI_summary_byGroup_wax$mean_inflationRate,
+      CPI_wane = CPI_summary_byGroup_wane$mean_inflationRate
+    )
+  },
+
+
   ## Rate number analysis ----
   list_focused_dataFrame %t=% purrr::map(
     list(
@@ -370,6 +395,7 @@ list(
       count = tb_count,
       proportion = tb_prop
     )
+
   },
   ## 7.供餐時段 ----
   tar_target(
@@ -461,6 +487,7 @@ list(
         }
       ) |>
       setNames(summary_validSampleSize_by_dates$date) -> result
+
 
     result |>
       purrr::map(
@@ -597,3 +624,5 @@ list(
     inflation_Mealoffering, "data/inflation_Mealoffering.Rds", format="file"
   )
 )
+
+

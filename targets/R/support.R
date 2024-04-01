@@ -1,3 +1,89 @@
+create_wide_table_regionCat <- function(list_tb, type="table") {
+  seq_along(list_tb) |>
+    purrr::map_dfr(
+      ~{
+        list_tb[[.x]][[type]] |>
+          as.data.frame() -> df
+        names(df) <- c("catetory","frequency")
+        df$month <- .x
+        df
+      }
+    ) -> df_tbs
+  tibble_tbs <- dplyr::as_tibble(df_tbs)
+  df_tbs |>
+    dplyr::mutate(
+      month = factor(month,
+                     levels=c(1,2,3),
+                     labels=c("Feb","Apr","Jul"))
+    ) |>
+    tidyr::pivot_wider(
+      names_from = "month",
+      values_from = "frequency"
+    )
+}
+create_region_nonRegion_category <- function(wax_data_before) {
+  wax_data_before$category |>
+    purrr::map(
+      ~{
+        .x |> stringr::str_extract_all("[^'\\[\\],\\s]+") -> cat
+        cat[[1]]
+      }
+    ) -> list_shopCategory
+  categories_by_region <- c("台式", "歐美","日式", "中式", "東南亞", "異國", "韓式", "港式")
+
+  shopCategory_regionOnly <- {
+    list_shopCategory |>
+      purrr::map_chr(
+        ~{
+          .x |>
+            intersect(categories_by_region) |>
+            sort() -> cats
+          ifelse(length(cats)==0, "無區域", paste0(cats, collapse = "-"))
+
+        }
+      )
+  }
+  shop_nonRegionCategory <- {
+    list_shopCategory |>
+      purrr::map_chr(
+        ~{
+          .x |>
+            setdiff(categories_by_region) |>
+            sort() -> cats
+          ifelse(length(cats)==0, "無", paste0(cats, collapse = "-"))
+        }
+      )
+  }
+
+  wax_data_before$cat_region <- factor(shopCategory_regionOnly)
+  wax_data_before$cat_nonRegion <- factor(shop_nonRegionCategory)
+  wax_data_before |>
+    dplyr::select(shopCode, cat_region, cat_nonRegion)
+}
+table_regionCategory <- function(wax_data_after_cat) {
+  wax_data_after_cat$cat_region |>
+    table() |> sort(d=T) -> tb
+  tb |> prop.table()-> prop.tb
+  prop.tb*100
+  list(
+    table = tb,
+    proportionTable = round(
+      prop.tb*100,4
+    )
+  )
+}
+
+focus_dataFrame_on = function(wax_data_before, tracking_shopCodes_mealOffering_6popularItems){
+  wax_data_before |>
+    dplyr::select(
+      shopCode, rateNum
+    ) |>
+    dplyr::filter(
+      shopCode %in% tracking_shopCodes_mealOffering_6popularItems
+    ) ->
+    df
+  df
+}
 summarise_menuChange_fromAllShops <- function(summaryMenuChangeInEachShop) {
   # summaryMenuChangeInEachShop = summaryMenuChangeInEachShop_wane
   summaryMenuChangeInEachShop |>
@@ -514,6 +600,37 @@ get_mealOffering_shopCodes <- function(wax_data_before) {
     ) |>
     dplyr::pull(shopCode)
 }
+create_factor_offeringMeals <- function(wane_data_after){
+  wane_data_after$category |>
+    pick_shops_offering_no_meal() -> lgl_noMeal
+  fct_meal <- factor(lgl_noMeal, levels=c(FALSE, TRUE), labels=c("正餐","非正餐"))
+  data.frame(
+    shopCode = wane_data_after$shopCode,
+    mealOffer = fct_meal
+  )
+}
+
+create_factors_for_nonRegionalCategories <- function(wane_data_after_cat) {
+  wane_data_after_cat$cat_nonRegion |>
+    stringr::str_detect("飲料") -> lgl_drink
+  wane_data_after_cat$cat_nonRegion |>
+    stringr::str_detect("小吃|甜點") -> lgl_snack
+  # wane_data_after_cat$cat_nonRegion |>
+  #   stringr::str_detect("素食") -> lgl_vegie
+  # lgl_vegie |> table()
+
+
+
+  fct_snack <- factor(lgl_snack, levels=c(TRUE, FALSE), labels=c("小吃/甜點","非小吃/甜點"))
+  fct_drink <- factor(lgl_drink, levels=c(TRUE, FALSE), labels=c("飲料","非飲料"))
+  data.frame(
+    shopCode = wane_data_after_cat$shopCode,
+    dessertOffer = fct_snack,
+    drinkOffer = fct_drink
+  )
+}
+
+
 compute_inflationRate_logX_minus_logY <- function(.before, .after) {
 
   cpi_wax <- log(.after)-log(.before)
