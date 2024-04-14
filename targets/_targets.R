@@ -327,10 +327,22 @@ list(
       summarise(mean_inflationRate = mean(inflation_rate))
   },
   tb_CPI_summary_byGroup %t=% {
+<<<<<<< HEAD
+
+    data.frame(
+      county = CPI_summary_byGroup_wax$county,
+      CPI_wax = CPI_summary_byGroup_wax$mean_inflationRate,
+      CPI_wane = CPI_summary_byGroup_wane$mean_inflationRate
+    )
+  },
+
+
+=======
     data.frame(county=CPI_summary_byGroup_wax$county,
                CPI_wax=CPI_summary_byGroup_wax$mean_inflationRate,
                CPI_wane=CPI_summary_byGroup_wane$mean_inflationRate)
     },
+>>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
   ## Rate number analysis ----
   list_focused_dataFrame %t=% purrr::map(
     list(
@@ -390,6 +402,10 @@ list(
       count = tb_count,
       proportion = tb_prop
     )
+<<<<<<< HEAD
+
+=======
+>>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
   },
   ## 7.供餐時段 ----
   tar_target(
@@ -481,6 +497,10 @@ list(
         }
       ) |>
       setNames(summary_validSampleSize_by_dates$date) -> result
+<<<<<<< HEAD
+
+=======
+>>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
 
     result |>
       purrr::map(
