@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="id_20240416">20240416</h1>
+<p>Cheng,Tien 2024-04-16</p>
+<ul>
+<li>可以看出如果移除outlier的話，使用1.5倍IQR在10月15日會剔除掉1400筆左右的資料，剩下93%左右，10月25日剩下95%左右。其他期沒有太大問題</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">outlierIQR</th>
+<th align="right">outlierAbs25</th>
+<th align="right">numOfShop</th>
+<th align="right">percentageIQR</th>
+<th align="right">percentageAbs25</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2023-02-03</td>
+<td align="right">14342</td>
+<td align="right">14553</td>
+<td align="right">14560</td>
+<td align="right">0.9850275</td>
+<td align="right">0.9995192</td>
+</tr>
+<tr class="even">
+<td align="left">2023-02-10</td>
+<td align="right">14812</td>
+<td align="right">15056</td>
+<td align="right">15058</td>
+<td align="right">0.9836632</td>
+<td align="right">0.9998672</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-02-17</td>
+<td align="right">15050</td>
+<td align="right">15217</td>
+<td align="right">15220</td>
+<td align="right">0.9888305</td>
+<td align="right">0.9998029</td>
+</tr>
+<tr class="even">
+<td align="left">2023-02-24</td>
+<td align="right">16547</td>
+<td align="right">16867</td>
+<td align="right">16885</td>
+<td align="right">0.9799822</td>
+<td align="right">0.9989340</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-03-04</td>
+<td align="right">17054</td>
+<td align="right">17341</td>
+<td align="right">17352</td>
+<td align="right">0.9828262</td>
+<td align="right">0.9993661</td>
+</tr>
+<tr class="even">
+<td align="left">2023-03-11</td>
+<td align="right">18570</td>
+<td align="right">18862</td>
+<td align="right">18874</td>
+<td align="right">0.9838932</td>
+<td align="right">0.9993642</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-03-18</td>
+<td align="right">18133</td>
+<td align="right">18604</td>
+<td align="right">18620</td>
+<td align="right">0.9738453</td>
+<td align="right">0.9991407</td>
+</tr>
+<tr class="even">
+<td align="left">2023-03-25</td>
+<td align="right">17155</td>
+<td align="right">18259</td>
+<td align="right">18307</td>
+<td align="right">0.9370733</td>
+<td align="right">0.9973781</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-04-27</td>
+<td align="right">19140</td>
+<td align="right">19684</td>
+<td align="right">19696</td>
+<td align="right">0.9717709</td>
+<td align="right">0.9993907</td>
+</tr>
+<tr class="even">
+<td align="left">2023-05-09</td>
+<td align="right">19074</td>
+<td align="right">19434</td>
+<td align="right">19442</td>
+<td align="right">0.9810719</td>
+<td align="right">0.9995885</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-05-16</td>
+<td align="right">22652</td>
+<td align="right">22897</td>
+<td align="right">22906</td>
+<td align="right">0.9889112</td>
+<td align="right">0.9996071</td>
+</tr>
+<tr class="even">
+<td align="left">2023-05-23</td>
+<td align="right">23416</td>
+<td align="right">23705</td>
+<td align="right">23713</td>
+<td align="right">0.9874752</td>
+<td align="right">0.9996626</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-05-31</td>
+<td align="right">23881</td>
+<td align="right">24255</td>
+<td align="right">24261</td>
+<td align="right">0.9843370</td>
+<td align="right">0.9997527</td>
+</tr>
+<tr class="even">
+<td align="left">2023-06-05</td>
+<td align="right">22271</td>
+<td align="right">22600</td>
+<td align="right">22613</td>
+<td align="right">0.9848760</td>
+<td align="right">0.9994251</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-06-14</td>
+<td align="right">21030</td>
+<td align="right">21595</td>
+<td align="right">21618</td>
+<td align="right">0.9728004</td>
+<td align="right">0.9989361</td>
+</tr>
+<tr class="even">
+<td align="left">2023-07-01</td>
+<td align="right">21640</td>
+<td align="right">22295</td>
+<td align="right">22318</td>
+<td align="right">0.9696209</td>
+<td align="right">0.9989694</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-07-22</td>
+<td align="right">25147</td>
+<td align="right">25310</td>
+<td align="right">25323</td>
+<td align="right">0.9930498</td>
+<td align="right">0.9994866</td>
+</tr>
+<tr class="even">
+<td align="left">2023-07-26</td>
+<td align="right">24592</td>
+<td align="right">25066</td>
+<td align="right">25080</td>
+<td align="right">0.9805423</td>
+<td align="right">0.9994418</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-08-06</td>
+<td align="right">5831</td>
+<td align="right">5874</td>
+<td align="right">5876</td>
+<td align="right">0.9923417</td>
+<td align="right">0.9996596</td>
+</tr>
+<tr class="even">
+<td align="left">2023-08-13</td>
+<td align="right">5182</td>
+<td align="right">5235</td>
+<td align="right">5237</td>
+<td align="right">0.9894978</td>
+<td align="right">0.9996181</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-08-20</td>
+<td align="right">21131</td>
+<td align="right">21303</td>
+<td align="right">21313</td>
+<td align="right">0.9914606</td>
+<td align="right">0.9995308</td>
+</tr>
+<tr class="even">
+<td align="left">2023-08-28</td>
+<td align="right">12185</td>
+<td align="right">12360</td>
+<td align="right">12365</td>
+<td align="right">0.9854428</td>
+<td align="right">0.9995956</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-09-04</td>
+<td align="right">11900</td>
+<td align="right">12201</td>
+<td align="right">12211</td>
+<td align="right">0.9745312</td>
+<td align="right">0.9991811</td>
+</tr>
+<tr class="even">
+<td align="left">2023-09-21</td>
+<td align="right">20556</td>
+<td align="right">20957</td>
+<td align="right">20964</td>
+<td align="right">0.9805381</td>
+<td align="right">0.9996661</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-10-04</td>
+<td align="right">20155</td>
+<td align="right">20270</td>
+<td align="right">20273</td>
+<td align="right">0.9941795</td>
+<td align="right">0.9998520</td>
+</tr>
+<tr class="even">
+<td align="left">2023-10-08</td>
+<td align="right">19471</td>
+<td align="right">19689</td>
+<td align="right">19695</td>
+<td align="right">0.9886266</td>
+<td align="right">0.9996954</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-10-15</td>
+<td align="right">18867</td>
+<td align="right">19541</td>
+<td align="right">20272</td>
+<td align="right">0.9306926</td>
+<td align="right">0.9639404</td>
+</tr>
+<tr class="even">
+<td align="left">2023-10-25</td>
+<td align="right">19921</td>
+<td align="right">20740</td>
+<td align="right">20803</td>
+<td align="right">0.9576023</td>
+<td align="right">0.9969716</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-11-08</td>
+<td align="right">19919</td>
+<td align="right">20472</td>
+<td align="right">20507</td>
+<td align="right">0.9713269</td>
+<td align="right">0.9982933</td>
+</tr>
+<tr class="even">
+<td align="left">2023-11-15</td>
+<td align="right">19315</td>
+<td align="right">19907</td>
+<td align="right">19963</td>
+<td align="right">0.9675399</td>
+<td align="right">0.9971948</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-11-29</td>
+<td align="right">10799</td>
+<td align="right">11124</td>
+<td align="right">11146</td>
+<td align="right">0.9688678</td>
+<td align="right">0.9980262</td>
+</tr>
+<tr class="even">
+<td align="left">2023-12-06</td>
+<td align="right">7361</td>
+<td align="right">7560</td>
+<td align="right">7586</td>
+<td align="right">0.9703401</td>
+<td align="right">0.9965726</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>因此去看10月25日的資料，拿k3z3當例子，商品欄位有46欄</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>shopMenu1<span class="sc">$</span>product</span></code></pre></div>
+<pre><code>##  [1] &quot;原味臻寶炸雞&quot;                    &quot;台式椒鹽臻寶炸雞&quot;               
+##  [3] &quot;川味麻辣臻寶炸雞&quot;                &quot;泰式糖醋臻寶炸雞&quot;               
+##  [5] &quot;極餓獅排&quot;                        &quot;獅王腿排&quot;                       
+##  [7] &quot;嫩雞薯條&quot;                        &quot;半雞餐&quot;                         
+##  [9] &quot;全雞餐&quot;                          &quot;黃金雞軟骨&quot;                     
+## [11] &quot;三臻海味&quot;                        &quot;臻多蝦&quot;                         
+## [13] &quot;台式搖滾雞皮餅乾&quot;                &quot;半雞分饗餐&quot;                     
+## [15] &quot;肉多多分饗餐&quot;                    &quot;臻多蝦餐&quot;                       
+## [17] &quot;一起獅犇餐&quot;                      &quot;老獅雞餐&quot;                       
+## [19] &quot;台嗑搖滾臻寶餐&quot;                  &quot;極餓獅排餐&quot;                     
+## [21] &quot;獅王腿排餐&quot;                      &quot;全雞分饗餐&quot;                     
+## [23] &quot;香蔥腿排蓋飯&quot;                    &quot;香蔥嫩雞蓋飯&quot;                   
+## [25] &quot;泰式糖醋蓋飯&quot;                    &quot;川味麻辣蓋飯&quot;                   
+## [27] &quot;台式椒鹽蓋飯&quot;                    &quot;臻寶腿丁蓋飯&quot;                   
+## [29] &quot;銷魂嫩酥胸蓋飯&quot;                  &quot;黃金脆薯&quot;                       
+## [31] &quot;QQ棒&quot;                            &quot;咆嘯杏鮑菇&quot;                     
+## [33] &quot;獅紫薯薯&quot;                        &quot;整顆地瓜&quot;                       
+## [35] &quot;洋蔥圈起來&quot;                      &quot;拉絲起士球&quot;                     
+## [37] &quot;銷魂嫩酥胸&quot;                      &quot;大獅蝦餅&quot;                       
+## [39] &quot;雙喜QQ球&quot;                        &quot;英式紅茶&quot;                       
+## [41] &quot;茉香綠茶(無糖)&quot;                  &quot;青檸冬瓜爽&quot;                     
+## [43] &quot;獅奶殺手&quot;                        &quot;白飯&quot;                           
+## [45] &quot;泰式甜辣醬&quot;                      &quot;本店每筆訂單酌收餐點包裝費2元。&quot;</code></pre>
+<ul>
+<li>但shopMenu$variations下的discountedPrice有56欄(10月15日這天開始多了variations這個欄位)</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>shopMenu1<span class="sc">$</span>variations<span class="sc">$</span>discountedPrice</span></code></pre></div>
+<pre><code>##  [1] 105 105 105 105 110 170 250 110 170 250 110 170 250  95  95  79 299 550
+## [19]  79 240  99 165  79 428 543 188 374 352 169 174 174 808 120 100 110 110
+## [37] 110 110 100  49  49  79  49  49  59  69  59  69  59  30  30  40  40  20
+## [55]  10   0</code></pre>
+<ul>
+<li>且無法由shopMenu$variations下的code</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>shopMenu1<span class="sc">$</span>variations<span class="sc">$</span>code</span></code></pre></div>
+<pre><code>##  [1] &quot;7624d5b43d7c21a590dc8a8df60a62f5&quot;    
+##  [2] &quot;8a27858855e88437e2d1690e888511ff&quot;    
+##  [3] &quot;efed841e-72a1-4398-b496-70246d141b3e&quot;
+##  [4] &quot;3979f5af-d8c7-4b31-814f-851fcc38cf3c&quot;
+##  [5] &quot;b9cb037373f305a47caf8ab46cbcfc95&quot;    
+##  [6] &quot;a966d8abf001d0f057717559ca5352eb&quot;    
+##  [7] &quot;abc9e5c6-8b31-4956-95ce-7f13143b0768&quot;
+##  [8] &quot;a819288c2014ca76e4b818e6bc1ba61f&quot;    
+##  [9] &quot;8c6a080e7aa136bbb2651142406af46b&quot;    
+## [10] &quot;428d3b43-175d-41fe-903d-9d363efb2380&quot;
+## [11] &quot;4c7504bfaf172174760fbe93b9dae76e&quot;    
+## [12] &quot;7759329bdfa6b3cbb7c6b0ca3977f06a&quot;    
+## [13] &quot;c4c39f27-3641-4044-9462-34ead7e53677&quot;
+## [14] &quot;eafbb3644022ebbb32f6f53ee480a3f6&quot;    
+## [15] &quot;5cd1e8928a6d61f109db25c3fdd9fa67&quot;    
+## [16] &quot;a33bf79c-1803-438a-8d8a-cabca2b71e2f&quot;
+## [17] &quot;27ff7cee-3800-43c2-be9d-6520faa1665b&quot;
+## [18] &quot;b1ea560f-956f-46d6-bb10-6d6a658faaba&quot;
+## [19] &quot;c4415de4-c6ec-40f2-9b39-76bfa848de22&quot;
+## [20] &quot;036b85ff-ed1d-4371-a030-6e2f7b1a55f9&quot;
+## [21] &quot;29e3a29b-1420-46e3-8f4b-cd4423223254&quot;
+## [22] &quot;ede7c6fb-ec2d-4543-8417-9225d4cc2bbf&quot;
+## [23] &quot;bc6f062c-7cb1-45a0-9522-36b6cf45239e&quot;
+## [24] &quot;0547ec90-1086-40a7-b68a-d16a53068040&quot;
+## [25] &quot;1ac39bb7-c86d-4fd7-b249-566ff6f08e76&quot;
+## [26] &quot;12be730e-ff7f-4ba0-88c6-a6bc5bc171e0&quot;
+## [27] &quot;2d6c8c63-e2ef-4e69-a3bc-2d42625bd3e6&quot;
+## [28] &quot;1a929911-7d7a-4e3d-a703-cc26110d7256&quot;
+## [29] &quot;0abc78e3-faf5-41a4-b282-085bf8fbafd8&quot;
+## [30] &quot;14a3678a-6daf-49d3-af8d-588a3387e536&quot;
+## [31] &quot;bc979376-e855-4a59-a782-8c0de0e5769d&quot;
+## [32] &quot;80f76c83-b7bc-4bfd-9cd8-a029c65aeed9&quot;
+## [33] &quot;70e63dc1a68299f16174b0ce4d229300&quot;    
+## [34] &quot;1024671c-e20c-4f00-a97a-0270212af7d1&quot;
+## [35] &quot;d8de64fb-0a1e-4026-9586-004cf1ec49c7&quot;
+## [36] &quot;23c56734-7e39-45da-93f2-d6194136daec&quot;
+## [37] &quot;da4a1e94-d859-4c36-b02e-26286411a02e&quot;
+## [38] &quot;89203cf8-edf9-4bbc-85cb-89a5fad75f28&quot;
+## [39] &quot;80b79a8d-a402-42a2-ba58-f75dfcb74f07&quot;
+## [40] &quot;82b563f05239a6f9906a94d98e5853e9&quot;    
+## [41] &quot;0c2223a11a22fe37dcf9b3386f662f0c&quot;    
+## [42] &quot;be8669c35176de944a2bde6caf86a237&quot;    
+## [43] &quot;b5b7557d-eace-4fc7-a868-93b057adf8d3&quot;
+## [44] &quot;1107ee0f-d451-4f0f-923d-02a0a871d21c&quot;
+## [45] &quot;781070f2-8037-47e5-a8cd-3dfb7e9d53e4&quot;
+## [46] &quot;b958c7d4-0a64-46e1-a3bd-f9995a84f4f8&quot;
+## [47] &quot;aebc305b-0149-4d1e-a97f-9c264ee170f2&quot;
+## [48] &quot;d7f5be3f-b7c5-4c25-9d80-3ff028a4d388&quot;
+## [49] &quot;9456fd79-fed1-41d5-b563-9dad825873b4&quot;
+## [50] &quot;7a0343fd0209f839a67173285eb95038&quot;    
+## [51] &quot;bf77921970912a43245f80913f9210bc&quot;    
+## [52] &quot;f015fca417880d5de1bc4709b49a88c1&quot;    
+## [53] &quot;ac8d529d-613c-4880-b444-ee4f512bfb19&quot;
+## [54] &quot;a2d1a357-db74-498e-a3d9-a127a02d4ae9&quot;
+## [55] &quot;782a45ad-7351-45b9-a8ec-7f11c431ee4d&quot;
+## [56] &quot;0d6c3ae1-9f97-4108-bfc0-2eadc9a5c2d2&quot;</code></pre>
+<p>和shopMenu$code去比對出商品的價格(基準期也沒有這些code)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>shopMenu1<span class="sc">$</span>code</span></code></pre></div>
+<pre><code>##  [1] &quot;261dbaa4c08e662299190c461080804a&quot;    
+##  [2] &quot;66e832da410540fe07986ed109498cf8&quot;    
+##  [3] &quot;2aa64c0cd75c22a02aab38ef66122741&quot;    
+##  [4] &quot;0336045980880edba4284ad8180fba0f&quot;    
+##  [5] &quot;6c8404b7fb68dec1311d7f3e49616d70&quot;    
+##  [6] &quot;96209f59fa4fb52c4b70a10ef73054bb&quot;    
+##  [7] &quot;045208aa-3a1f-4e02-90cf-c9dd56f72b8e&quot;
+##  [8] &quot;eb3a0eb8-9fd5-4b46-89db-452a5a637afe&quot;
+##  [9] &quot;3608c50e-2881-4a09-8bc1-46704a1adf0f&quot;
+## [10] &quot;f979c336-71f1-408c-bd83-d17b4d83696f&quot;
+## [11] &quot;33a5b6ca-121e-4621-8204-0b966140a2d1&quot;
+## [12] &quot;62f11bf7-8e2b-40f6-bc63-013fc673726e&quot;
+## [13] &quot;36e84157-2dd5-49a7-b239-6267ab81401b&quot;
+## [14] &quot;961b9ad7-d624-4e91-a734-04dde991634a&quot;
+## [15] &quot;23bd7314-0bc7-4287-b5f0-3123821be040&quot;
+## [16] &quot;218f127f-a489-4f7d-929f-f8c115f59ef9&quot;
+## [17] &quot;f7c40f34-0288-4518-b7b5-c19cc493ea07&quot;
+## [18] &quot;1d3466f5-8fe3-4e23-81a0-7dc5a2c13a0c&quot;
+## [19] &quot;62194197-06f3-48a7-8a04-301a8b78a30e&quot;
+## [20] &quot;8d513673-590b-4437-b044-363e49b13541&quot;
+## [21] &quot;137b8874-9e43-42fb-9310-d70721110a69&quot;
+## [22] &quot;ff676e43-b6fe-4dd5-b47b-697a7ff6bd67&quot;
+## [23] &quot;0f92f685e6a97635ff44dcbf98165294&quot;    
+## [24] &quot;a3dc886e-0aa1-48d7-b9ca-7d52a56ef418&quot;
+## [25] &quot;e2b81279-60d9-496c-b856-48cc34e67e6d&quot;
+## [26] &quot;ecd57011-e24d-4910-9313-b9ab0a1478e0&quot;
+## [27] &quot;1fe60f22-e31d-40af-b193-435888b21059&quot;
+## [28] &quot;a2b8f538-2dd2-4902-8eb8-50d8c0341632&quot;
+## [29] &quot;eee96697-4bbd-47ff-bd97-806e53151697&quot;
+## [30] &quot;2b32885d136cb64eeec049f6dea7a8ed&quot;    
+## [31] &quot;aa885629eaebb93d2f62732c94a9bc86&quot;    
+## [32] &quot;c1906f0f861366c1d3be1fbdd04c1eee&quot;    
+## [33] &quot;a507bc61-c990-4c8b-9a82-4f5a5e6306fe&quot;
+## [34] &quot;a48cf8cc-7fa7-48a6-bd15-0c65f4995115&quot;
+## [35] &quot;d682d3fa-7f5b-4266-a844-8ddf6c33f2b1&quot;
+## [36] &quot;3d21c19a-4c32-4d1e-9772-6dcd08eaa94a&quot;
+## [37] &quot;eddc85b2-0dbd-4355-80aa-67042443bc99&quot;
+## [38] &quot;6e12fb5d-bc0c-4a28-9531-d26ae1dba0bb&quot;
+## [39] &quot;b795b9c0-753d-4f50-add2-d69bdcf60b25&quot;
+## [40] &quot;d13f2008b91799e268fce0667d74d2d9&quot;    
+## [41] &quot;42ceca665cd50099196b414bfddf6f19&quot;    
+## [42] &quot;ecc2c2efba8bae54da28559d77751d79&quot;    
+## [43] &quot;919422e2-71bf-4f4d-8b82-132cdda53ade&quot;
+## [44] &quot;3506137b-e3d0-4b14-b739-08fff114519b&quot;
+## [45] &quot;7854ea8a-b6cf-4ed4-847e-f2db013cbf61&quot;
+## [46] &quot;77b37708-f7ea-4e2d-8d79-fe5022350627&quot;</code></pre>
+
+</body>
+</html>
