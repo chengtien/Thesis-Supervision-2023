@@ -1,0 +1,286 @@
+---
+title: "評論增加數與CPI上漲率關係"
+author: "Cheng,Tien"
+date: "2024-04-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+menu_cost_mealOffering8<-readRDS("data/menu_cost_mealoffering8.Rds")
+library(ggplot2)
+```
+
+
+- 20230210
+```{r}
+ggplot(menu_cost_mealOffering8[[2]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230217
+```{r}
+ggplot(menu_cost_mealOffering8[[3]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230224
+```{r}
+ggplot(menu_cost_mealOffering8[[4]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230304
+```{r}
+ggplot(menu_cost_mealOffering8[[5]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230311
+```{r}
+ggplot(menu_cost_mealOffering8[[6]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230318
+```{r}
+ggplot(menu_cost_mealOffering8[[7]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230325
+```{r}
+ggplot(menu_cost_mealOffering8[[8]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230427
+```{r}
+ggplot(menu_cost_mealOffering8[[9]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230509
+```{r}
+ggplot(menu_cost_mealOffering8[[10]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230516
+```{r}
+ggplot(menu_cost_mealOffering8[[11]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230523
+```{r}
+ggplot(menu_cost_mealOffering8[[12]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230531
+```{r}
+ggplot(menu_cost_mealOffering8[[13]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230605
+```{r}
+ggplot(menu_cost_mealOffering8[[14]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230614
+```{r}
+ggplot(menu_cost_mealOffering8[[15]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230701
+```{r}
+ggplot(menu_cost_mealOffering8[[16]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230722
+```{r}
+ggplot(menu_cost_mealOffering8[[17]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230726
+```{r}
+ggplot(menu_cost_mealOffering8[[18]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230806
+```{r}
+ggplot(menu_cost_mealOffering8[[19]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230813
+```{r}
+ggplot(menu_cost_mealOffering8[[20]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+
+- 20230820
+```{r}
+ggplot(menu_cost_mealOffering8[[21]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230828
+```{r}
+ggplot(menu_cost_mealOffering8[[22]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230904
+```{r}
+ggplot(menu_cost_mealOffering8[[23]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20230921
+```{r}
+ggplot(menu_cost_mealOffering8[[24]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231004
+```{r}
+ggplot(menu_cost_mealOffering8[[25]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231008
+```{r}
+ggplot(menu_cost_mealOffering8[[26]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231015
+```{r}
+ggplot(menu_cost_mealOffering8[[27]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231108
+```{r}
+ggplot(menu_cost_mealOffering8[[28]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231115
+```{r}
+ggplot(menu_cost_mealOffering8[[29]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231129
+```{r}
+ggplot(menu_cost_mealOffering8[[30]], aes(x = rateNumIncrease, y = inflation))+
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
+- 20231206
+```{r}
+ggplot(menu_cost_mealOffering8[[31]], aes(x = rateNumIncrease, y = inflation)) +
+  geom_point(alpha=0.3) +  # 添加散点
+  labs(x = "評論增加數", y = "通膨率") +
+  theme_minimal()  
+
+```
+
