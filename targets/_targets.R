@@ -326,56 +326,38 @@ list(
       group_by(county) |>
       summarise(mean_inflationRate = mean(inflation_rate))
   },
-  tb_CPI_summary_byGroup %t=% {
-<<<<<<< HEAD
-
-    data.frame(
-      county = CPI_summary_byGroup_wax$county,
-      CPI_wax = CPI_summary_byGroup_wax$mean_inflationRate,
-      CPI_wane = CPI_summary_byGroup_wane$mean_inflationRate
-    )
-  },
-
-
-=======
-    data.frame(county=CPI_summary_byGroup_wax$county,
-               CPI_wax=CPI_summary_byGroup_wax$mean_inflationRate,
-               CPI_wane=CPI_summary_byGroup_wane$mean_inflationRate)
-    },
->>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
   ## Rate number analysis ----
   list_focused_dataFrame %t=% purrr::map(
-    list(
-      wax_data_before,
-      wax_data_after,
-      wane_data_after
-    ),
-    function(.x) focus_dataFrame_on(.x, tracking_shopCodes_mealOffering_6popularItems)
+  list(
+    wax_data_before,
+    wax_data_after,
+    wane_data_after
+  ),
+  function(.x) focus_dataFrame_on(.x, tracking_shopCodes_mealOffering_6popularItems)
   ),
   merged_focused_dataFrame %t=% {
-    list_focused_dataFrame |>
-      purrr::reduce(
-        function(.acc, .x) dplyr::left_join(.acc, .x, by = "shopCode")
-      ) -> df
-    names(df)[-1] <- c("m02", "m04", "m07")
-    df
+  list_focused_dataFrame |>
+    purrr::reduce(
+      function(.acc, .x) dplyr::left_join(.acc, .x, by = "shopCode")
+    ) -> df
+  names(df)[-1] <- c("m02", "m04", "m07")
+  df
   },
   rateNum_dataFrame_long %t=% {
-    merged_focused_dataFrame |>
-      tidyr::pivot_longer(
-        cols = -1,
-        names_to = "time",
-        values_to = "rateNum"
-      )
-  },
+  merged_focused_dataFrame |>
+    tidyr::pivot_longer(
+      cols = -1,
+      names_to = "time",
+      values_to = "rateNum"
+    )
+    },
   dRateNum_dataFrame %t=% {
-    rateNum_dataFrame_long |>
-      dplyr::group_by(shopCode) |>
-      dplyr::mutate(
-        dRateNum = rateNum - dplyr::lag(rateNum)
-      ) |>
-      na.omit()
-  },
+  rateNum_dataFrame_long |>
+    dplyr::group_by(shopCode) |>
+    dplyr::mutate(
+      dRateNum = rateNum - dplyr::lag(rateNum)
+    ) |>
+    na.omit()},
   # 6. 餐飲分類 ----
   shop_cat_offeringMeal %t=% create_factor_offeringMeals(wax_data_before),
   shop_cat_regional %t=% create_region_nonRegion_category(wax_data_before),
@@ -393,20 +375,13 @@ list(
   summary_byCatRegion %t=% list(
     tb_region_wax_before,
     tb_region_wax_after,
-    tb_region_wane_after
-  ),
+    tb_region_wane_after),
   summary_wide_table_foodRegions %t=% {
     summary_byCatRegion |> create_wide_table_regionCat() -> tb_count
     summary_byCatRegion |> create_wide_table_regionCat(type="proportionTable") -> tb_prop
     list(
       count = tb_count,
-      proportion = tb_prop
-    )
-<<<<<<< HEAD
-
-=======
->>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
-  },
+      proportion = tb_prop)},
   ## 7.供餐時段 ----
   tar_target(
     scheduleFile, "data/schedules.Rds", format="file"),
@@ -415,7 +390,7 @@ list(
   get_businessHourTypes %t=% construct_get_businessHourTypes(),
   tar_target(
     business_hour_typesFile, "data/business_hour_types.Rds", format="file"
-  ),
+    ),
   ##7.2 各店家七類營業時段 ----
   bhours %t=% readRDS(business_hour_typesFile),
   # jsonlite::fromJSON("local-data/business_hours.json"),
@@ -424,7 +399,7 @@ list(
   ##7.3 七類營業時段統計 ----
   summary_competition_by_businessHours %t=% {
     summarise_competition_by_businessHours(business_wday_time)
-  },
+    },
   tar_target(shop0806_path, "local-data/shop0806.Rds", format = 'file'),
   tar_target(taiwan_township_sf_path,"local-data/taiwan_township.Rds", format = 'file'),
   # 參考期資料 ----
@@ -446,16 +421,14 @@ list(
         ~{
           convert_okMenus2_to_data_frame2(result[[.x]]) -> dfX
           dfX$date <- lubridate::ymd(.x)
-          dfX
-        }
-      )
-  },
+          dfX}
+        )},
   okMenus_df %t=% {
     popularItemsOnMenus |>
       purrr::keep(~{is.null(.x$error)}) |>
       purrr::map(~{.x$result}) |>
       convert_okMenus_to_data_frame()
-  },
+    },
   plot_popularItemsOffer %t=% plot_variation_popularItems(okMenus_df),
   okMenus_6count_df %t=% filter_6count_okMenus(okMenus_df),
   plot_popularItemsOffer6_continuity %t=%
@@ -468,23 +441,21 @@ list(
     okMenus_6count_df |>
       dplyr::filter(
         nextCount == 6
-      )
-  },
+        )
+    },
   # 權重準備 ----
   ## 參考期特徵分配 ----
   shop0806_county %t=% {
     shop0806 |>
       dplyr::select(
-        shopCode, county
-      ) |>
+        shopCode, county) |>
       dplyr::filter(
         !(county %in% c("",'金門縣','澎湖縣'))
-      ) |>
+        ) |>
       na.omit() |>
       dplyr::mutate(
         county = factor(county)
-      )
-  },
+        )},
   ## 各期店家特徵分配 ----
   menu_cost %t=% {
     1:nrow(summary_validSampleSize_by_dates) |>
@@ -497,10 +468,7 @@ list(
         }
       ) |>
       setNames(summary_validSampleSize_by_dates$date) -> result
-<<<<<<< HEAD
 
-=======
->>>>>>> d39dcf7c64bbccb68025df332f489f515376514e
 
     result |>
       purrr::map(
@@ -635,7 +603,9 @@ list(
   ),
   tar_target(
     inflation_Mealoffering, "data/inflation_Mealoffering.Rds", format="file"
+  ),
+  tar_target(menu_cost_mealoffering8,
+             readRDS("data/menu_cost_mealoffering8.Rds"))
   )
-)
 
 
