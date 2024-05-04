@@ -605,7 +605,9 @@ list(
     inflation_Mealoffering, "data/inflation_Mealoffering.Rds", format="file"
   ),
   tar_target(menu_cost_mealoffering8,
-             readRDS("data/menu_cost_mealoffering8.Rds"))
+             readRDS("data/menu_cost_mealoffering8.Rds")),
+  tar_target(inflation_final_county,
+             readRDS("ddata/inflation_final_county.Rds"))
   )
 
 
