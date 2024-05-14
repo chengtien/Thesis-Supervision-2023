@@ -147,3 +147,34 @@ ggplot() +
         legend.title = element_blank()) +
   scale_y_continuous(labels = percent_format(), limits = c(-0.04, 0.14), breaks = seq(-0.04, 0.14, by = 0.01)) +
   scale_x_date(breaks = date1, date_labels = "%Y年%m月%d日")
+
+
+ggplot() +
+  geom_line(data = na.omit(inflation_Mealoffering3), aes(x = date, y = inflation_annualise, group = 1, linetype = "未加權CPI上漲率"), color = "black", linewidth = 1) +
+  geom_line(data = na.omit(final_inflation), aes(x = date, y = inflation_annualise, group = 1, linetype = "經消費者加權CPI上漲率"), color = "black", linewidth = 1) +
+  scale_color_manual(values = c("black","black")) +
+  scale_linetype_manual(values = c("未加權CPI上漲率" = "solid", "經消費者加權CPI上漲率" = "twodash")) +
+  labs(color = "", x = "日期", y = "年化CPI上漲率") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,size=7),
+        axis.title.x = element_text(color = "black", size = 10, face = "bold", margin = margin(t = 10)),
+        axis.title.y = element_text(color = "black", size = 10, face = "bold", margin = margin(r = 10)),
+        panel.grid.major = element_line(color = "gray", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        legend.title = element_blank()) +
+  scale_y_continuous(labels = percent_format(), limits = c(-0.04, 0.14), breaks = seq(-0.04, 0.14, by = 0.01)) +
+  scale_x_date(breaks = date1, date_labels = "%Y年%m月%d日")
+
+ggplot() +
+  geom_line(data = na.omit(inflation_Mealoffering3), aes(x = date, y = inflation_annualise, group = 1, linetype = "未加權CPI上漲率"), color = "black", linewidth = 1) +
+  geom_line(data = na.omit(summary_inflation_weight7), aes(x = date, y = inflation_annualise, group = 1, linetype = "經商家加權CPI上漲率"), color = "blue", linewidth = 1) +
+  geom_line(data = na.omit(final_inflation), aes(x = date, y = inflation_annualise, group = 1, linetype = "經消費者加權CPI上漲率"), color = "red", linewidth = 1) +
+  scale_linetype_manual(values = c("未加權CPI上漲率" = "solid", "經商家加權CPI上漲率" = "solid","經消費者加權CPI上漲率" = "twodash")) +
+  labs(color = "", x = "日期", y = "年化CPI上漲率") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,size=7),
+        axis.title.x = element_text(color = "black", size = 10, face = "bold", margin = margin(t = 10)),
+        axis.title.y = element_text(color = "black", size = 10, face = "bold", margin = margin(r = 10)),
+        panel.grid.major = element_line(color = "gray", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        legend.title = element_blank()) +
+  scale_y_continuous(labels = percent_format(), limits = c(-0.04, 0.14), breaks = seq(-0.04, 0.14, by = 0.01)) +
+  scale_x_date(breaks = date1, date_labels = "%Y年%m月%d日")
